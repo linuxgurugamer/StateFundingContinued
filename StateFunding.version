@@ -5,7 +5,7 @@
      "GITHUB":{
          "USERNAME":"TheDogKSP",
          "REPOSITORY":"StateFunding",
-         "ALLOW_PRE_RELEASE":false
+         "ALLOW_PRE_RELEASE":true
      },
      "VERSION":{
          "MAJOR":0,
