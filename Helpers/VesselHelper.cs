@@ -99,7 +99,7 @@ namespace StateFunding {
         ProtoPartResourceSnapshot[] Resources = Part.resources.ToArray ();
         for (var k = 0; k < Resources.Length; k++) {
           ProtoPartResourceSnapshot Resrc = Resources [k];
-          if(Resrc.resourceName == resource && float.Parse(Resrc.resourceValues.GetValue ("amount")) > 0) {
+          if(Resrc.resourceName == resource && Resrc.amount > 0) {
             return true;
           }
         }
@@ -118,7 +118,7 @@ namespace StateFunding {
         for (var k = 0; k < Resources.Length; k++) {
           ProtoPartResourceSnapshot Resrc = Resources [k];
           if(Resrc.resourceName == resource) {
-            resourceCount += (int)float.Parse (Resrc.resourceValues.GetValue ("amount"));
+            resourceCount += (int)Resrc.amount;
           }
         }
       }

@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 [assembly: AssemblyTitle("StateFunding plugin for Kerbal Space Program")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("for KSP version 1.2")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("StateFunding")]
@@ -12,8 +12,8 @@ using System.Runtime.CompilerServices;
 
 
 
-[assembly: AssemblyVersion("0.4.1.0")]
-[assembly: AssemblyFileVersion("0.4.1.0")]
+[assembly: AssemblyVersion("0.5.0.0")]
+[assembly: AssemblyFileVersion("0.5.0.0")]
 
-[assembly: KSPAssembly("StateFunding", 0, 4)]
+[assembly: KSPAssembly("StateFunding", 0, 5)]
 //[assembly: KSPAssemblyDependency("Toolbar", 1, 0)]

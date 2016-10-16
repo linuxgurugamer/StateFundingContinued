@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace StateFunding {
-  public class ReviewManager: MonoBehaviour {
+  public class ReviewManager {
 
     public void CompleteReview () {
       InstanceData Inst = StateFundingGlobal.fetch.GameInstance;

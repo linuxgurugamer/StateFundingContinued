@@ -79,6 +79,40 @@ namespace StateFunding {
       VesselHelper.LoadAliases ();
       StateFundingGlobal.isLoaded = true;
       Debug.Log ("StateFunding Mod Loaded");
+
+        if (StateFundingGlobal.needsDataInit)
+        {
+            Debug.Log("StateFunding performing data init");
+            var NewView = new NewInstanceConfigView();
+            NewView.OnCreate((InstanceData Inst) => {
+                for (int i = 0; i < StateFundingGlobal.fetch.Governments.ToArray().Length; i++)
+                {
+                    Government Gov = StateFundingGlobal.fetch.Governments.ToArray()[i];
+                    if (Gov.name == Inst.govName)
+                    {
+                        Inst.Gov = Gov;
+                    }
+                }
+
+                StateFundingScenario.Instance.data = Inst;
+                StateFundingScenario.Instance.isInit = true;
+                StateFundingGlobal.needsDataInit = false;
+                Debug.Log("StateFunding data init completed");
+                ReviewMgr.CompleteReview();
+            });
+               
+        }
+        else
+        {
+            for (int i = 0; i < StateFundingGlobal.fetch.Governments.ToArray().Length; i++)
+            {
+                Government Gov = StateFundingGlobal.fetch.Governments.ToArray()[i];
+                if (Gov.name == StateFundingScenario.Instance.data.govName)
+                {
+                    StateFundingScenario.Instance.data.Gov = Gov;
+                }
+            }
+        }
     }
 
     public void LoadIfNeeded() {

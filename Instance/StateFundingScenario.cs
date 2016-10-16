@@ -23,9 +23,9 @@ namespace StateFunding
     }
     
     public ReviewManager ReviewMgr;
-    private InstanceData data;
+    public InstanceData data;
     public InstanceData Data { get { return data; } }
-    private bool isInit;
+    public bool isInit;
     private const string CONFIG_NODENAME = "STATEFUNDINGSCENARIO";
     
     
@@ -54,36 +54,31 @@ namespace StateFunding
     
     //load scenario
     public override void OnLoad (ConfigNode node) {
-      try {
+      //try {
         if (node.HasNode(CONFIG_NODENAME)) {
           //load
           Debug.Log("StateFundingScenario loading from persistence");
           ConfigNode loadNode = node.GetNode(CONFIG_NODENAME);
           ConfigNode.LoadObjectFromConfig(data, loadNode);
           isInit = true;
+          StateFundingGlobal.needsDataInit = false;
         }
         else {
           Debug.Log("StateFundingScenario default init");
           //default init
-          var NewView = new NewInstanceConfigView ();
-          NewView.OnCreate ((InstanceData Inst) => {
-            data = Inst;
-            ReviewMgr.CompleteReview ();
-          });
-          isInit = true;
+          //var NewView = new NewInstanceConfigView ();
+          StateFundingGlobal.needsDataInit = true;
+          //NewView.OnCreate ((InstanceData Inst) => {
+          //  data = Inst;
+          //  ReviewMgr.CompleteReview ();
+          //});
+          //isInit = true;
         }
 
-        for (int i = 0; i < StateFundingGlobal.fetch.Governments.ToArray ().Length; i++) {
-          Government Gov = StateFundingGlobal.fetch.Governments.ToArray () [i];
-          if (Gov.name == data.govName) {
-            data.Gov = Gov;
-          }
-        }
-
-      }
-      catch {
+      //}
+      //catch {
         
-      }
+      //}
     }
     
     

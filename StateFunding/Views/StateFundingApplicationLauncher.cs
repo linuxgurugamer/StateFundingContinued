@@ -5,7 +5,7 @@ using System.IO;
 using KSP.UI.Screens;
 
 namespace StateFunding {
-  public class StateFundingApplicationLauncher: MonoBehaviour {
+  public class StateFundingApplicationLauncher {
     private StateFundingHubView View;
     private ApplicationLauncherButton Button;
 

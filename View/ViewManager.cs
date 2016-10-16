@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace StateFunding {
-  [KSPAddon (KSPAddon.Startup.Instantly, true)]
+  [KSPAddon (KSPAddon.Startup.SpaceCentre, false)]
   public class ViewManager: MonoBehaviour {
 
     public static List<View> Views = new List<View>();
 
     public void Start() {
-      DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     public static void addView(View V) {
