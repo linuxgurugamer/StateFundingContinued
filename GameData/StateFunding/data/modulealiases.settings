@@ -1,0 +1,122 @@
+﻿AliasConfig
+{
+	Item 
+	{
+		name = AutonomousCommand
+		Modules
+		{
+			Item
+			{
+				name = ModuleSAS
+			}
+			Item
+			{
+				name = ModuleSPU
+			}
+		}
+	}
+	Item
+	{
+		name = Command
+		Modules
+		{
+			Item
+			{
+				name = ModuleCommand
+			}
+		}
+	}
+	Item 
+	{
+		name = Communication
+		Modules
+		{
+			Item
+			{
+				name = ModuleDataTransmitter
+			}
+			Item
+			{
+				name = ModuleLimitedDataTransmitter
+			}
+			Item
+			{
+				name = ModuleRTAntenna
+			}
+			Item
+			{
+				name = AntennaRange
+			}
+		}
+	}
+	Item 
+	{
+		name = Energy
+		Modules
+		{
+			Item
+			{
+				name = ModuleDeployableSolarPanel
+			}
+			Item
+			{
+				name = ModuleGenerator
+			}
+		}
+	}
+	Item 
+	{
+		name = Drill
+		Modules
+		{
+			Item
+			{
+				name = ModuleResourceHarvester
+			}
+		}
+	}
+	Item
+	{
+		name = ScienceLab
+		Modules
+		{
+			Item
+			{
+				name = ModuleScienceLab
+			}
+		}
+	}
+	Item
+	{
+		name = Wheel
+		Modules
+		{
+			Item
+			{
+				name = ModuleWheel
+			}
+		}
+	}
+	Item
+	{
+		name = DockingPort
+		Modules
+		{
+			Item
+			{
+				name = ModuleDockingNode
+			}
+		}
+	}
+	Item
+	{
+		name = Astroid
+		Modules
+		{
+			Item
+			{
+				name = ModuleAsteroid
+			}
+		}
+	}
+}
