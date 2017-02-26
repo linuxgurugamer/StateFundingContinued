@@ -14,14 +14,14 @@ namespace StateFunding {
     private Action <InstanceData> OnCreateCallback;
 
     public NewInstanceConfigView () {
-        Debug.Log("StateFunding: NewInstanceConfigView: creating");
+        Log.Info("StateFunding: NewInstanceConfigView: creating");
         ViewManager.addView (this);
         createWindow ();
         createGovernmentMenu ();
     }
 
     private void createWindow() {
-      Debug.Log("StateFunding: NewInstanceConfigView: creating window");
+      Log.Info("StateFunding: NewInstanceConfigView: creating window");
       Window = new ViewWindow ("State Funding");
       Window.setMargins (300, 100);
 
@@ -77,7 +77,7 @@ namespace StateFunding {
     }
 
     private void createGovernmentMenu() {
-      Debug.Log("StateFunding: NewInstanceConfigView: creating government menu");
+      Log.Info("StateFunding: NewInstanceConfigView: creating government menu");
       for (int i = 0; i < StateFundingGlobal.fetch.Governments.ToArray().Length; i++) {
         Government Gov = (Government)StateFundingGlobal.fetch.Governments.ToArray()[i];
         ViewGovernmentButton GovBtn = new ViewGovernmentButton (Gov, SelectGovernment);
@@ -98,7 +98,7 @@ namespace StateFunding {
       GovernmentDescription.label = Gov.description;
       GovernmentGameplayDescription.label = Gov.GetGameplayDescription();
       Confirm.text = "Select " + Gov.name;
-      Debug.Log("StateFunding: NewInstanceConfigView: selected government");
+      Log.Info("StateFunding: NewInstanceConfigView: selected government");
     }
 
     private void OnConfirm () {
@@ -112,7 +112,7 @@ namespace StateFunding {
     }
 
     public void OnCreate(Action <InstanceData>Callback) {
-      Debug.Log("StateFunding: NewInstanceConfigView: calling callback");
+      Log.Info("StateFunding: NewInstanceConfigView: calling callback");
       OnCreateCallback = Callback;
     }
   }

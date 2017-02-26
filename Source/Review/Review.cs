@@ -115,14 +115,14 @@ namespace StateFunding {
     }
 
     private void UpdatePOSC() {
-      Debug.Log ("Updating POSC");
+      Log.Info ("Updating POSC");
       InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
       po = GameInstance.po;
       sc = GameInstance.sc;
     }
 
     private void UpdateCoverage() {
-      Debug.Log ("Updating Coverage");
+      Log.Info ("Updating Coverage");
 
       for (int i = 0; i < Coverages.Length; i++) {
         Coverages [i].satCount = 0;
@@ -148,29 +148,29 @@ namespace StateFunding {
     }
 
     private void UpdateActiveKerbals() {
-      Debug.Log ("Updating Active Kerbals");
+      Log.Info ("Updating Active Kerbals");
       activeKerbals = KerbalHelper.GetActiveKerbals ().Length;
       strandedKerbals = KerbalHelper.GetStrandedKerbals ().Length;
     }
 
     private void UpdateMiningRigs() {
-      Debug.Log ("Updating Mining Rigs");
+      Log.Info ("Updating Mining Rigs");
       miningRigs = VesselHelper.GetMiningRigs ().Length;
     }
 
     private void UpdateScienceStations() {
-      Debug.Log ("Updating Science Stations");
+      Log.Info ("Updating Science Stations");
       orbitalScienceStations = VesselHelper.GetOrbitingScienceStations ().Length;
       planetaryScienceStations = VesselHelper.GetLandedScienceStations ().Length;
     }
 
     private void UpdateRovers() {
-      Debug.Log ("Updating Rovers");
+      Log.Info ("Updating Rovers");
       rovers = VesselHelper.GetRovers ().Length;
     }
 
     private void UpdateSpaceStations() {
-      Debug.Log ("Updating Space Stations");
+      Log.Info ("Updating Space Stations");
 
       InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
       Vessel[] SpcStations = VesselHelper.GetSpaceStations ();
@@ -228,7 +228,7 @@ namespace StateFunding {
     }
 
     private void UpdateBases() {
-      Debug.Log ("Updating Bases");
+      Log.Info ("Updating Bases");
 
       InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
       Vessel[] _Bases = VesselHelper.GetBases ();
@@ -290,17 +290,17 @@ namespace StateFunding {
         UpdateFunds ();
         UpdateYear ();
       } else {
-        Debug.LogError ("Cannot touch a past review. It's properties are already set");
+        Log.Error ("Cannot touch a past review. It's properties are already set");
       }
     }
 
     public void UpdateYear() {
-      Debug.Log ("Updating Year");
+      Log.Info ("Updating Year");
       year = TimeHelper.Quarters(Planetarium.GetUniversalTime());
     }
 
     public void UpdateFinalPO() {
-      Debug.Log ("Updating Final PO");
+      Log.Info ("Updating Final PO");
       int tmpPO = po;
 
       InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
@@ -326,7 +326,7 @@ namespace StateFunding {
     }
 
     public void UpdateFinalSC() {
-      Debug.Log ("Updating Final SC");
+      Log.Info ("Updating Final SC");
       int tmpSC = sc;
 
       InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
@@ -355,7 +355,7 @@ namespace StateFunding {
     }
 
     private void UpdateFunds() {
-      Debug.Log ("Updating Funds");
+      Log.Info ("Updating Funds");
       InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
       funds = (int)(((float)(finalPO + finalSC) / 10000 / 4) * (float)Inst.Gov.gdp * (float)Inst.Gov.budget);
     }

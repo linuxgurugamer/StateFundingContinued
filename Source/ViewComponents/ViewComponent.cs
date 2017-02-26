@@ -102,7 +102,7 @@ namespace StateFunding {
     }
 
     public virtual void paint() {
-      Debug.Log ("VIEW COMPONENT PAINT");
+      Log.Info ("VIEW COMPONENT PAINT");
     }
   }
 }

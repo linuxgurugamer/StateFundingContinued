@@ -21,12 +21,12 @@ namespace StateFunding {
     }
 
     public void onTrue() {
-      Debug.Log ("Opened State Funding Hub");
+      Log.Info ("Opened State Funding Hub");
       ViewManager.addView (View);
     }
 
     public void onFalse() {
-      Debug.Log ("Closed State Funding Hub");
+      Log.Info ("Closed State Funding Hub");
       ViewManager.removeView (View);
     }
 

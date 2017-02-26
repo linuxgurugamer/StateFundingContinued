@@ -57,14 +57,14 @@ namespace StateFunding
       //try {
         if (node.HasNode(CONFIG_NODENAME)) {
           //load
-          Debug.Log("StateFundingScenario loading from persistence");
+          Log.Info("StateFundingScenario loading from persistence");
           ConfigNode loadNode = node.GetNode(CONFIG_NODENAME);
           ConfigNode.LoadObjectFromConfig(data, loadNode);
           isInit = true;
           StateFundingGlobal.needsDataInit = false;
         }
         else {
-          Debug.Log("StateFundingScenario default init");
+          Log.Info("StateFundingScenario default init");
           //default init
           //var NewView = new NewInstanceConfigView ();
           StateFundingGlobal.needsDataInit = true;
@@ -87,7 +87,7 @@ namespace StateFunding
       if (!isInit)
         return;
      
-      Debug.Log("StateFundingScenario saving to persistence");
+      Log.Info("StateFundingScenario saving to persistence");
       ConfigNode saveNode = ConfigNode.CreateConfigFromObject(data);
       node.SetNode(CONFIG_NODENAME, saveNode, true);
     }

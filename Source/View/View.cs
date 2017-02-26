@@ -14,7 +14,7 @@ namespace StateFunding {
     public void addComponent(ViewComponent C) {
       if (C is RelativeViewComponent) {
         if (!((RelativeViewComponent)C).hasRelative ()) {
-          Debug.LogError ("Relative View Component hasn't defined what it's relative to. Refusing to add to View.");
+          Log.Error ("Relative View Component hasn't defined what it's relative to. Refusing to add to View.");
         }
       }
 

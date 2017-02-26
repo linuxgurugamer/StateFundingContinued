@@ -24,17 +24,17 @@ namespace StateFunding {
       ApplyDecay ();
 
       // Apply funds from Review
-      Debug.Log("Adding Funds: " + Rev.funds);
+      Log.Info("Adding Funds: " + Rev.funds);
       Funding.Instance.AddFunds (Rev.funds, TransactionReasons.None);
 
       // Notify player that a review is available
       ReviewToastView Toast = new ReviewToastView (Rev);     
 
-      Debug.Log ("Generated Review");
+      Log.Info ("Generated Review");
     }
 
     public void ApplyDecay() {
-      Debug.Log ("Applying Decay");
+      Log.Info ("Applying Decay");
       InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
       if (Inst.po > 0) {
         int newPO = Inst.po - (int)Math.Ceiling (Inst.po * 0.2);
@@ -62,7 +62,7 @@ namespace StateFunding {
     }
 
     public void OpenReview(Review Rev) {
-      Debug.Log ("Viewing Review");
+      Log.Info ("Viewing Review");
       ReviewView RevView = new ReviewView (Rev);
     }
 

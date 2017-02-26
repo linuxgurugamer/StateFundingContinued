@@ -19,7 +19,7 @@ namespace StateFunding {
       int buttonWidth = 180;
       int buttonHeight = 30;
       int buttonMargin = 10;
-      int xOffset = 0;
+     // int xOffset = 0;
       int yOffset = 0;
 
       ViewScroll PastReviewsScroll = new ViewScroll ();

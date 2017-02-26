@@ -52,10 +52,10 @@ namespace StateFunding {
 
         Governments.Add (Gov);
 
-        Debug.Log ("Loaded Government: " + GovItem.GetValue("name"));
+        Log.Info ("Loaded Government: " + GovItem.GetValue("name"));
       }
 
-      Debug.Log ("Initialized Governments");
+      Log.Info ("Initialized Governments");
     }
 
     private void InitEvents() {
@@ -72,17 +72,17 @@ namespace StateFunding {
     }
 
     public void load () {
-      Debug.Log ("StateFunding Mod Loading");
+      Log.Info ("StateFunding Mod Loading");
       AppLauncher = new StateFundingApplicationLauncher ();
       InitGovernments ();
       InitEvents ();
       VesselHelper.LoadAliases ();
       StateFundingGlobal.isLoaded = true;
-      Debug.Log ("StateFunding Mod Loaded");
+      Log.Info ("StateFunding Mod Loaded");
 
         if (StateFundingGlobal.needsDataInit)
         {
-            Debug.Log("StateFunding performing data init");
+            Log.Info("StateFunding performing data init");
             var NewView = new NewInstanceConfigView();
             NewView.OnCreate((InstanceData Inst) => {
                 for (int i = 0; i < StateFundingGlobal.fetch.Governments.ToArray().Length; i++)
@@ -97,7 +97,7 @@ namespace StateFunding {
                 StateFundingScenario.Instance.data = Inst;
                 StateFundingScenario.Instance.isInit = true;
                 StateFundingGlobal.needsDataInit = false;
-                Debug.Log("StateFunding data init completed");
+                Log.Info("StateFunding data init completed");
                 ReviewMgr.CompleteReview();
             });
                
@@ -132,7 +132,7 @@ namespace StateFunding {
           });
         }
 
-        Debug.Log ("StateFunding Save Loaded");
+        Log.Info ("StateFunding Save Loaded");
       }
       */
     }
@@ -142,7 +142,7 @@ namespace StateFunding {
         if (GameInstance.getReviews ().Length > 0) {
           int year = (int)(TimeHelper.Quarters(Planetarium.GetUniversalTime ()));
           if (year > ReviewMgr.LastReview ().year) {
-            Debug.Log ("Happy New Quarter!");
+            Log.Info ("Happy New Quarter!");
             ReviewMgr.CompleteReview ();
           }
         }
@@ -153,20 +153,20 @@ namespace StateFunding {
     // Events
 
     public void OnCrewKilled(EventReport Evt) {
-      Debug.LogWarning ("CREW KILLED");
+      Log.Warning ("CREW KILLED");
       GameInstance.ActiveReview.kerbalDeaths++;
       //InstanceConf.saveInstance (GameInstance);
     }
 
     public void OnCrewLeftForDead(ProtoCrewMember Crew, int id) {
-      Debug.LogWarning ("CREW KILLED");
+      Log.Warning ("CREW KILLED");
       GameInstance.ActiveReview.kerbalDeaths++;
       //InstanceConf.saveInstance (GameInstance);
     }
 
     public void OnCrash(EventReport Evt) {
       if (VesselHelper.PartHasModuleAlias (Evt.origin, "Command") || VesselHelper.PartHasModuleAlias (Evt.origin, "AutonomousCommand")) {
-        Debug.LogWarning ("VESSEL DESTROYED");
+                Log.Warning ("VESSEL DESTROYED");
         GameInstance.ActiveReview.vesselsDestroyed++;
         //InstanceConf.saveInstance (GameInstance);
       }
@@ -174,7 +174,7 @@ namespace StateFunding {
 
     public void OnCrashSplashdown(EventReport Evt) {
       if (VesselHelper.PartHasModuleAlias(Evt.origin, "Command") || VesselHelper.PartHasModuleAlias(Evt.origin, "AutonomousCommand")) {
-        Debug.LogWarning ("VESSEL DESTROYED");
+                Log.Warning ("VESSEL DESTROYED");
         GameInstance.ActiveReview.vesselsDestroyed++;
         //InstanceConf.saveInstance (GameInstance);
       }

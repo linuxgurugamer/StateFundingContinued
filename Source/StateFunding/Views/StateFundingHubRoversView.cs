@@ -51,7 +51,7 @@ namespace StateFunding {
 
       for (int i = 0; i < Rovers.Length; i++) {
         Vessel Rover = Rovers [i];
-        string target;
+        //string target;
 
         string label = Rover.GetName () + " is Landed at " + Rover.mainBody.GetName ();
 
