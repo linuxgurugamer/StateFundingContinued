@@ -3,67 +3,77 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace StateFunding {
-  public static class StateFundingHubMiningView {
-    public static void draw (View Vw, ViewWindow Window) {
-      Window.title = "Mining Rigs";
-      InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
-      Review Rev = GameInstance.ActiveReview;
-      Rev.touch ();
+namespace StateFunding
+{
+    public static class StateFundingHubMiningView
+    {
+        public static void draw(View Vw, ViewWindow Window)
+        {
+            Window.title = "Mining Rigs";
+            InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
+            if (GameInstance == null)
+            {
+                Log.Error("StateFundingHubMiningView.draw, Inst is null");
+                return;
+            }
 
-      string Description = "Below is a list of existing Mining Rigs. Having more Mining Rigs increases State " +
-        "Confidence. To have a qualified Mining Rig is must have an antenna, drill, be able to generate power, " +
-        "and be Landed on a body other than Kerbin.";
+            Review Rev = GameInstance.ActiveReview;
+            Rev.touch();
 
-      ViewLabel DescriptionLabel = new ViewLabel (Description);
-      DescriptionLabel.setRelativeTo (Window);
-      DescriptionLabel.setLeft (140);
-      DescriptionLabel.setTop (20);
-      DescriptionLabel.setColor (Color.white);
-      DescriptionLabel.setHeight (100);
-      DescriptionLabel.setWidth (Window.getWidth () - 140);
+            string Description = "Below is a list of existing Mining Rigs. Having more Mining Rigs increases State " +
+              "Confidence. To have a qualified Mining Rig is must have an antenna, drill, be able to generate power, " +
+              "and be Landed on a body other than Kerbin.";
 
-      Vw.addComponent (DescriptionLabel);
+            ViewLabel DescriptionLabel = new ViewLabel(Description);
+            DescriptionLabel.setRelativeTo(Window);
+            DescriptionLabel.setLeft(140);
+            DescriptionLabel.setTop(20);
+            DescriptionLabel.setColor(Color.white);
+            DescriptionLabel.setHeight(100);
+            DescriptionLabel.setWidth(Window.getWidth() - 140);
 
-      ViewLabel TotalCoverage = new ViewLabel ("Mining Rigs: " + Rev.miningRigs);
-      TotalCoverage.setRelativeTo (Window);
-      TotalCoverage.setLeft (140);
-      TotalCoverage.setTop (130);
-      TotalCoverage.setColor (Color.white);
-      TotalCoverage.setHeight (30);
-      TotalCoverage.setWidth (Window.getWidth () - 140);
+            Vw.addComponent(DescriptionLabel);
 
-      Vw.addComponent (TotalCoverage);
+            ViewLabel TotalCoverage = new ViewLabel("Mining Rigs: " + Rev.miningRigs);
+            TotalCoverage.setRelativeTo(Window);
+            TotalCoverage.setLeft(140);
+            TotalCoverage.setTop(130);
+            TotalCoverage.setColor(Color.white);
+            TotalCoverage.setHeight(30);
+            TotalCoverage.setWidth(Window.getWidth() - 140);
 
-      ViewScroll RigsScroll = new ViewScroll ();
-      RigsScroll.setRelativeTo (Window);
-      RigsScroll.setWidth (Window.getWidth () - 140);
-      RigsScroll.setHeight (Window.getHeight () - 160);
-      RigsScroll.setLeft (140);
-      RigsScroll.setTop (150);
+            Vw.addComponent(TotalCoverage);
 
-      Vw.addComponent (RigsScroll);
+            ViewScroll RigsScroll = new ViewScroll();
+            RigsScroll.setRelativeTo(Window);
+            RigsScroll.setWidth(Window.getWidth() - 140);
+            RigsScroll.setHeight(Window.getHeight() - 160);
+            RigsScroll.setLeft(140);
+            RigsScroll.setTop(150);
 
-      Vessel[] MiningRigs = VesselHelper.GetMiningRigs ();
+            Vw.addComponent(RigsScroll);
 
-      int labelHeight = 20;
+            Vessel[] MiningRigs = VesselHelper.GetMiningRigs();
 
-      for (int i = 0; i < MiningRigs.Length; i++) {
-        Vessel MiningRig = MiningRigs [i];
+            int labelHeight = 20;
 
-        string label = MiningRig.GetName () + " is Landed At " + MiningRig.mainBody.GetName ();;
+            for (int i = 0; i < MiningRigs.Length; i++)
+            {
+                Vessel MiningRig = MiningRigs[i];
 
-        ViewLabel MiningLabel = new ViewLabel (label);
-        MiningLabel.setRelativeTo (RigsScroll);
-        MiningLabel.setTop (labelHeight + (labelHeight + 5) * i);
-        MiningLabel.setLeft (0);
-        MiningLabel.setHeight (labelHeight);
-        MiningLabel.setWidth (RigsScroll.getWidth () - 20);
-        MiningLabel.setColor (Color.white);
+                string label = MiningRig.GetName() + " is Landed At " + MiningRig.mainBody.GetName(); ;
 
-        RigsScroll.Components.Add (MiningLabel);
-      }
+                ViewLabel MiningLabel = new ViewLabel(label);
+                MiningLabel.setRelativeTo(RigsScroll);
+                MiningLabel.setTop(labelHeight + (labelHeight + 5) * i);
+                MiningLabel.setLeft(0);
+                MiningLabel.setHeight(labelHeight);
+                MiningLabel.setWidth(RigsScroll.getWidth() - 20);
+                MiningLabel.setColor(Color.white);
+
+                RigsScroll.Components.Add(MiningLabel);
+            }
+        }
     }
-  }
 }
 
