@@ -89,6 +89,10 @@ namespace StateFunding
             InitEvents();
             VesselHelper.LoadAliases();
             StateFundingGlobal.isLoaded = true;
+
+            CelestialBody[] Bodies = FlightGlobals.Bodies.ToArray();
+            StateFundingGlobal.Sun = Bodies[0].GetName();
+
             Log.Info("StateFunding Mod Loaded");
 
             if (StateFundingGlobal.needsDataInit)

@@ -19,3 +19,7 @@ Adoption by Linuxgurugamer
 
 0.6.1
 	Fixed segfaults caused by planet packs which changed the name of the sun
+
+0.6.2
+	Fixed check for satellites not being in orbit around the sun, replaced hard-coded name
+	Added Relay type to check for satellites

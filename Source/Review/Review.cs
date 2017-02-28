@@ -25,7 +25,7 @@ namespace StateFunding
                 CelestialBody Body = Bodies[i];               
                 
                 // Don't need to survey the sun
-                if (Body.GetName() != "Sun")
+                //if (Body.GetName() != StateFundingGlobal.Sun)
                 {
                     CoverageReport Report = new CoverageReport();
                     Report.entity = Body.GetName();

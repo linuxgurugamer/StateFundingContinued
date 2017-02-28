@@ -506,9 +506,9 @@ namespace StateFunding
                 Vessel Satellite = Satellites[i];
 
                 if (!Satellite.Landed
-                  && Satellite.vesselType == VesselType.Probe
+                  && (Satellite.vesselType == VesselType.Probe || Satellite.vesselType == VesselType.Relay)
                   && Satellite.GetOrbit() != null
-                  && Satellite.GetOrbit().referenceBody.GetName() != "Sun"
+                  && Satellite.GetOrbit().referenceBody.GetName() != StateFundingGlobal.Sun
                   && !VesselHelper.HasCrew(Satellite))
                 {
                     ReturnVessels.Add(Satellite);
