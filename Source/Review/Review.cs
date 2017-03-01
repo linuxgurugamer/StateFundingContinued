@@ -19,13 +19,14 @@ namespace StateFunding
             if (home != null) refRadius = home.Radius / 10;
 
             int k = 0;
-            // The assumption is that the first body (Bodies[0]) is the sun, so ignore it
-            for (int i = 1; i < Bodies.Length; i++)
+           
+            for (int i = 0; i < Bodies.Length; i++)
             {
                 CelestialBody Body = Bodies[i];               
                 
                 // Don't need to survey the sun
                 //if (Body.GetName() != StateFundingGlobal.Sun)
+                if (Body != Planetarium.fetch.Sun)
                 {
                     CoverageReport Report = new CoverageReport();
                     Report.entity = Body.GetName();

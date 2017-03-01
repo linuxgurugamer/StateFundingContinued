@@ -89,9 +89,8 @@ namespace StateFunding
             InitEvents();
             VesselHelper.LoadAliases();
             StateFundingGlobal.isLoaded = true;
-
-            CelestialBody[] Bodies = FlightGlobals.Bodies.ToArray();
-            StateFundingGlobal.Sun = Bodies[0].GetName();
+            
+            //StateFundingGlobal.Sun = Planetarium.fetch.Sun.GetName();
 
             Log.Info("StateFunding Mod Loaded");
 

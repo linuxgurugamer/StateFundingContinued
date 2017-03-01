@@ -23,3 +23,7 @@ Adoption by Linuxgurugamer
 0.6.2
 	Fixed check for satellites not being in orbit around the sun, replaced hard-coded name
 	Added Relay type to check for satellites
+
+0.6.3
+	Now using Planetarium.fetch.Sun to identify the sun
+	Added Kerbal's republic of Kerna, thanks @Maxzhao1999
