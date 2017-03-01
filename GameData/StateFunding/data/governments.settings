@@ -45,3 +45,19 @@
         description = In an alternate reality far, far away, an all-too-familiar storm was brewing. Two superpowers - the United States of Kirba (USK) and The Union of Soviet Socialist Kerbals (USSK)- were locked in an escalating political conflict (The Kold War) and began looking to the skies as the new stage for their displays of power and domination. Shortly before the launch of the first rocket, a little known Kerbal by the name of Jebediah Kerman, adrift with fledgling dreams of being the first Kerbal in space, happened to be passing by a meeting between government officials as he remarked 'how great it would be to be nice to Kerbals for a change'. Little was he aware of the gravity of his words, touching the leaders with his innocent Kerbality. A deal was made, resources were pooled, and a new site for launches was proposed at the equator, making life much easier for everyone. Thus the Unified Kerbin Space Agency was born.
     }
 }
+
+// Following added by @Maxzhao on 01/03/2017
+Item
+{
+	name = KRK
+	longName = Kerbal's Republic of Kerna
+	poModifier = 0.2
+	poPenaltyModifier = 0.5
+	scModifier = 5
+	scPenaltyModifier = 5
+	startingPO = 20
+	startingSC = 250
+	budget = 0.2
+	gdp = 50000000
+	description = In a country far far away, the space program of Kerna silently develops. This is a magical land: not very modernized but an extremely high GDP is achieved by exporting mystery goo. Here the government has the ultimate authority and they say: "we are going to space". Due to the dominance of the government your state confidence is very high and you will get all the money you need from your motherland. However it also means that you will need to pay your price if you destroy any spacecrafts, after all they belong to the your government! If you want your space program to thrive you better listen to your state supervisors carefully and tailor a space exploration they are happy about.
+}
