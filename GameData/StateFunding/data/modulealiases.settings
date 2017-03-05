@@ -73,6 +73,10 @@
 			{
 				name = ModuleResourceHarvester
 			}
+			Item
+                        {
+                                name = ModuleResourceHarvester_USI
+                        }
 		}
 	}
 	Item
