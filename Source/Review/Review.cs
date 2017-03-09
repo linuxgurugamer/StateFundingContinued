@@ -351,7 +351,8 @@ namespace StateFunding
         public void UpdateYear()
         {
             Log.Info("Updating Year");
-            year = TimeHelper.Quarters(Planetarium.GetUniversalTime());
+            //year = TimeHelper.Quarters(Planetarium.GetUniversalTime());
+            year = TimeHelper.Periods(Planetarium.GetUniversalTime(), HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().budgetPeriodsPerYear);
         }
 
         public void UpdateFinalPO()

@@ -6,6 +6,7 @@ namespace StateFunding
     {
 
         public float budget;
+        public int budgetPeriodsPerYear;
         public string description;
         public float gdp;
         public string longName;
@@ -45,6 +46,7 @@ namespace StateFunding
         {
             return "GDP: " + gdp.ToString("#,##0") + "\n" +
               "Yearly Budget: " + (gdp * budget).ToString("#,##0") + "\n" +
+              "Budget Periods Per year: " + budgetPeriodsPerYear.ToString() + "\n" +
               "Starting PO: " + startingPO + "\n" +
               "Starting SC: " + startingSC + "\n" +
               "State Reward: " + modifierLexicon(scModifier) + "\n" +

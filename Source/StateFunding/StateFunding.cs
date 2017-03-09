@@ -8,8 +8,8 @@ namespace StateFunding
     public class StateFunding
     {
         public List<Government> Governments;
-        public Government USK;
-        public Government USSK;
+   //     public Government USK;
+  //      public Government USSK;
         public ReviewManager ReviewMgr
         {
             get
@@ -55,6 +55,7 @@ namespace StateFunding
                 Gov.startingPO = int.Parse(GovItem.GetValue("startingPO"));
                 Gov.startingSC = int.Parse(GovItem.GetValue("startingSC"));
                 Gov.budget = float.Parse(GovItem.GetValue("budget"));
+                Gov.budgetPeriodsPerYear = int.Parse(GovItem.GetValue("budgetPeriodsPerYear"));
                 Gov.gdp = int.Parse(GovItem.GetValue("gdp"));
                 Gov.description = GovItem.GetValue("description");
 
@@ -106,8 +107,10 @@ namespace StateFunding
                         if (Gov.name == Inst.govName)
                         {
                             Inst.Gov = Gov;
+                            break;
                         }
                     }
+                    HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().budgetPeriodsPerYear = Inst.Gov.budgetPeriodsPerYear;
 
                     StateFundingScenario.Instance.data = Inst;
                     StateFundingScenario.Instance.isInit = true;
@@ -161,10 +164,18 @@ namespace StateFunding
             {
                 if (GameInstance.getReviews().Length > 0)
                 {
-                    int year = (int)(TimeHelper.Quarters(Planetarium.GetUniversalTime()));
+                    // int year = (int)(TimeHelper.Quarters(Planetarium.GetUniversalTime()));
+                    int year = (int)(TimeHelper.Periods(Planetarium.GetUniversalTime(), HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().budgetPeriodsPerYear));
                     if (year > ReviewMgr.LastReview().year)
                     {
                         Log.Info("Happy New Quarter!");
+                        if ( (HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarp && TimeWarp.fetch != null) ||
+                            (HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarpOnNewYear && year % HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().budgetPeriodsPerYear == 0))
+                        {
+                            TimeWarp.fetch.CancelAutoWarp();
+                            TimeWarp.SetRate(0, false);
+                        }
+
                         ReviewMgr.CompleteReview();
                     }
                 }

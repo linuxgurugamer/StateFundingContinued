@@ -12,6 +12,7 @@
 		startingSC = 30
 		budget = 0.2
 		gdp = 80000000
+		budgetPeriodsPerYear = 8
 		description = For the people, by the people. At least that's what they say. With the USK the peoples opinions have a greater impact on your funding. Their hearts pour out for Kerbals, not robots and machines. Because of this, the more Kerbals on missions the more interested the people of USK will be in funding your space program. But there's an equal- well not really equal- reaction to every action. While having Kerbals on missions is crucial to funding, Kerbal death will be devastating in performance reviews. Every life is special and there isn't much room for failure
 	}
 	Item
@@ -26,6 +27,7 @@
 		startingSC = 250
 		budget = 0.2
 		gdp = 10000000
+		budgetPeriodsPerYear = 2
 		description = The needs of the many outweigh the needs of the few. The USSK are more interested in results and it's not as important how you get those results. While the citizens care greatly about their comrades in space, the governemnt isn't all too revealing about their operations and furthermore don't care too much about the peoples opinions anyway. Kerbal achievement and death will not reach the morning newspaper of many individuals in this country and as a result the impact of such achievements and failures will be muted. A greater reliance on unmaned vehicles and surveilance will be your best bet for continued funding.
 	}
 
@@ -42,22 +44,41 @@
         startingSC = 10
         budget = 0.2
         gdp = 100000000
+		budgetPeriodsPerYear = 66
         description = In an alternate reality far, far away, an all-too-familiar storm was brewing. Two superpowers - the United States of Kirba (USK) and The Union of Soviet Socialist Kerbals (USSK)- were locked in an escalating political conflict (The Kold War) and began looking to the skies as the new stage for their displays of power and domination. Shortly before the launch of the first rocket, a little known Kerbal by the name of Jebediah Kerman, adrift with fledgling dreams of being the first Kerbal in space, happened to be passing by a meeting between government officials as he remarked 'how great it would be to be nice to Kerbals for a change'. Little was he aware of the gravity of his words, touching the leaders with his innocent Kerbality. A deal was made, resources were pooled, and a new site for launches was proposed at the equator, making life much easier for everyone. Thus the Unified Kerbin Space Agency was born.
     }
-}
 
-// Following added by @Maxzhao on 01/03/2017
-Item
-{
-	name = KRK
-	longName = Kerbal's Republic of Kerna
-	poModifier = 0.2
-	poPenaltyModifier = 0.5
-	scModifier = 5
-	scPenaltyModifier = 5
-	startingPO = 20
-	startingSC = 250
-	budget = 0.2
-	gdp = 50000000
-	description = In a country far far away, the space program of Kerna silently develops. This is a magical land: not very modernized but an extremely high GDP is achieved by exporting mystery goo. Here the government has the ultimate authority and they say: "we are going to space". Due to the dominance of the government your state confidence is very high and you will get all the money you need from your motherland. However it also means that you will need to pay your price if you destroy any spacecrafts, after all they belong to the your government! If you want your space program to thrive you better listen to your state supervisors carefully and tailor a space exploration they are happy about.
+	// Following added by @Maxzhao on 01/03/2017
+	Item
+	{
+		name = KRK
+		longName = Kerbal's Republic of Kerna
+		poModifier = 0.2
+		poPenaltyModifier = 0.5
+		scModifier = 5
+		scPenaltyModifier = 5
+		startingPO = 20
+		startingSC = 250
+		budget = 0.2
+		gdp = 50000000
+		budgetPeriodsPerYear = 4
+		description = In a country far far away, the space program of Kerna silently develops. This is a magical land: not very modernized but an extremely high GDP is achieved by exporting mystery goo. Here the government has the ultimate authority and they say: "we are going to space". Due to the dominance of the government your state confidence is very high and you will get all the money you need from your motherland. However it also means that you will need to pay your price if you destroy any spacecrafts, after all they belong to the your government! If you want your space program to thrive you better listen to your state supervisors carefully and tailor a space exploration they are happy about.
+	}
+	
+	// Following contributed by @Rock3tman_ on 3/6/2017
+	Item
+	{
+		name = SpaceK
+		longName = Space Eksploration Technologies, Inc. 
+		poModifier = 5
+		poPenaltyModifier = 10
+		scModifier = .1
+		scPenaltyModifier = .05
+		startingPO = 60
+		startingSC = 50
+		budget = 0.2
+		gdp = 6000000
+		budgetPeriodsPerYear = 4
+		description = The bold dream of visionary Elon Kerman, SpaceK is a privately owned space agency with the goal of expanding out to the entire Kerbol system. Its bold goals have rekindled the hope of space exploration in many investors, leading to very high initial hype and dependence on public opinion. Your successes will gain glory and drive profits, but failures will scare away investors and drive your program into the ground. As Elon is wholly confident in his program, state confidence is hardly a factor. You need to dream big and perform when it's important, or else you will fail.
+	}
 }

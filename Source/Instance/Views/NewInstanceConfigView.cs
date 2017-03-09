@@ -49,7 +49,7 @@ namespace StateFunding
 
             GovernmentDescription = new ViewLabel("");
             GovernmentDescription.setRelativeTo(Image);
-            GovernmentDescription.setWidth(300);
+            GovernmentDescription.setWidth(500);
             GovernmentDescription.setHeight(Window.getHeight() - Image.getHeight() - 20);
             GovernmentDescription.setTop(Image.getHeight() + 10);
             GovernmentDescription.setLeft(120);
@@ -61,7 +61,7 @@ namespace StateFunding
             GovernmentGameplayDescription.setWidth(300);
             GovernmentGameplayDescription.setHeight(Window.getHeight() - Image.getHeight() - 20);
             GovernmentGameplayDescription.setTop(Image.getHeight() + 10);
-            GovernmentGameplayDescription.setLeft(440);
+            GovernmentGameplayDescription.setLeft(640);
             GovernmentGameplayDescription.setColor(Color.white);
             GovernmentGameplayDescription.setFontSize(14);
 

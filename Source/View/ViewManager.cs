@@ -35,6 +35,9 @@ namespace StateFunding
 
         public void OnGUI()
         {
+            if (!HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().enabled || HighLogic.CurrentGame.Mode != Game.Modes.CAREER)
+                return;
+
             for (var i = 0; i < ViewManager.Views.ToArray().Length; i++)
             {
                 View V = ViewManager.Views.ToArray()[i];

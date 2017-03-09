@@ -24,10 +24,10 @@ namespace StateFunding
             Toast = new ViewWindow("");
             Toast.setWidth(300);
             Toast.setHeight(100);
-            Toast.setBottom(10);
+            Toast.setBottom(40);
             Toast.setRight(10);
 
-            ToastLabel = new ViewLabel("New Review Report Avaialble");
+            ToastLabel = new ViewLabel("New Review Report Available");
             ToastLabel.setRelativeTo(Toast);
             ToastLabel.setWidth(290);
             ToastLabel.setHeight(90);
@@ -38,16 +38,16 @@ namespace StateFunding
             OpenReview = new ViewButton("View Review", OnOpenReview);
             OpenReview.setRelativeTo(Toast);
             OpenReview.setWidth(90);
-            OpenReview.setHeight(40);
+            OpenReview.setHeight(35);
             OpenReview.setRight(10);
             OpenReview.setTop(10);
 
             Dismiss = new ViewButton("Dismiss", OnDismiss);
             Dismiss.setRelativeTo(Toast);
             Dismiss.setWidth(90);
-            Dismiss.setHeight(40);
+            Dismiss.setHeight(35);
             Dismiss.setRight(10);
-            Dismiss.setBottom(10);
+            Dismiss.setTop(55);
 
             this.addComponent(Toast);
             this.addComponent(ToastLabel);

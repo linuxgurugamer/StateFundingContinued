@@ -27,3 +27,16 @@ Adoption by Linuxgurugamer
 0.6.3
 	Now using Planetarium.fetch.Sun to identify the sun
 	Added Kerbal's republic of Kerna, thanks @Maxzhao1999
+
+0.6.4
+	Added SpaceK contributed by @Rock3tman_
+	Added budgetPeriodsPerYear, to allow for more than (or less than) 4 periods/year
+	Now using Planetarium.fetch.Home.orbit.period to get the correct orbial period of the homeworld.
+	Added settings page for customization of budgetPeriodsPerYear and Enabled flag
+	Added code to prevent mod from running if not CAREER
+	Added option to stop warp at the start of a new budget period
+	Added option to stop warp at end of year
+	Fixed typo in new review available message
+	Fixed position of new review available message to not cover tolbar
+	Changed the budgetPeriodsPerYear on some governments to other than 4
+

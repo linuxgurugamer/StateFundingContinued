@@ -71,6 +71,7 @@
     <Compile Include="Hooks\OnSpaceCentre.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="View\View.cs" />
     <Compile Include="View\ViewManager.cs" />
     <Compile Include="ViewComponents\ViewComponent.cs" />
