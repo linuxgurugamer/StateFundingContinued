@@ -247,7 +247,7 @@ namespace StateFunding
                     if (SpcStationReport.drill)
                     {
                         SpcStationReport.po += (int)(10 * GameInstance.Gov.poModifier);
-                        SpcStationReport.sc += (int)(10 * GameInstance.Gov.poModifier);
+                        SpcStationReport.sc += (int)(10 * GameInstance.Gov.scModifier);
                     }
                 }
 
@@ -260,7 +260,7 @@ namespace StateFunding
                 if (SpcStationReport.scienceLab)
                 {
                     SpcStationReport.po += (int)(10 * GameInstance.Gov.poModifier);
-                    SpcStationReport.sc += (int)(10 * GameInstance.Gov.poModifier);
+                    SpcStationReport.sc += (int)(10 * GameInstance.Gov.scModifier);
                 }
 
                 SpaceStations[i] = SpcStationReport;
@@ -312,13 +312,13 @@ namespace StateFunding
                 if (_BaseReport.scienceLab)
                 {
                     _BaseReport.po += (int)(10 * GameInstance.Gov.poModifier);
-                    _BaseReport.sc += (int)(10 * GameInstance.Gov.poModifier);
+                    _BaseReport.sc += (int)(10 * GameInstance.Gov.scModifier);
                 }
 
                 if (_BaseReport.drill)
                 {
                     _BaseReport.po += (int)(10 * GameInstance.Gov.poModifier);
-                    _BaseReport.sc += (int)(10 * GameInstance.Gov.poModifier);
+                    _BaseReport.sc += (int)(10 * GameInstance.Gov.scModifier);
                 }
 
                 Bases[i] = _BaseReport;
