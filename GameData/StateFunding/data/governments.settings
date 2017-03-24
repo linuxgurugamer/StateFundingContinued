@@ -81,4 +81,37 @@
 		budgetPeriodsPerYear = 4
 		description = The bold dream of visionary Elon Kerman, SpaceK is a privately owned space agency with the goal of expanding out to the entire Kerbol system. Its bold goals have rekindled the hope of space exploration in many investors, leading to very high initial hype and dependence on public opinion. Your successes will gain glory and drive profits, but failures will scare away investors and drive your program into the ground. As Elon is wholly confident in his program, state confidence is hardly a factor. You need to dream big and perform when it's important, or else you will fail.
 	}
+	Item
+	{
+		name = KSKFP
+		longName = Kikkstarter Krowd Funding Platform
+		poModifier = 10
+		poPenaltyModifier = 5
+		scModifier = 15
+		scPenaltyModifier = 10
+		startingPO = 30
+		startingSC = 30
+		budget = 0.2
+		gdp = 80000000
+		budgetPeriodsPerYear = 42
+		description = Need money? Don't want controversy from choosing the "wrong" government? If so, choose Kikkstarter Crowd Funding Platform! You will earn money by donations. You will need them to have confidence in your space program, but you can't have a bad image either!
+	}
+
+	Item
+	{
+		name = KLA
+		longName = Kerbal Launch Alliance
+		poModifier = 1
+		poPenaltyModifier =  3
+		scModifier = 2
+		scPenaltyModifier = 6
+		startingPO = 50
+		startingSC = 75
+		budget = 0.1
+		gdp = 16000000 
+		budgetPeriodsPerYear = 12
+		description = KLA is a joint venture between Klockheed-Martin and Bloeting Aerospace.  It was formed to provide (mostly)reliable service for various state agencies primarily in the USK as well as provide cost-efficient access to space for commercial ventures.  KLA's primary competition comes from Elon Kerman and his SpaceK organization who have recently won several government contracts previously held by KLA.  In an effort to spur public interest in space exploration CEO Bruno "Kory" Kerman recently announced plans to expand KLA's civilian commercial offerings including plans for a "Space Hotel".  Only time will tell if KLA can retain a large enough share of the government contracts while trying to impress a seemingly oblivious public more than SpaceK.
+	}
+
+
 }

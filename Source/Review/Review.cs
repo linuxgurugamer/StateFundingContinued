@@ -223,7 +223,7 @@ namespace StateFunding
                 SpcStationReport.scienceLab = VesselHelper.VesselHasModuleAlias(SpcStation, "ScienceLab");
                 SpcStationReport.fuel = VesselHelper.GetResourceCount(SpcStation, "LiquidFuel");
                 SpcStationReport.ore = VesselHelper.GetResourceCount(SpcStation, "Ore");
-                SpcStationReport.onAstroid = VesselHelper.OnAstroid(SpcStation);
+                SpcStationReport.onAsteroid = VesselHelper.OnAsteroid(SpcStation);
 
                 if (SpcStation.Landed)
                 {
@@ -240,7 +240,7 @@ namespace StateFunding
                 SpcStationReport.po += (int)(5 * SpcStationReport.crew * GameInstance.Gov.poModifier);
                 SpcStationReport.po += (int)(5 * SpcStationReport.dockedVessels * GameInstance.Gov.poModifier);
 
-                if (SpcStationReport.onAstroid)
+                if (SpcStationReport.onAsteroid)
                 {
                     SpcStationReport.po += (int)(30 * GameInstance.Gov.poModifier);
 
@@ -478,7 +478,7 @@ namespace StateFunding
                     returnText += "Docking Ports: " + StationReport.dockingPorts + "\n";
                     returnText += "Has Drill: " + StationReport.drill + "\n";
                     returnText += "Science Lab: " + StationReport.scienceLab + "\n";
-                    returnText += "On Astroid: " + StationReport.onAstroid + "\n";
+                    returnText += "On Asteroid: " + StationReport.onAsteroid + "\n";
                     returnText += "PO: " + StationReport.po + "\n";
                     returnText += "SC: " + StationReport.sc + "\n\n";
                 }

@@ -38,7 +38,7 @@ namespace StateFunding
         public bool scienceLab = false;
 
         [Persistent]
-        public bool onAstroid = false;
+        public bool onAsteroid = false;
 
         [Persistent]
         public int po = 0;

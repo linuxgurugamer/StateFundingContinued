@@ -24,7 +24,8 @@ namespace StateFunding
         public override bool HasPresets { get { return false; } }
 
 
-        [GameParameters.CustomParameterUI("Enabled")]
+        [GameParameters.CustomParameterUI("Enabled", 
+            toolTip = "Use this to disable mod in existing game")]
         public bool enabled = true;
 
         [GameParameters.CustomIntParameterUI("Budget Periods Per Year", minValue = 1, maxValue = 66, stepSize = 1,

@@ -103,7 +103,7 @@ namespace StateFunding
 
             int missionCount = MissionIds.Count - 1;
 
-            if (OnAstroid(Vsl))
+            if (OnAsteroid(Vsl))
             {
                 missionCount--;
             }
@@ -377,7 +377,7 @@ namespace StateFunding
                 {
                     /**
                      * Make sure it's not landed. If it is landed check to see if it's a celestial body-
-                     * If it's not, then you landed on an astroid. good job!
+                     * If it's not, then you landed on an asteroid. good job!
                      */
 
                     if (!SpaceStation.Landed || !BodyHelper.ACelestialBody(SpaceStation.landedAt))
@@ -475,7 +475,7 @@ namespace StateFunding
             for (var i = 0; i < MiningRigs.Length; i++)
             {
                 Vessel MiningRig = MiningRigs[i];
-                if ((MiningRig.Landed || OnAstroid(MiningRig))
+                if ((MiningRig.Landed || OnAsteroid(MiningRig))
                   && MiningRig.vesselType != VesselType.Station
                   && MiningRig.vesselType != VesselType.Base
                   && MiningRig.landedAt != SpaceCenter.Instance.cb.GetName()
@@ -518,9 +518,9 @@ namespace StateFunding
             return ReturnVessels.ToArray();
         }
 
-        public static bool OnAstroid(Vessel Vsl)
+        public static bool OnAsteroid(Vessel Vsl)
         {
-            return VesselHasModuleAlias(Vsl, "Astroid");
+            return VesselHasModuleAlias(Vsl, "Asteroid");
         }
 
     }

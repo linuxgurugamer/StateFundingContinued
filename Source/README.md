@@ -40,3 +40,10 @@ Adoption by Linuxgurugamer
 	Fixed position of new review available message to not cover tolbar
 	Changed the budgetPeriodsPerYear on some governments to other than 4
 
+0.6.5
+	Added new government, Kikkstarter Krowd Funding Platform, contributed by @MysterySloth
+	Corrected spelling of Astroid to Asteroid
+	Fixed poModifier/scModifier, thanks @PhilM-47 
+
+0.6.6
+	Added KLA thanks to @rasta013

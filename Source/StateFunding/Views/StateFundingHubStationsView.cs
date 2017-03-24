@@ -23,8 +23,8 @@ namespace StateFunding
             string Description = "Below is a list of existing Space Stations. Vessels that are Space Stations should be labeled as " +
               "such, be in orbit, and must be able to generate their own power. Space Stations increase State Confidence as well as Public Opinion." +
               "Space Stations are scored by the following criteria: Total Fuel (SC), Total Ore (SC), Crew (PO), Crew Capacity (SC), Docking " +
-              "Port Count (SC), Docked Vessels (PO) and if it has a science lab (SC/PO). If the Station is landed on an astroid it will also " +
-              "get a bonus (PO). If you are on an astroid you will also get a bonus for having a drill (SC/PO).";
+              "Port Count (SC), Docked Vessels (PO) and if it has a science lab (SC/PO). If the Station is landed on an asteroid it will also " +
+              "get a bonus (PO). If you are on an asteroid you will also get a bonus for having a drill (SC/PO).";
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -159,14 +159,14 @@ namespace StateFunding
             HasDrillLabel.setColor(Color.white);
             parent.Components.Add(HasDrillLabel);
 
-            ViewLabel AstroidLabel = new ViewLabel("On Astroid: " + Station.onAstroid);
-            AstroidLabel.setRelativeTo(Box);
-            AstroidLabel.setTop(25);
-            AstroidLabel.setLeft(310);
-            AstroidLabel.setHeight(15);
-            AstroidLabel.setWidth(150);
-            AstroidLabel.setColor(Color.white);
-            parent.Components.Add(AstroidLabel);
+            ViewLabel AsteroidLabel = new ViewLabel("On Asteroid: " + Station.onAsteroid);
+            AsteroidLabel.setRelativeTo(Box);
+            AsteroidLabel.setTop(25);
+            AsteroidLabel.setLeft(310);
+            AsteroidLabel.setHeight(15);
+            AsteroidLabel.setWidth(150);
+            AsteroidLabel.setColor(Color.white);
+            parent.Components.Add(AsteroidLabel);
 
             ViewLabel SCLabel = new ViewLabel("PO: " + Station.po);
             SCLabel.setRelativeTo(Box);
