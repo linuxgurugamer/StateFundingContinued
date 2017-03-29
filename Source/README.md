@@ -47,3 +47,6 @@ Adoption by Linuxgurugamer
 
 0.6.6
 	Added KLA thanks to @rasta013
+
+0.6.7
+	Fixed crashes being counted 2x
