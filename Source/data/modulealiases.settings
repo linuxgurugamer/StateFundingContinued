@@ -110,7 +110,7 @@
 	}
 	Item
 	{
-		name = Astroid
+		name = Asteroid
 		Modules
 		{
 			Item

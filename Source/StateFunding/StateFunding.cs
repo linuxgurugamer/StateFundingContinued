@@ -72,7 +72,7 @@ namespace StateFunding
             GameEvents.onCrewKilled.Add(OnCrewKilled);
             GameEvents.OnCrewmemberLeftForDead.Add(OnCrewLeftForDead);
             GameEvents.onCrash.Add(OnCrash);
-            GameEvents.onCrashSplashdown.Add(OnCrashSplashdown);
+           // GameEvents.onCrashSplashdown.Add(OnCrashSplashdown);
         }
 
         public void unload()
@@ -209,6 +209,7 @@ namespace StateFunding
             }
         }
 
+#if false
         public void OnCrashSplashdown(EventReport Evt)
         {
             if (VesselHelper.PartHasModuleAlias(Evt.origin, "Command") || VesselHelper.PartHasModuleAlias(Evt.origin, "AutonomousCommand"))
@@ -218,7 +219,7 @@ namespace StateFunding
                 //InstanceConf.saveInstance (GameInstance);
             }
         }
-
+#endif
     }
 }
 
