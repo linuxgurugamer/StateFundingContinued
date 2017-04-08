@@ -70,6 +70,22 @@
 			{
 				name = FissionGenerator
 			}
+			Item
+			{
+				name = ModuleRadioisotopeGenerator
+			}
+			Item
+			{
+				name = ModuleCurvedSolarPanel
+			}
+			Item
+			{
+				name = FuelCell
+			}
+			Item
+			{
+				name = FuelCellArray
+			}
 		}
 	}
 	Item 
