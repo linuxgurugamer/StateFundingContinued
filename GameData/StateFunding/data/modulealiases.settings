@@ -78,14 +78,6 @@
 			{
 				name = ModuleCurvedSolarPanel
 			}
-			Item
-			{
-				name = FuelCell
-			}
-			Item
-			{
-				name = FuelCellArray
-			}
 		}
 	}
 	Item 
