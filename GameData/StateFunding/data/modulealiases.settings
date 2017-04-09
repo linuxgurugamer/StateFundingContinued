@@ -78,6 +78,19 @@
 			{
 				name = ModuleCurvedSolarPanel
 			}
+
+			// Following needed for Fuel Cells
+			Item		
+ 			{		
+ 				name = ModuleResourceConverter
+				resource = ElectricCharge
+ 			}		
+			// Following needed for USI Fuel cells
+			Item
+			{
+				name = ModuleResourceConverter_USI
+				resource = ElectricCharge
+			}
 		}
 	}
 	Item 

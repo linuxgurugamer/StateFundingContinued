@@ -169,7 +169,7 @@ namespace StateFunding
                     if (year > ReviewMgr.LastReview().year)
                     {
                         Log.Info("Happy New Quarter!");
-                        if ( (HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarp && TimeWarp.fetch != null) ||
+                        if ( (HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarpAtBudgetPeriod && TimeWarp.fetch != null) ||
                             (HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarpOnNewYear && year % HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().budgetPeriodsPerYear == 0))
                         {
                             TimeWarp.fetch.CancelAutoWarp();

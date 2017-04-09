@@ -300,6 +300,8 @@ namespace StateFunding
 
                 if (ModuleAlias.GetValue("name") == alias)
                 {
+                    string neededResource = "";
+                    ModuleAlias.TryGetValue("resource",ref neededResource);
 
                     ConfigNode[] Modules = ModuleAlias.GetNode("Modules").GetNodes();
 
@@ -308,7 +310,19 @@ namespace StateFunding
                         ConfigNode Mod = Modules[k];
                         if (Mod.GetValue("name") == Module.moduleValues.GetValue("name"))
                         {
-                            return true;
+                            if (neededResource != "")
+                            {
+                                if (Mod.HasNode("OUTPUT_RESOURCE"))
+                                {
+                                    ConfigNode resourceNode = Mod.GetNode("OUTPUT_RESOURCE");
+                                    string resource = "";
+                                    resourceNode.TryGetValue("name", ref resource);
+                                    if (resource == neededResource)
+                                        return true;
+                                }
+                            }
+                            else
+                                return true;
                         }
                     }
                 }

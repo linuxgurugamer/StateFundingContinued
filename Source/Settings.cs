@@ -33,7 +33,7 @@ namespace StateFunding
         public int budgetPeriodsPerYear = 4;
 
         [GameParameters.CustomParameterUI("Stop warp on new budget period")]
-        public bool stopWarp = true;
+        public bool stopWarpAtBudgetPeriod = true;
 
         [GameParameters.CustomParameterUI("Stop warp on new year")]
         public bool stopWarpOnNewYear = true;

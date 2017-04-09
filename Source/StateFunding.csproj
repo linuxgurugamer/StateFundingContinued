@@ -203,7 +203,6 @@
     <None Include="assets\kerbalgovernment.pxm" />
     <None Include="buildRelease.bat" />
     <None Include="deploy.bat" />
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AssemblyVersion.tt">
