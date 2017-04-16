@@ -201,8 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\kerbalgovernment.pxm" />
-    <None Include="buildRelease.bat" />
-    <None Include="deploy.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AssemblyVersion.tt">
@@ -229,9 +227,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="data\modulealiases.settings">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StateFunding.version">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

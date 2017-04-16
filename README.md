@@ -54,3 +54,5 @@ Adoption by Linuxgurugamer
 0.6.8
 	Added generator aliases, thanks @philm-47
 	Added code to deal with Fuel Cells
+0.6.8.1
+	Added alias for Antenna, to support Kerbalism

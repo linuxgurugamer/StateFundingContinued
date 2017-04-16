@@ -7,7 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateFunding", "StateFundin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{66B3EC09-61EA-4577-A22F-140B534DB980}"
 	ProjectSection(SolutionItems) = preProject
+		buildRelease.bat = buildRelease.bat
+		deploy.bat = deploy.bat
 		..\README.md = ..\README.md
+		StateFunding.version = StateFunding.version
 	EndProjectSection
 EndProject
 Global
