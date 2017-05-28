@@ -20,6 +20,7 @@ namespace StateFunding
         public override string Title { get { return ""; } } // Column header
         public override GameParameters.GameMode GameMode { get { return GameParameters.GameMode.ANY; } }
         public override string Section { get { return "State Funding"; } }
+        public override string DisplaySection { get { return "State Funding"; } }
         public override int SectionOrder { get { return 1; } }
         public override bool HasPresets { get { return false; } }
 

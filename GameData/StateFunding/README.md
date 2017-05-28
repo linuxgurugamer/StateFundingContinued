@@ -56,3 +56,6 @@ Adoption by Linuxgurugamer
 	Added code to deal with Fuel Cells
 0.6.8.1
 	Added alias for Antenna, to support Kerbalism
+
+0.6.9
+	Updated for 1.3
