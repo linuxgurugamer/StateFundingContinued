@@ -83,7 +83,10 @@
 			{
 				name = ModuleCurvedSolarPanel
 			}
-
+			Item
+            		{
+              			name = KopernicusSolarPanel
+            		}
 			// Following needed for Fuel Cells
 			Item		
  			{		
