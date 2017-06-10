@@ -3,7 +3,7 @@
 
 copy /Y "bin\Release\StateFunding.dll" "..\GameData\StateFunding\Plugins"
 copy /Y ..\StateFunding.version ..\GameData\StateFunding
-copy /Y ..\..\MiniAVC.dll ..\GameData\StateFunding
+copy /Y ..\..\MiniAVC.dll ..\Ga
 
 set RELEASEDIR=d:\Users\jbb\release
 set ZIP="c:\Program Files\7-zip\7z.exe"

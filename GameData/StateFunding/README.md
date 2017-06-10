@@ -59,3 +59,6 @@ Adoption by Linuxgurugamer
 
 0.6.9
 	Updated for 1.3
+
+0.6.9.1
+	Added alias for KopernicusSolarPanels

@@ -96,6 +96,10 @@
 				name = ModuleResourceConverter_USI
 				resource = ElectricCharge
 			}
+			Item
+            {
+                name = KopernicusSolarPanel
+            }
 		}
 	}
 	Item 
