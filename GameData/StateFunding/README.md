@@ -62,3 +62,7 @@ Adoption by Linuxgurugamer
 
 0.6.9.1
 	Added alias for KopernicusSolarPanels
+
+0.6.10
+	Added Kerbal Kooperative Union, thanks @mrcarrot
+	Reduced height of buttons in gov sel window from 30 to 25

@@ -89,8 +89,8 @@ namespace StateFunding
                 ViewGovernmentButton GovBtn = new ViewGovernmentButton(Gov, SelectGovernment);
                 GovBtn.setRelativeTo(Image);
                 GovBtn.setWidth(100);
-                GovBtn.setHeight(30);
-                GovBtn.setTop(Image.getHeight() + 10 + (35 * i));
+                GovBtn.setHeight(25);
+                GovBtn.setTop(Image.getHeight() + 10 + (30 * i));
                 GovBtn.setLeft(10);
 
                 this.addComponent(GovBtn);
