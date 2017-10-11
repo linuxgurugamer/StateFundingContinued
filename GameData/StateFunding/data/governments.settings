@@ -113,6 +113,7 @@
 		description = KLA is a joint venture between Klockheed-Martin and Bloeting Aerospace.  It was formed to provide (mostly)reliable service for various state agencies primarily in the USK as well as provide cost-efficient access to space for commercial ventures.  KLA's primary competition comes from Elon Kerman and his SpaceK organization who have recently won several government contracts previously held by KLA.  In an effort to spur public interest in space exploration CEO Bruno "Kory" Kerman recently announced plans to expand KLA's civilian commercial offerings including plans for a "Space Hotel".  Only time will tell if KLA can retain a large enough share of the government contracts while trying to impress a seemingly oblivious public more than SpaceK.
 	}
 
+	Item
 	{
 		name = KKU
 		longName = Kerbal Kooperative Union

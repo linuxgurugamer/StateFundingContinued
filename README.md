@@ -66,3 +66,6 @@ Adoption by Linuxgurugamer
 0.6.10
 	Added Kerbal Kooperative Union, thanks @mrcarrot
 	Reduced height of buttons in gov sel window from 30 to 25
+
+0.6.11
+	Updated for KSP 1.3.1
