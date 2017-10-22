@@ -69,3 +69,7 @@ Adoption by Linuxgurugamer
 
 0.6.11
 	Updated for KSP 1.3.1
+
+0.6.12
+	Added new government,  North Va'ar
+	Updated deploy and build scripts

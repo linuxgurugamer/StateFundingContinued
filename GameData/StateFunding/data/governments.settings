@@ -128,4 +128,19 @@
 		budgetPeriodsPerYear = 12
 		description = These people want to see wages raised and tax dollars spent well. They don't have a high opinion of space exploration, and would rather you added some infrastructure, because Kerbin has no roads outside your complex. They also have very little tolerance for a failed mission. On the bright side, the KKU has an enormous budget, and will highly reward a perfectionist space program.
 	}
+	Item
+	{
+		name = North Va'ar
+		longName = Va'ar Federal Union
+		poModifier = 25
+		poPenaltyModifier = 40
+		scModifier = 220
+		scPenaltyModifier = 300
+		startingPO = 100
+		startingSC = 35000
+		budget = 10000000
+		gdp = 282690000
+		budgetPeriodsPerYear = 1
+		description = The Va'ar Union is one of the few democracies remaining on the continent of Kiesia after the Maeiani Obliteration. A close ally of the FSSK, it's government wishes to prove itself and rise to equals with Klaatu or Ciniotia. The Gi'yiria (Parliament) recently passed a law establishing a space program. They hope that by showing up Klaatu above Kerbin they can rise to be equals on it.
+	}
 }

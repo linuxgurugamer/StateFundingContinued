@@ -238,12 +238,12 @@
     </Reference>
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>start /D D:\Users\jbb\github\StateFundingContinued\Source /WAIT deploy.bat
+    <PostBuildEvent>
+start /D  D:\Users\jbb\github\StateFundingContinued /WAIT deploy.bat  $(TargetDir) $(TargetFileName)
 
 if $(ConfigurationName) == Release (
-start /D D:\Users\jbb\github\StateFundingContinued\Source /WAIT buildRelease.bat
-)
-</PostBuildEvent>
+	start /D  D:\Users\jbb\github\StateFundingContinued /WAIT buildRelease.bat $(TargetDir) $(TargetFileName)
+)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
