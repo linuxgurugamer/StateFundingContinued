@@ -73,3 +73,8 @@ Adoption by Linuxgurugamer
 0.6.12
 	Added new government,  North Va'ar
 	Updated deploy and build scripts
+
+0.6.13
+	Updated Gvt Button display to show all buttons in multiple columns if they don't fit
+	Made change so if specified budget is > 1, then it is assumed to be an absolute budget rather than a percentage of the GDP
+		Needed to fix value for North Va'aar

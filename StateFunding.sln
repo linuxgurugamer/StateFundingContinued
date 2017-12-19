@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionF
 	ProjectSection(SolutionItems) = preProject
 		buildRelease.bat = buildRelease.bat
 		deploy.bat = deploy.bat
+		jenkins.txt = jenkins.txt
 		README.md = README.md
 		StateFunding.version = StateFunding.version
 	EndProjectSection

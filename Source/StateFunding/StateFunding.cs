@@ -57,6 +57,8 @@ namespace StateFunding
                 Gov.budget = float.Parse(GovItem.GetValue("budget"));
                 Gov.budgetPeriodsPerYear = int.Parse(GovItem.GetValue("budgetPeriodsPerYear"));
                 Gov.gdp = int.Parse(GovItem.GetValue("gdp"));
+                if (Gov.budget > 1)
+                    Gov.budget = Gov.budget / Gov.gdp;
                 Gov.description = GovItem.GetValue("description");
 
                 Governments.Add(Gov);

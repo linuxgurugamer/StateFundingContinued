@@ -27,6 +27,11 @@ namespace StateFunding
             this.height = height;
         }
 
+        public void setTopAndLeft(float top, float left)
+        {
+            this.top = top;
+            this.left = left;
+        }
         public virtual void setStyle(GUIStyle Style)
         {
             this.Style = Style;
