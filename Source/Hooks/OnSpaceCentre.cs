@@ -9,6 +9,7 @@ namespace StateFunding
     public class OnSpaceCentre : MonoBehaviour
     {
 
+        internal static OnSpaceCentre Instance;
 
         public void Awake()
         {
@@ -26,6 +27,8 @@ namespace StateFunding
 
         public void Start()
         {
+            Instance = this;
+            
             if (!HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().enabled || HighLogic.CurrentGame.Mode != Game.Modes.CAREER)
                 return;
 

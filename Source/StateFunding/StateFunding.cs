@@ -81,13 +81,17 @@ namespace StateFunding
         {
             ViewManager.removeAll();
             AppLauncher.unload();
+            
             StateFundingGlobal.isLoaded = false;
         }
 
         public void load()
         {
             Log.Info("StateFunding Mod Loading");
-            AppLauncher = new StateFundingApplicationLauncher();
+            //AppLauncher = new StateFundingApplicationLauncher();
+            AppLauncher = OnSpaceCentre.Instance.gameObject.AddComponent<StateFundingApplicationLauncher>();
+
+
             InitGovernments();
             InitEvents();
             VesselHelper.LoadAliases();
