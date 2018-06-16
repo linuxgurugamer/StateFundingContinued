@@ -75,3 +75,7 @@ Adoption by Linuxgurugamer
 	Updated for 1.4.1
 	Added support for the ClickthroughBlocker
 	Added support for the ToolbarControl
+
+0.6.15
+	Updated to use latest version of ToolbarController
+	Updated version to do all of 1.4.x

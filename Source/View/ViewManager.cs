@@ -37,8 +37,6 @@ namespace StateFunding
         {
             if (!HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().enabled || HighLogic.CurrentGame.Mode != Game.Modes.CAREER)
                 return;
-            if (StateFundingApplicationLauncher.toolbarControl != null)
-                StateFundingApplicationLauncher.toolbarControl.UseBlizzy(HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().useBlizzy);
 
             for (var i = 0; i < ViewManager.Views.ToArray().Length; i++)
             {

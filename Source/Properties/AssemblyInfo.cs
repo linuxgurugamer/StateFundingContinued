@@ -17,3 +17,5 @@ using System.Runtime.CompilerServices;
 
 [assembly: KSPAssembly("StateFunding", 0, 5)]
 //[assembly: KSPAssemblyDependency("Toolbar", 1, 0)]
+[assembly: KSPAssemblyDependency("ClickThroughBlocker", 1, 0)]
+[assembly: KSPAssemblyDependency("ToolbarController", 1, 0)]

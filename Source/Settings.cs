@@ -29,9 +29,6 @@ namespace StateFunding
             toolTip = "Use this to disable mod in existing game")]
         public bool enabled = true;
 
-        [GameParameters.CustomParameterUI("Use Blizzy Toolbar, if avaliable")]
-        public bool useBlizzy = false;
-
         [GameParameters.CustomIntParameterUI("Budget Periods Per Year", minValue = 1, maxValue = 66, stepSize = 1,
             toolTip = "(a Kerbin year is approximately 66 months")]
         public int budgetPeriodsPerYear = 4;

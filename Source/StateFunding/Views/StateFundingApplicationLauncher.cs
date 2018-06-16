@@ -7,12 +7,24 @@ using ToolbarControl_NS;
 
 namespace StateFunding
 {
+    [KSPAddon(KSPAddon.Startup.MainMenu, true)]
+    public class RegisterToolbar : MonoBehaviour
+    {
+        void Start()
+        {
+            ToolbarControl.RegisterMod(StateFundingApplicationLauncher.MODID, StateFundingApplicationLauncher.MODNAME);
+        }
+    }
+
     public class StateFundingApplicationLauncher: MonoBehaviour
     {
 
         private StateFundingHubView View;
 
         internal static ToolbarControl toolbarControl = null;
+
+        internal const string MODID = "StateFunding_NS";
+        internal const string MODNAME = "State Funding";
 
         public void Start()
         {
@@ -24,13 +36,12 @@ namespace StateFunding
             toolbarControl = gameObject.AddComponent<ToolbarControl>();
             toolbarControl.AddToAllToolbars(onTrue, onFalse,
                 ApplicationLauncher.AppScenes.SPACECENTER,
-                "StateFunding_NS",
+                MODID,
                 "stateFundingButton",
                 "StateFunding/assets/cashmoney_38",
                 "StateFunding/assets/cashmoney_24",
-                "State Funding"
+                MODNAME
             );
-            toolbarControl.UseBlizzy(HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().useBlizzy);
         }
 
         public void unload()
