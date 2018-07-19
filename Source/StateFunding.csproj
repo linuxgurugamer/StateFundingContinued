@@ -70,6 +70,7 @@
     <Compile Include="Hooks\OnMainMenu.cs" />
     <Compile Include="Hooks\OnSpaceCentre.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="ModuleStateFundingDisposable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="View\View.cs" />

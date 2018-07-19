@@ -79,3 +79,8 @@ Adoption by Linuxgurugamer
 0.6.15
 	Updated to use latest version of ToolbarController
 	Updated version to do all of 1.4.x
+
+0.6.16
+	Added recording of completed and failed contracts
+	Added new field to indicate whether part is a disposable part, if it is, does not get counted in the destroyed vessels list
+	Added MM script to add new module to all command parts

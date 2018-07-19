@@ -8,8 +8,8 @@ namespace StateFunding
     public class StateFunding
     {
         public List<Government> Governments;
-   //     public Government USK;
-  //      public Government USSK;
+
+
         public ReviewManager ReviewMgr
         {
             get
@@ -71,17 +71,32 @@ namespace StateFunding
 
         private void InitEvents()
         {
+            Log.Info("InitEvents");
             GameEvents.onCrewKilled.Add(OnCrewKilled);
             GameEvents.OnCrewmemberLeftForDead.Add(OnCrewLeftForDead);
             GameEvents.onCrash.Add(OnCrash);
-           // GameEvents.onCrashSplashdown.Add(OnCrashSplashdown);
+            GameEvents.Contract.onCompleted.Add(OnContractCompleted);
+            GameEvents.Contract.onFailed.Add(OnContractFailed);
+            //GameEvents.onCrashSplashdown.Add(OnCrashSplashdown);
+        }
+        internal void OnDestroy()
+        {
+            Log.Info("OnDestroy");
+            GameEvents.onCrewKilled.Remove(OnCrewKilled);
+            GameEvents.OnCrewmemberLeftForDead.Remove(OnCrewLeftForDead);
+            GameEvents.onCrash.Remove(OnCrash);
+            GameEvents.Contract.onCompleted.Remove(OnContractCompleted);
+            GameEvents.Contract.onFailed.Remove(OnContractFailed);
+
+            //GameEvents.onCrashSplashdown.Remove(OnCrashSplashdown);
         }
 
         public void unload()
         {
             ViewManager.removeAll();
             AppLauncher.unload();
-            
+            OnDestroy();
+
             StateFundingGlobal.isLoaded = false;
         }
 
@@ -96,7 +111,7 @@ namespace StateFunding
             InitEvents();
             VesselHelper.LoadAliases();
             StateFundingGlobal.isLoaded = true;
-            
+
             //StateFundingGlobal.Sun = Planetarium.fetch.Sun.GetName();
 
             Log.Info("StateFunding Mod Loaded");
@@ -175,7 +190,7 @@ namespace StateFunding
                     if (year > ReviewMgr.LastReview().year)
                     {
                         Log.Info("Happy New Quarter!");
-                        if ( (HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarpAtBudgetPeriod && TimeWarp.fetch != null) ||
+                        if ((HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarpAtBudgetPeriod && TimeWarp.fetch != null) ||
                             (HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().stopWarpOnNewYear && year % HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().budgetPeriodsPerYear == 0))
                         {
                             TimeWarp.fetch.CancelAutoWarp();
@@ -207,17 +222,44 @@ namespace StateFunding
 
         public void OnCrash(EventReport Evt)
         {
+            Log.Info("OnCrash, part: " + Evt.origin.partInfo.title);
             if (VesselHelper.PartHasModuleAlias(Evt.origin, "Command") || VesselHelper.PartHasModuleAlias(Evt.origin, "AutonomousCommand"))
             {
-                Log.Warning("VESSEL DESTROYED");
-                GameInstance.ActiveReview.vesselsDestroyed++;
+                ModuleStateFundingDisposable m = null;
+                if (Evt.origin.Modules.Contains("ModuleStateFundingDisposable"))
+                    m = Evt.origin.Modules["ModuleStateFundingDisposable"] as ModuleStateFundingDisposable;
+                if (m == null)
+                    Log.Info("OnCrash, m is null");
+                else
+                    if (m.disposable)
+                {
+                    Log.Warning("EXPENDABLE VESSEL DESTROYED");
+                }
+                else
+                {
+                    Log.Warning("VESSEL DESTROYED");
+                    GameInstance.ActiveReview.vesselsDestroyed++;
+                }
                 //InstanceConf.saveInstance (GameInstance);
             }
+        }
+
+        void OnContractCompleted(Contracts.Contract contract)
+        {
+            Log.Warning("CONTRACT COMPLETED");
+            GameInstance.ActiveReview.contractsCompleted++;
+        }
+
+        void OnContractFailed(Contracts.Contract contract)
+        {
+            Log.Warning("CONTRACT FAILED");
+            GameInstance.ActiveReview.contractsFailed++;
         }
 
 #if false
         public void OnCrashSplashdown(EventReport Evt)
         {
+            Log.Info("OnCrashSplashdown, part: " + Evt.origin.partInfo.title);
             if (VesselHelper.PartHasModuleAlias(Evt.origin, "Command") || VesselHelper.PartHasModuleAlias(Evt.origin, "AutonomousCommand"))
             {
                 Log.Warning("VESSEL DESTROYED");
