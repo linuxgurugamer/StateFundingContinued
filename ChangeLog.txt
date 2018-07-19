@@ -84,3 +84,4 @@ Adoption by Linuxgurugamer
 	Added recording of completed and failed contracts
 	Added new field to indicate whether part is a disposable part, if it is, does not get counted in the destroyed vessels list
 	Added MM script to add new module to all command parts
+	Added code to remove callbacks when leaving scene or reverting
