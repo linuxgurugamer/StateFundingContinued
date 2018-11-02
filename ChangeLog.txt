@@ -85,3 +85,6 @@ Adoption by Linuxgurugamer
 	Added new field to indicate whether part is a disposable part, if it is, does not get counted in the destroyed vessels list
 	Added MM script to add new module to all command parts
 	Added code to remove callbacks when leaving scene or reverting
+
+0.6.16.1
+	Version bump for 1.5 rebuild
