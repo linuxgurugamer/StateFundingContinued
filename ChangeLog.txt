@@ -88,3 +88,7 @@ Adoption by Linuxgurugamer
 
 0.6.16.1
 	Version bump for 1.5 rebuild
+
+0.6.16.2
+	Added lines for KSPI-E parts
+	Removed max version from .version file
