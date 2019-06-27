@@ -37,7 +37,9 @@ namespace StateFunding
                 NewReviews[i] = Reviews[i];
             }
             NewReviews[NewReviews.Length - 1] = R;
-
+            InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
+            Inst.po = R.finalPO;
+            Inst.sc = R.finalSC;
             Reviews = NewReviews;
         }
 

@@ -387,7 +387,7 @@ namespace StateFunding
                 tmpPO += Bases[i].po;
             }
 
-            finalPO = tmpPO;
+            finalPO = (int)Math.Ceiling(tmpPO * (1 - StateFundingGlobal.convergingRate));
         }
 
         public void UpdateFinalSC()
@@ -425,7 +425,7 @@ namespace StateFunding
                 tmpSC += Bases[i].sc;
             }
 
-            finalSC = tmpSC;
+            finalSC = (int)Math.Ceiling(tmpSC * (1 - StateFundingGlobal.convergingRate));
         }
 
         private void UpdateFunds()
