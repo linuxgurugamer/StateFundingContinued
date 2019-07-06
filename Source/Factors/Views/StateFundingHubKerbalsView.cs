@@ -2,23 +2,27 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using StateFunding.Factors.Views;
 
-namespace StateFunding
+namespace StateFunding.Factors
 {
-    public static class StateFundingHubKerbalsView
+    public class StateFundingHubKerbalsView : IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
+        {
+            return "Kerbals";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
         {
             Window.title = "Kerbals";
+
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
                 Log.Error("StateFundingHubKerbalsView.draw, Inst is null");
                 return;
             }
-
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
 
             string Description = "You Love Kerbals, I Love Kerbals, Kerbals Love Kerbals. Just one of those facts of life. " +
               "So it goes without saying, having Kerbals actively on missions increases Public Opinion. " +
@@ -38,7 +42,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel ActiveKerbals = new ViewLabel("Active Kerbals: " + Rev.activeKerbals + ". Stranded Kerbals: " + Rev.strandedKerbals + ".");
+            ViewLabel ActiveKerbals = new ViewLabel("Active Kerbals: " + review.factorVariables[KerbalsFactor.activeKerbals] + ". Stranded Kerbals: " + review.factorVariables[KerbalsFactor.strandedKerbals] + ".");
             ActiveKerbals.setRelativeTo(Window);
             ActiveKerbals.setLeft(140);
             ActiveKerbals.setTop(130);

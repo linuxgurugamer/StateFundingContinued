@@ -2,29 +2,33 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using StateFunding.Factors.Views;
 
-namespace StateFunding
+namespace StateFunding.Factors.Views
 {
-    public static class StateFundingHubStationsView
+    public class StateFundingHubBasesView: IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
         {
-            Window.title = "Space Stations";
+            return "Bases";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
+        {
+            BasesFactor _factor = (BasesFactor)review.basesFactor;
+
+            Window.title = "Bases";
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
-                Log.Error("StateFundingHubStationsView.draw, Inst is null");
+                Log.Error("StateFundingHubBasesView.draw, Inst is null");
                 return;
             }
 
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
-
-            string Description = "Below is a list of existing Space Stations. Vessels that are Space Stations should be labeled as " +
-              "such, be in orbit, and must be able to generate their own power. Space Stations increase State Confidence as well as Public Opinion." +
-              "Space Stations are scored by the following criteria: Total Fuel (SC), Total Ore (SC), Crew (PO), Crew Capacity (SC), Docking " +
-              "Port Count (SC), Docked Vessels (PO) and if it has a science lab (SC/PO). If the Station is landed on an asteroid it will also " +
-              "get a bonus (PO). If you are on an asteroid you will also get a bonus for having a drill (SC/PO).";
+            string Description = "Below is a list of existing Bases. Vessels that are Bases should be labeled as " +
+                                 "such, be landed on a body other than the home planet, and be able to generate power. Bases increase State Confidence " +
+                                 "as well as Public Opinion. Bases are scored by the following criteria: Total Fuel (SC), Total Ore (SC), Crew (PO), Crew Capacity " +
+                                 "(SC), Docking Port Count (SC), Docked Vessels (PO), if it has a science lab (SC/PO), and if it has a drill (SC/PO).";
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -36,35 +40,35 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalStations = new ViewLabel("Total Stations: " + Rev.SpaceStations.Length);
-            TotalStations.setRelativeTo(Window);
-            TotalStations.setLeft(140);
-            TotalStations.setTop(130);
-            TotalStations.setColor(Color.white);
-            TotalStations.setHeight(30);
-            TotalStations.setWidth(Window.getWidth() - 140);
+            ViewLabel TotalBases = new ViewLabel("Total Bases: " + _factor.Bases.Length);
+            TotalBases.setRelativeTo(Window);
+            TotalBases.setLeft(140);
+            TotalBases.setTop(130);
+            TotalBases.setColor(Color.white);
+            TotalBases.setHeight(30);
+            TotalBases.setWidth(Window.getWidth() - 140);
 
-            Vw.addComponent(TotalStations);
+            Vw.addComponent(TotalBases);
 
-            ViewScroll StationsScroll = new ViewScroll();
-            StationsScroll.setRelativeTo(Window);
-            StationsScroll.setWidth(Window.getWidth() - 140);
-            StationsScroll.setHeight(Window.getHeight() - 160);
-            StationsScroll.setLeft(140);
-            StationsScroll.setTop(150);
+            ViewScroll BasesScroll = new ViewScroll();
+            BasesScroll.setRelativeTo(Window);
+            BasesScroll.setWidth(Window.getWidth() - 140);
+            BasesScroll.setHeight(Window.getHeight() - 160);
+            BasesScroll.setLeft(140);
+            BasesScroll.setTop(150);
 
-            Vw.addComponent(StationsScroll);
+            Vw.addComponent(BasesScroll);
 
-            SpaceStationReport[] Stations = Rev.SpaceStations;
+            BaseReport[] Bases = _factor.Bases;
 
-            for (int i = 0; i < Stations.Length; i++)
+            for (int i = 0; i < Bases.Length; i++)
             {
-                drawItem(Stations[i], StationsScroll, i);
+                drawItem(Bases[i], BasesScroll, i);
             }
 
         }
 
-        public static void drawItem(SpaceStationReport Station, ViewScroll parent, int offset)
+        public static void drawItem(BaseReport Base, ViewScroll parent, int offset)
         {
             int boxHeight = 110;
 
@@ -77,17 +81,17 @@ namespace StateFunding
             Box.setColor(Color.white);
             parent.Components.Add(Box);
 
-            string label = "[" + Station.name + " is Orbiting " + Station.entity + "]";
-            ViewLabel StationLabel = new ViewLabel(label);
-            StationLabel.setRelativeTo(Box);
-            StationLabel.setTop(5);
-            StationLabel.setLeft(5);
-            StationLabel.setHeight(15);
-            StationLabel.setPercentWidth(100);
-            StationLabel.setColor(Color.green);
-            parent.Components.Add(StationLabel);
+            string label = "[" + Base.name + " is Landed At " + Base.entity + "]";
+            ViewLabel BaseLabel = new ViewLabel(label);
+            BaseLabel.setRelativeTo(Box);
+            BaseLabel.setTop(5);
+            BaseLabel.setLeft(5);
+            BaseLabel.setHeight(15);
+            BaseLabel.setPercentWidth(100);
+            BaseLabel.setColor(Color.green);
+            parent.Components.Add(BaseLabel);
 
-            ViewLabel FuelLabel = new ViewLabel("Fuel: " + Station.fuel);
+            ViewLabel FuelLabel = new ViewLabel("Fuel: " + Base.fuel);
             FuelLabel.setRelativeTo(Box);
             FuelLabel.setTop(25);
             FuelLabel.setLeft(5);
@@ -96,7 +100,7 @@ namespace StateFunding
             FuelLabel.setColor(Color.white);
             parent.Components.Add(FuelLabel);
 
-            ViewLabel OreLabel = new ViewLabel("Ore: " + Station.ore);
+            ViewLabel OreLabel = new ViewLabel("Ore: " + Base.ore);
             OreLabel.setRelativeTo(Box);
             OreLabel.setTop(45);
             OreLabel.setLeft(5);
@@ -105,7 +109,7 @@ namespace StateFunding
             OreLabel.setColor(Color.white);
             parent.Components.Add(OreLabel);
 
-            ViewLabel CrewLabel = new ViewLabel("Crew: " + Station.crew);
+            ViewLabel CrewLabel = new ViewLabel("Crew: " + Base.crew);
             CrewLabel.setRelativeTo(Box);
             CrewLabel.setTop(65);
             CrewLabel.setLeft(5);
@@ -114,7 +118,7 @@ namespace StateFunding
             CrewLabel.setColor(Color.white);
             parent.Components.Add(CrewLabel);
 
-            ViewLabel CrewCapacityLabel = new ViewLabel("Crew Capacity: " + Station.crewCapacity);
+            ViewLabel CrewCapacityLabel = new ViewLabel("Crew Capacity: " + Base.crewCapacity);
             CrewCapacityLabel.setRelativeTo(Box);
             CrewCapacityLabel.setTop(85);
             CrewCapacityLabel.setLeft(5);
@@ -123,7 +127,7 @@ namespace StateFunding
             CrewCapacityLabel.setColor(Color.white);
             parent.Components.Add(CrewCapacityLabel);
 
-            ViewLabel DockingPortsLabel = new ViewLabel("Docking Ports: " + Station.dockingPorts);
+            ViewLabel DockingPortsLabel = new ViewLabel("Docking Ports: " + Base.dockingPorts);
             DockingPortsLabel.setRelativeTo(Box);
             DockingPortsLabel.setTop(25);
             DockingPortsLabel.setLeft(155);
@@ -132,7 +136,7 @@ namespace StateFunding
             DockingPortsLabel.setColor(Color.white);
             parent.Components.Add(DockingPortsLabel);
 
-            ViewLabel DockedVesselsLabel = new ViewLabel("Docked Vessels: " + Station.dockedVessels);
+            ViewLabel DockedVesselsLabel = new ViewLabel("Docked Vessels: " + Base.dockedVessels);
             DockedVesselsLabel.setRelativeTo(Box);
             DockedVesselsLabel.setTop(45);
             DockedVesselsLabel.setLeft(155);
@@ -141,7 +145,7 @@ namespace StateFunding
             DockedVesselsLabel.setColor(Color.white);
             parent.Components.Add(DockedVesselsLabel);
 
-            ViewLabel ScienceLabLabel = new ViewLabel("Science Lab: " + Station.scienceLab);
+            ViewLabel ScienceLabLabel = new ViewLabel("Science Lab: " + Base.scienceLab);
             ScienceLabLabel.setRelativeTo(Box);
             ScienceLabLabel.setTop(65);
             ScienceLabLabel.setLeft(155);
@@ -150,7 +154,7 @@ namespace StateFunding
             ScienceLabLabel.setColor(Color.white);
             parent.Components.Add(ScienceLabLabel);
 
-            ViewLabel HasDrillLabel = new ViewLabel("Has Drill: " + Station.drill);
+            ViewLabel HasDrillLabel = new ViewLabel("Has Drill: " + Base.drill);
             HasDrillLabel.setRelativeTo(Box);
             HasDrillLabel.setTop(85);
             HasDrillLabel.setLeft(155);
@@ -159,34 +163,24 @@ namespace StateFunding
             HasDrillLabel.setColor(Color.white);
             parent.Components.Add(HasDrillLabel);
 
-            ViewLabel AsteroidLabel = new ViewLabel("On Asteroid: " + Station.onAsteroid);
-            AsteroidLabel.setRelativeTo(Box);
-            AsteroidLabel.setTop(25);
-            AsteroidLabel.setLeft(310);
-            AsteroidLabel.setHeight(15);
-            AsteroidLabel.setWidth(150);
-            AsteroidLabel.setColor(Color.white);
-            parent.Components.Add(AsteroidLabel);
-
-            ViewLabel SCLabel = new ViewLabel("PO: " + Station.po);
+            ViewLabel SCLabel = new ViewLabel("PO: " + Base.po);
             SCLabel.setRelativeTo(Box);
-            SCLabel.setTop(45);
+            SCLabel.setTop(25);
             SCLabel.setLeft(310);
             SCLabel.setHeight(15);
             SCLabel.setWidth(150);
             SCLabel.setColor(Color.white);
             parent.Components.Add(SCLabel);
 
-            ViewLabel POLabel = new ViewLabel("SC: " + Station.sc);
+            ViewLabel POLabel = new ViewLabel("SC: " + Base.sc);
             POLabel.setRelativeTo(Box);
-            POLabel.setTop(65);
+            POLabel.setTop(45);
             POLabel.setLeft(310);
             POLabel.setHeight(15);
             POLabel.setWidth(150);
             POLabel.setColor(Color.white);
             parent.Components.Add(POLabel);
         }
-
     }
 }
 

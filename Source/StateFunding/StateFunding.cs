@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StateFunding.Factors;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,18 +76,12 @@ namespace StateFunding
             GameEvents.onCrewKilled.Add(OnCrewKilled);
             GameEvents.OnCrewmemberLeftForDead.Add(OnCrewLeftForDead);
             GameEvents.onCrash.Add(OnCrash);
-            GameEvents.Contract.onCompleted.Add(OnContractCompleted);
-            GameEvents.Contract.onFailed.Add(OnContractFailed);
             //GameEvents.onCrashSplashdown.Add(OnCrashSplashdown);
         }
         internal void OnDestroy()
         {
             Log.Info("OnDestroy");
-            GameEvents.onCrewKilled.Remove(OnCrewKilled);
-            GameEvents.OnCrewmemberLeftForDead.Remove(OnCrewLeftForDead);
             GameEvents.onCrash.Remove(OnCrash);
-            GameEvents.Contract.onCompleted.Remove(OnContractCompleted);
-            GameEvents.Contract.onFailed.Remove(OnContractFailed);
 
             //GameEvents.onCrashSplashdown.Remove(OnCrashSplashdown);
         }
@@ -201,7 +196,6 @@ namespace StateFunding
                     }
                 }
             }
-
         }
 
         // Events
@@ -209,15 +203,13 @@ namespace StateFunding
         public void OnCrewKilled(EventReport Evt)
         {
             Log.Warning("CREW KILLED");
-            GameInstance.ActiveReview.kerbalDeaths++;
-            //InstanceConf.saveInstance (GameInstance);
+            GameInstance.ActiveReview.factorVariables[KerbalsFactor.kerbalDeaths]++;
         }
 
         public void OnCrewLeftForDead(ProtoCrewMember Crew, int id)
         {
             Log.Warning("CREW KILLED");
-            GameInstance.ActiveReview.kerbalDeaths++;
-            //InstanceConf.saveInstance (GameInstance);
+            GameInstance.ActiveReview.factorVariables[KerbalsFactor.kerbalDeaths]++;
         }
 
         public void OnCrash(EventReport Evt)
@@ -247,14 +239,15 @@ namespace StateFunding
         void OnContractCompleted(Contracts.Contract contract)
         {
             Log.Warning("CONTRACT COMPLETED");
-            GameInstance.ActiveReview.contractsCompleted++;
+            GameInstance.ActiveReview.factorVariables[ContractsFactor.contractsCompleted]++;
         }
 
         void OnContractFailed(Contracts.Contract contract)
         {
             Log.Warning("CONTRACT FAILED");
-            GameInstance.ActiveReview.contractsFailed++;
+            GameInstance.ActiveReview.factorVariables[ContractsFactor.contractsFailed]++;
         }
+
 
 #if false
         public void OnCrashSplashdown(EventReport Evt)

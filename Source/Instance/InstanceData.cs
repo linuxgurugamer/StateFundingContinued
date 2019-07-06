@@ -22,8 +22,18 @@ namespace StateFunding
         [Persistent]
         public Review[] Reviews = new Review[0];
 
+        public static InstanceData instance;
 
-        public InstanceData()
+        public static InstanceData getInstance() {
+            if (instance == null)
+            {
+                instance = new InstanceData();
+            }
+            return instance;
+        }
+
+
+        private InstanceData()
         {
             Log.Info("InstanceData");
             ActiveReview = new Review();

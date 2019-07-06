@@ -66,6 +66,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AssemblyVersion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Factors\BasesFactor.cs" />
+    <Compile Include="Factors\ContractsFactor.cs" />
+    <Compile Include="Factors\Factor.cs" />
+    <Compile Include="Factors\KerbalsFactor.cs" />
+    <Compile Include="Factors\MiningRigsFactor.cs" />
+    <Compile Include="Factors\RoversFactor.cs" />
+    <Compile Include="Factors\SatelliteCoverageFactor.cs" />
+    <Compile Include="Factors\ScienceStationsFactor.cs" />
+    <Compile Include="Factors\SpaceStationsFactor.cs" />
+    <Compile Include="Factors\Views\IFactorView.cs" />
+    <Compile Include="Factors\Views\StateFundingHubBasesView.cs" />
+    <Compile Include="Factors\Views\StateFundingHubCoverageView.cs" />
     <Compile Include="Government\Government.cs" />
     <Compile Include="Hooks\OnMainMenu.cs" />
     <Compile Include="Hooks\OnSpaceCentre.cs" />
@@ -102,15 +114,13 @@
     <Compile Include="Review\SpaceStationReport.cs" />
     <Compile Include="Helpers\BodyHelper.cs" />
     <Compile Include="Review\BaseReport.cs" />
-    <Compile Include="StateFunding\Views\StateFundingHubBasesView.cs" />
-    <Compile Include="StateFunding\Views\StateFundingHubStationsView.cs" />
-    <Compile Include="StateFunding\Views\StateFundingHubRoversView.cs" />
-    <Compile Include="StateFunding\Views\StateFundingLabView.cs" />
-    <Compile Include="StateFunding\Views\StateFundingHubMiningView.cs" />
-    <Compile Include="StateFunding\Views\StateFundingHubKerbalsView.cs" />
+    <Compile Include="Factors\Views\StateFundingHubStationsView.cs" />
+    <Compile Include="Factors\Views\StateFundingHubRoversView.cs" />
+    <Compile Include="Factors\Views\StateFundingLabView.cs" />
+    <Compile Include="Factors\Views\StateFundingHubMiningView.cs" />
+    <Compile Include="Factors\Views\StateFundingHubKerbalsView.cs" />
     <Compile Include="StateFunding\Views\StateFundingHubCurrentView.cs" />
     <Compile Include="StateFunding\Views\StateFundingHubReviewsView.cs" />
-    <Compile Include="StateFunding\Views\StateFundingHubCoverageView.cs" />
     <Compile Include="ViewComponents\ViewBox.cs" />
     <Compile Include="Instance\InstanceData.cs" />
     <Compile Include="Instance\StateFundingScenario.cs" />
@@ -241,10 +251,12 @@
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>
-start /D  D:\Users\jbb\github\StateFundingContinued /WAIT deploy.bat  $(TargetDir) $(TargetFileName)
+"E:\Games\Kerbal Space Program\tools\pdb2mdb\pdb2mdb.exe" $(TargetPath)
+
+start /E  E:\UnityProjects\StateFundingContinued /WAIT deploy.bat  $(TargetDir) $(TargetFileName)
 
 if $(ConfigurationName) == Release (
-	start /D  D:\Users\jbb\github\StateFundingContinued /WAIT buildRelease.bat $(TargetDir) $(TargetFileName)
+	start /E   E:\UnityProjects\StateFundingContinued /WAIT buildRelease.bat $(TargetDir) $(TargetFileName)
 )</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

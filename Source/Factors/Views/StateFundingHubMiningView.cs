@@ -1,24 +1,26 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
+using StateFunding.Factors.Views;
+using StateFunding.Factors;
 
 namespace StateFunding
 {
-    public static class StateFundingHubMiningView
+    public class StateFundingHubMiningView : IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
+        {
+            return "Mining Rigs";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
         {
             Window.title = "Mining Rigs";
+
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
                 Log.Error("StateFundingHubMiningView.draw, Inst is null");
                 return;
             }
-
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
 
             string Description = "Below is a list of existing Mining Rigs. Having more Mining Rigs increases State " +
               "Confidence. To have a qualified Mining Rig is must have an antenna, drill, be able to generate power, " +
@@ -34,7 +36,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Mining Rigs: " + Rev.miningRigs);
+            ViewLabel TotalCoverage = new ViewLabel("Mining Rigs: " + review.factorVariables[MiningRigsFactor.miningRigs]);
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);
