@@ -8,19 +8,16 @@ namespace StateFunding.Factors
 {
     public class BasesFactor : Factor
     {
-        public override int modPO => Bases.Sum(x => x.po);
-        public override int modSC => Bases.Sum(x => x.sc);
+        public override int modPO => variables.Bases.Sum(x => x.po);
+        public override int modSC => variables.Bases.Sum(x => x.sc);
         public override IFactorView View => new StateFundingHubBasesView();
-
-        [Persistent]
-        public BaseReport[] Bases;
-
-        public BasesFactor(Dictionary<string, double> factorVariables) : base(factorVariables)
+        
+        public BasesFactor(FactorVariables _variables) : base(_variables)
         {
-            Bases = new BaseReport[0];
+            variables.Bases = new BaseReport[0];
         }
 
-        public override void Update(Dictionary<string, double> factorVariables)
+        public override void Update()
         {
             Log.Info("Updating Bases");
 
@@ -32,7 +29,7 @@ namespace StateFunding.Factors
             }
 
             Vessel[] _Bases = VesselHelper.GetBases();
-            Bases = new BaseReport[_Bases.Length];
+            variables.Bases = new BaseReport[_Bases.Length];
 
             for (int i = 0; i < _Bases.Length; i++)
             {
@@ -74,19 +71,19 @@ namespace StateFunding.Factors
                     _BaseReport.sc += (int)(10 * GameInstance.Gov.scModifier);
                 }
 
-                Bases[i] = _BaseReport;
+                variables.Bases[i] = _BaseReport;
             }
         }
 
-        public override string GetSummaryText(Dictionary<string, double> factorVariables)
+        public override string GetSummaryText()
         {
             string returnText = "";
-            if ((Bases != null) && (Bases.Length > 0))
+            if ((variables.Bases != null) && (variables.Bases.Length > 0))
             {
                 returnText += "\n\n== Bases ==\n\n";
-                for (int i = 0; i < Bases.Length; i++)
+                for (int i = 0; i < variables. Bases.Length; i++)
                 {
-                    BaseReport Base = Bases[i];
+                    BaseReport Base = variables.Bases[i];
                     returnText += "[" + Base.name + " Landed At " + Base.entity + "]\n";
                     returnText += "Fuel: " + Base.fuel + "\n";
                     returnText += "Ore: " + Base.ore + "\n";

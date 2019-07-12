@@ -42,7 +42,7 @@ namespace StateFunding.Factors
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel ActiveKerbals = new ViewLabel("Active Kerbals: " + review.factorVariables[KerbalsFactor.activeKerbals] + ". Stranded Kerbals: " + review.factorVariables[KerbalsFactor.strandedKerbals] + ".");
+            ViewLabel ActiveKerbals = new ViewLabel("Active Kerbals: " + review.variables.activeKerbals + ". Stranded Kerbals: " + review.variables.strandedKerbals + ".");
             ActiveKerbals.setRelativeTo(Window);
             ActiveKerbals.setLeft(140);
             ActiveKerbals.setTop(130);

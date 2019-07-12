@@ -10,34 +10,22 @@ namespace StateFunding
     {
         public Review()
         {
-            satellitesFactor = new SatelliteCoverageFactor(factorVariables);
-            spaceStationsFactor = new SpaceStationsFactor(factorVariables);
-            basesFactor = new BasesFactor(factorVariables);
-
             factors = new Factor[] {
-                new KerbalsFactor(factorVariables),
-                satellitesFactor,
-                new MiningRigsFactor(factorVariables),
-                new RoversFactor(factorVariables),
-                new ScienceStationsFactor(factorVariables),
-                new ContractsFactor(factorVariables),
-                spaceStationsFactor,
-                basesFactor,
+                new KerbalsFactor(variables),
+                new SatelliteCoverageFactor(variables),
+                new MiningRigsFactor(variables),
+                new RoversFactor(variables),
+                new ScienceStationsFactor(variables),
+                new ContractsFactor(variables),
+                new SpaceStationsFactor(variables),
+                new BasesFactor(variables),
             };
-
         }
-        // cannot persist abstract objects so bases and satelites factors need to be declared individualy
-        [Persistent]
-        public BasesFactor basesFactor;
-        [Persistent]
-        public SatelliteCoverageFactor satellitesFactor;
-        [Persistent]
-        public SpaceStationsFactor spaceStationsFactor;
 
         public Factor[] factors;
 
         [Persistent]
-        public Dictionary<string, double> factorVariables = new Dictionary<string, double>();
+        public FactorVariables variables;
 
         [Persistent]
         public int finalPO = 0;
@@ -95,7 +83,7 @@ namespace StateFunding
 
                 foreach (Factor factor in factors)
                 {
-                    factor.Update(factorVariables);
+                    factor.Update();
                 }
                 UpdateFinalPO();
                 UpdateFinalSC();
@@ -164,14 +152,12 @@ namespace StateFunding
                 Log.Error("Review.UpdateFunds, GameInstance is null");
                 return;
             }
-
             funds = (int)(((float)(finalPO + finalSC) / 10000 / 4) * (float)Inst.Gov.gdp * (float)Inst.Gov.budget);
         }
 
         public string GetText()
         {
             //InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
-
             string returnText = "# Review for Quarter: " + year + "\n\n" +
                                 "Funding: " + funds + "\n\n" +
                                 "Public Opinion: " + po + "\n" +
@@ -181,11 +167,9 @@ namespace StateFunding
                                 "Vessels Destroyed: " + vesselsDestroyed + "\n";
             foreach (Factor factor in factors)
             {
-                returnText += factor.GetSummaryText(factorVariables);
+                returnText += factor.GetSummaryText();
             }
             return returnText;
-
         }
-
     }
 }

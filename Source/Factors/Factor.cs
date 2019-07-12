@@ -12,10 +12,11 @@ namespace StateFunding.Factors
     {
         public virtual int modPO => 0;
         public virtual int modSC => 0;
+        protected FactorVariables variables;
         public virtual IFactorView View => null;
-        public Factor(Dictionary<string, double> factorVariables) { }
+        public Factor(FactorVariables _variables) { variables = _variables; }
         public virtual void cleanup() { }
-        public virtual void Update(Dictionary<string, double> factorVariables) { }
-        public virtual string GetSummaryText(Dictionary<string, double> factorVariables) { return ""; }
+        public virtual void Update() { }
+        public virtual string GetSummaryText() { return ""; }
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="Factors\BasesFactor.cs" />
     <Compile Include="Factors\ContractsFactor.cs" />
     <Compile Include="Factors\Factor.cs" />
+    <Compile Include="Factors\FactorVariables.cs" />
     <Compile Include="Factors\KerbalsFactor.cs" />
     <Compile Include="Factors\MiningRigsFactor.cs" />
     <Compile Include="Factors\RoversFactor.cs" />

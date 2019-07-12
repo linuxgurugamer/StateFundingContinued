@@ -1,5 +1,6 @@
 ﻿
 using StateFunding.Factors.Views;
+using System;
 using System.Collections.Generic;
 
 namespace StateFunding.Factors
@@ -15,28 +16,26 @@ namespace StateFunding.Factors
         public static string strandedKerbals = "strandedKerbals";
         public static string kerbalDeaths = "kerbalDeaths";
 
-        public KerbalsFactor(Dictionary<string, double> factorVariables) : base (factorVariables)
+        public KerbalsFactor(FactorVariables factorVariables) : base (factorVariables)
         {
-            factorVariables[activeKerbals] = 0;
-            factorVariables[strandedKerbals] = 0;
-            factorVariables[kerbalDeaths] = 0;
         }
 
-        public override void Update(Dictionary<string, double> factorVariables)
+        public override void Update()
         {
             Log.Info("Updating Active Kerbals");
-            factorVariables[activeKerbals] = KerbalHelper.GetActiveKerbals().Length;
-            factorVariables[strandedKerbals] = KerbalHelper.GetStrandedKerbals().Length;
-            _modPO = (int)(5 * factorVariables[activeKerbals] * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
-            _modPO -= (int)(5 * factorVariables[strandedKerbals] * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
-            _modPO -= (int)(5 * factorVariables[kerbalDeaths] * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
+            variables.activeKerbals = KerbalHelper.GetActiveKerbals().Length;
+            variables.strandedKerbals = KerbalHelper.GetStrandedKerbals().Length;
+            _modPO = (int)(5 * variables.activeKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
+            _modPO -= (int)(5 * variables.strandedKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
+            _modPO -= (int)(5 * variables.kerbalDeaths * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
         }
 
-        public override string GetSummaryText(Dictionary<string, double> factorVariables)
+        public override string GetSummaryText()
         {
-            return "Active Kerbals: " + (int)factorVariables[activeKerbals] + "\n" +
-                   "Kerbal \"Accidents\": " + (int)factorVariables[kerbalDeaths] + "\n" +
-                   "Stranded Kerbals: " + (int)factorVariables[strandedKerbals] + "\n";
+            return 
+                "Active Kerbals: " + (int)variables.activeKerbals + "\n" +
+                "Kerbal \"Accidents\": " + (int)variables.kerbalDeaths + "\n" +
+                "Stranded Kerbals: " + (int)variables.strandedKerbals + "\n";
         }
     }
 }

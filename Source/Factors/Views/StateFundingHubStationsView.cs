@@ -15,8 +15,6 @@ namespace StateFunding
         {
             Window.title = "Space Stations";
 
-            SpaceStationsFactor _factor = review.spaceStationsFactor;
-
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
@@ -40,7 +38,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalStations = new ViewLabel("Total Stations: " + _factor.SpaceStations.Length);
+            ViewLabel TotalStations = new ViewLabel("Total Stations: " + review.variables.SpaceStations.Length);
             TotalStations.setRelativeTo(Window);
             TotalStations.setLeft(140);
             TotalStations.setTop(130);
@@ -59,7 +57,7 @@ namespace StateFunding
 
             Vw.addComponent(StationsScroll);
 
-            SpaceStationReport[] Stations = _factor.SpaceStations;
+            SpaceStationReport[] Stations = review.variables.SpaceStations;
 
             for (int i = 0; i < Stations.Length; i++)
             {

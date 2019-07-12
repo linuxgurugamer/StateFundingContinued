@@ -36,7 +36,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Mining Rigs: " + review.factorVariables[MiningRigsFactor.miningRigs]);
+            ViewLabel TotalCoverage = new ViewLabel("Mining Rigs: " + review.variables.miningRigs);
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);

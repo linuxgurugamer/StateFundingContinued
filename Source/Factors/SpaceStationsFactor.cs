@@ -6,19 +6,15 @@ namespace StateFunding.Factors
 {
     public class SpaceStationsFactor : Factor
     {
-        public override int modPO => SpaceStations.Sum(x => x.po);
-        public override int modSC => SpaceStations.Sum(x => x.sc);
+        public override int modPO => variables.SpaceStations.Sum(x => x.po);
+        public override int modSC => variables.SpaceStations.Sum(x => x.sc);
         public override IFactorView View => ((IFactorView)new StateFundingHubStationsView());
 
-        [Persistent]
-        public SpaceStationReport[] SpaceStations;
-
-        public SpaceStationsFactor(Dictionary<string, double> factorVariables) : base(factorVariables)
+        public SpaceStationsFactor(FactorVariables factorVariables) : base(factorVariables)
         {
-            SpaceStations = new SpaceStationReport[0];
         }
 
-        public override  void Update(Dictionary<string, double> factorVariables)
+        public override  void Update()
         {
             Log.Info("Updating Space Stations");
 
@@ -29,12 +25,12 @@ namespace StateFunding.Factors
                 return;
             }
 
-            Vessel[] SpcStations = VesselHelper.GetSpaceStations();
-            SpaceStations = new SpaceStationReport[SpcStations.Length];
+            Vessel[] vessels = VesselHelper.GetSpaceStations();
+            variables.SpaceStations = new SpaceStationReport[vessels.Length];
 
-            for (int i = 0; i < SpcStations.Length; i++)
+            for (int i = 0; i < vessels.Length; i++)
             {
-                Vessel SpcStation = SpcStations[i];
+                Vessel SpcStation = vessels[i];
 
                 SpaceStationReport SpcStationReport = new SpaceStationReport();
                 SpcStationReport.name = SpcStation.vesselName;
@@ -86,19 +82,19 @@ namespace StateFunding.Factors
                     SpcStationReport.sc += (int)(10 * GameInstance.Gov.scModifier);
                 }
 
-                SpaceStations[i] = SpcStationReport;
+                variables.SpaceStations[i] = SpcStationReport;
             }
         }
 
-        public override string GetSummaryText(Dictionary<string, double> factorVariables)
+        public override string GetSummaryText()
         {
             string returnText = "";
-            if ((SpaceStations != null) && (SpaceStations.Length > 0))
+            if ((variables.SpaceStations != null) && (variables.SpaceStations.Length > 0))
             {
                 returnText += "\n\n== Space Stations ==\n\n";
-                for (int i = 0; i < SpaceStations.Length; i++)
+                for (int i = 0; i < variables.SpaceStations.Length; i++)
                 {
-                    SpaceStationReport StationReport = SpaceStations[i];
+                    SpaceStationReport StationReport = variables.SpaceStations[i];
                     returnText += "[" + StationReport.name + " Orbiting " + StationReport.entity + "]\n";
                     returnText += "Fuel: " + StationReport.fuel + "\n";
                     returnText += "Ore: " + StationReport.ore + "\n";

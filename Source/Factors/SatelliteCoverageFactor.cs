@@ -6,22 +6,16 @@ namespace StateFunding.Factors
 {
     public class SatelliteCoverageFactor : Factor
     {
-        [Persistent]
-        public CoverageReport[] Coverages;
-
-        public override int modSC => _modSC;
+        public override int modSC => variables.modSCSatellite;
         public override IFactorView View => ((IFactorView)new StateFundingHubCoverageView());
-        private int _modSC = 0;
 
-        public static string satelliteCoverage = "satelliteCoverage";
-
-        public SatelliteCoverageFactor(Dictionary<string, double> factorVariables) : base(factorVariables)
+        public SatelliteCoverageFactor(FactorVariables factorVariables) : base(factorVariables)
         {
-            factorVariables[satelliteCoverage] = 0;
+            variables.satelliteCoverage = 0;
             // Initialize coverage for Celestial Bodies (other than the Sun)
 
             CelestialBody[] Bodies = FlightGlobals.Bodies.ToArray();
-            Coverages = new CoverageReport[Bodies.Length - 1];
+            variables.Coverages = new CoverageReport[Bodies.Length - 1];
             CelestialBody home = Planetarium.fetch.Home;
 
             if (home == null) home = FlightGlobals.Bodies.Find(body => body.isHomeWorld == true);
@@ -45,19 +39,19 @@ namespace StateFunding.Factors
                     // 10 sats till full coverage on Kerbin
                     Report.satCountForFullCoverage = (int)Math.Ceiling(Body.Radius / StateFundingGlobal.refRadius);
 
-                    Coverages[k] = Report;
+                    variables.Coverages[k] = Report;
                     k++;
                 }
             }
         }
 
-        public override  void Update(Dictionary<string, double> factorVariables)
+        public override  void Update()
         {
             Log.Info("Updating Coverage");
 
-            for (int i = 0; i < Coverages.Length; i++)
+            for (int i = 0; i < variables.Coverages.Length; i++)
             {
-                Coverages[i].satCount = 0;
+                variables.Coverages[i].satCount = 0;
             }
 
             Vessel[] Satellites = VesselHelper.GetSatellites();
@@ -72,21 +66,21 @@ namespace StateFunding.Factors
                 Report.Update();
             }
 
-            float totalCoverage = 0;
-            for (int i = 0; i < Coverages.Length; i++)
+            double totalCoverage = 0;
+            for (int i = 0; i < variables.Coverages.Length; i++)
             {
-                totalCoverage += Coverages[i].coverage;
+                totalCoverage += variables.Coverages[i].coverage;
             }
 
-            factorVariables[satelliteCoverage] = (float)totalCoverage / (float)Coverages.Length;
-            _modSC = (int)(2 * factorVariables[satelliteCoverage] * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
+            variables.satelliteCoverage = totalCoverage / variables.Coverages.Length;
+            variables.modSCSatellite = (int)(2 * variables.satelliteCoverage * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
         }
 
         private CoverageReport GetReport(string bodyName)
         {
-            for (var i = 0; i < Coverages.Length; i++)
+            for (var i = 0; i < variables.Coverages.Length; i++)
             {
-                CoverageReport Report = Coverages[i];
+                CoverageReport Report = variables.Coverages[i];
                 if (Report.entity == bodyName)
                 {
                     return Report;
@@ -99,9 +93,9 @@ namespace StateFunding.Factors
             return CReport;
         }
 
-        public override string GetSummaryText(Dictionary<string, double> factorVariables)
+        public override string GetSummaryText()
         {
-            return "Satellite Coverage: " + Math.Round(factorVariables[satelliteCoverage] * 100) + "%\n";
+            return "Satellite Coverage: " + Math.Round(variables.satelliteCoverage * 100) + "%\n";
         }
     }
 }

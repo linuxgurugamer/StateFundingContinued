@@ -37,7 +37,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalRovers = new ViewLabel("Total Rovers: " + review.factorVariables[RoversFactor.rovers]);
+            ViewLabel TotalRovers = new ViewLabel("Total Rovers: " + review.variables.rovers);
             TotalRovers.setRelativeTo(Window);
             TotalRovers.setLeft(140);
             TotalRovers.setTop(130);

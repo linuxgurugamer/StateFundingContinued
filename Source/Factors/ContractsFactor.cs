@@ -7,28 +7,22 @@ namespace StateFunding.Factors
 {
     class ContractsFactor : Factor
     {
-        public override int modSC => _modSC;
-        private int _modSC = 0;
+        public override int modSC => variables.modSCContracts;
 
-        public static string contractsCompleted = "contractsCompleted";
-        public static string contractsFailed = "contractsFailed";
-
-        public ContractsFactor(Dictionary<string, double> factorVariables) : base(factorVariables)
+        public ContractsFactor(FactorVariables factorVariables) : base(factorVariables)
         {
-            factorVariables[contractsCompleted] = 0;
-            factorVariables[contractsFailed] = 0;
         }
 
-        public override  void Update(Dictionary<string, double> factorVariables)
+        public override  void Update()
         {
-            _modSC = (int)(5 * factorVariables[contractsCompleted] * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
-            _modSC -= (int)(5 * factorVariables[contractsFailed] * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
+            variables.modSCContracts = (int)(5 * variables.contractsCompleted * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
+            variables.modSCContracts -= (int)(5 * variables.contractsFailed * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
         }
 
-        public override string GetSummaryText(Dictionary<string, double> factorVariables)
+        public override string GetSummaryText()
         {
-            return "Govt. Contracts Completed: " + (int)factorVariables[contractsCompleted] + "\n" +
-                   "Govt. Contracts Failed: " + (int)factorVariables[contractsFailed] + "\n";
+            return "Govt. Contracts Completed: " + (int)variables.contractsCompleted + "\n" +
+                   "Govt. Contracts Failed: " + (int)variables.contractsFailed + "\n";
         }
     }
 }

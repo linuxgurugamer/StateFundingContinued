@@ -203,13 +203,13 @@ namespace StateFunding
         public void OnCrewKilled(EventReport Evt)
         {
             Log.Warning("CREW KILLED");
-            GameInstance.ActiveReview.factorVariables[KerbalsFactor.kerbalDeaths]++;
+            GameInstance.ActiveReview.variables.kerbalDeaths++;
         }
 
         public void OnCrewLeftForDead(ProtoCrewMember Crew, int id)
         {
             Log.Warning("CREW KILLED");
-            GameInstance.ActiveReview.factorVariables[KerbalsFactor.kerbalDeaths]++;
+            GameInstance.ActiveReview.variables.kerbalDeaths++;
         }
 
         public void OnCrash(EventReport Evt)
@@ -239,13 +239,13 @@ namespace StateFunding
         void OnContractCompleted(Contracts.Contract contract)
         {
             Log.Warning("CONTRACT COMPLETED");
-            GameInstance.ActiveReview.factorVariables[ContractsFactor.contractsCompleted]++;
+            GameInstance.ActiveReview.variables.contractsCompleted++;
         }
 
         void OnContractFailed(Contracts.Contract contract)
         {
             Log.Warning("CONTRACT FAILED");
-            GameInstance.ActiveReview.factorVariables[ContractsFactor.contractsFailed]++;
+            GameInstance.ActiveReview.variables.contractsFailed++;
         }
 
 

@@ -6,27 +6,25 @@ namespace StateFunding.Factors
 {
     public class RoversFactor : Factor
     {
-        public override int modPO => _modPO;
+        public override int modPO => variables.modPORovers;
         public override IFactorView View => ((IFactorView)new StateFundingHubRoversView());
-        private int _modPO = 0;
+        
 
-        public static string rovers = "rovers";
-
-        public RoversFactor(Dictionary<string, double> factorVariables) : base(factorVariables)
+        public RoversFactor(FactorVariables factorVariables) : base(factorVariables)
         {
-            factorVariables[rovers] = 0;
+            variables.rovers = 0;
         }
 
-        public override  void Update(Dictionary<string, double> factorVariables)
+        public override  void Update()
         {
             Log.Info("Updating Rovers");
-            factorVariables[rovers] = VesselHelper.GetRovers().Length;
-            _modPO = (int)(5 * factorVariables[rovers] * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
+            variables.rovers = VesselHelper.GetRovers().Length;
+            variables.modPORovers = (int)(5 * variables.rovers * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
         }
 
-        public override string GetSummaryText(Dictionary<string, double> factorVariables)
+        public override string GetSummaryText()
         {
-            return "Rovers: " + rovers + "\n";
+            return "Rovers: " + variables.rovers + "\n";
         }
     }
 }

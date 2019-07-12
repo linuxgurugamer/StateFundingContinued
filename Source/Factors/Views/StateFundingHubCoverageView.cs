@@ -18,8 +18,6 @@ namespace StateFunding
         {
             Window.title = "Satellite Coverage";
 
-            SatelliteCoverageFactor _factor = review.satellitesFactor;
-
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
@@ -46,7 +44,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Total Coverage: " + Math.Round((double)review.factorVariables[SatelliteCoverageFactor.satelliteCoverage] * 100) + "%");
+            ViewLabel TotalCoverage = new ViewLabel("Total Coverage: " + Math.Round((double)review.variables.satelliteCoverage * 100) + "%");
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);
@@ -65,7 +63,7 @@ namespace StateFunding
 
             Vw.addComponent(CoverageScroll);
 
-            CoverageReport[] Coverages = _factor.Coverages;
+            CoverageReport[] Coverages = review.variables.Coverages;
 
             int labelHeight = 20;
 

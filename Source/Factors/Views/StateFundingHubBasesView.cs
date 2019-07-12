@@ -15,8 +15,6 @@ namespace StateFunding.Factors.Views
 
         public void draw(View Vw, ViewWindow Window, Review review)
         {
-            BasesFactor _factor = (BasesFactor)review.basesFactor;
-
             Window.title = "Bases";
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
@@ -40,7 +38,7 @@ namespace StateFunding.Factors.Views
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalBases = new ViewLabel("Total Bases: " + _factor.Bases.Length);
+            ViewLabel TotalBases = new ViewLabel("Total Bases: " + review.variables.Bases.Length);
             TotalBases.setRelativeTo(Window);
             TotalBases.setLeft(140);
             TotalBases.setTop(130);
@@ -59,7 +57,7 @@ namespace StateFunding.Factors.Views
 
             Vw.addComponent(BasesScroll);
 
-            BaseReport[] Bases = _factor.Bases;
+            BaseReport[] Bases = review.variables.Bases;
 
             for (int i = 0; i < Bases.Length; i++)
             {

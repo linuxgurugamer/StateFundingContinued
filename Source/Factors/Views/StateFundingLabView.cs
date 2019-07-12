@@ -37,8 +37,8 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Orbiting Stations: " + (int)review.factorVariables[ScienceStationsFactor.orbitalScienceStations] + ". " +
-              "Landed Stations: " + (int)review.factorVariables[ScienceStationsFactor.planetaryScienceStations] + ".");
+            ViewLabel TotalCoverage = new ViewLabel("Orbiting Stations: " + (int)review.variables.orbitalScienceStations + ". " +
+              "Landed Stations: " + (int)review.variables.planetaryScienceStations + ".");
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);
