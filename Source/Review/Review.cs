@@ -10,6 +10,7 @@ namespace StateFunding
     {
         public Review()
         {
+            variables = new FactorVariables();
             factors = new Factor[] {
                 new KerbalsFactor(variables),
                 new SatelliteCoverageFactor(variables),
