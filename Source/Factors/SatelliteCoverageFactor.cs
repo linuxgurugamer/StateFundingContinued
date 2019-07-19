@@ -74,7 +74,7 @@ namespace StateFunding.Factors
             }
 
             variables.satelliteCoverage = totalCoverage / variables.Coverages.Length;
-            variables.modSCSatellite = (int)(2 * variables.satelliteCoverage * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
+            variables.modSCSatellite = (int)(100 * variables.satelliteCoverage * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
         }
 
         private CoverageReport GetReport(string bodyName)
