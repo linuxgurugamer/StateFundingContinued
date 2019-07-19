@@ -1,24 +1,26 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
+using StateFunding.Factors.Views;
+using StateFunding.Factors;
 
 namespace StateFunding
 {
-    public static class StateFundingHubRoversView
+    public class StateFundingHubRoversView : IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
+        {
+            return "Rovers";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
         {
             Window.title = "Rovers";
+
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
                 Log.Error("StateFundingHubRoversView.draw, Inst is null");
                 return;
             }
-
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
 
             string Description = "Below is a list of existing Rovers. Having more Rovers increases Public Opinion." +
               "Vessels that are rovers should be labeled as a Rover. They should have at least 4 wheels but can have more." +
@@ -35,7 +37,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalRovers = new ViewLabel("Total Rovers: " + Rev.rovers);
+            ViewLabel TotalRovers = new ViewLabel("Total Rovers: " + review.variables.rovers);
             TotalRovers.setRelativeTo(Window);
             TotalRovers.setLeft(140);
             TotalRovers.setTop(130);

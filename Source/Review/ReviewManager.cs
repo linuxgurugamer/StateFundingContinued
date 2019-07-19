@@ -19,7 +19,7 @@ namespace StateFunding
             Rev.touch();
 
             // Closed for business
-            Rev.pastReview = true;
+            Rev.closeReview();
 
             // Move review to past review
             Inst.addReview(Rev);

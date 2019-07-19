@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using StateFunding.Factors;
 
 namespace StateFunding
 {
@@ -8,6 +9,16 @@ namespace StateFunding
     {
         private ViewWindow Window;
         private ArrayList SideMenu;
+
+        public InstanceData GameInstance
+        {
+            get
+            {
+                if (StateFundingScenario.Instance != null)
+                    return StateFundingScenario.Instance.Data;
+                return null;
+            }
+        }
 
         public StateFundingHubView()
         {
@@ -32,15 +43,14 @@ namespace StateFunding
             Window.setTop(100);
 
             this.addComponent(Window);
-
             SideMenu.Add(new ViewButton("Current State", LoadCurrentState));
-            SideMenu.Add(new ViewButton("Space Stations", LoadSpaceStations));
-            SideMenu.Add(new ViewButton("Bases", LoadBases));
-            SideMenu.Add(new ViewButton("Sat Coverage", LoadSatelliteCoverage));
-            SideMenu.Add(new ViewButton("Science Stations", LoadScienceStations));
-            SideMenu.Add(new ViewButton("Mining Rigs", LoadMiningRigs));
-            SideMenu.Add(new ViewButton("Rovers", LoadRovers));
-            SideMenu.Add(new ViewButton("Kerbals", LoadKerbals));
+            foreach (Factor factor in GameInstance.ActiveReview.factors)
+            {
+                if (factor.View != null)
+                {
+                    SideMenu.Add(new ViewButton(factor.View.getSideMenuText(), LoadView(factor, GameInstance.ActiveReview)));
+                }
+            }
             SideMenu.Add(new ViewButton("Past Reviews", LoadPastReviews));
 
             for (var i = 0; i < SideMenu.ToArray().Length; i++)
@@ -55,46 +65,13 @@ namespace StateFunding
             }
         }
 
-        private void LoadSatelliteCoverage()
+        private Action LoadView(Factor factor, Review review)
         {
-            reloadBase();
-            StateFundingHubCoverageView.draw(this, Window);
-        }
-
-        private void LoadBases()
-        {
-            reloadBase();
-            StateFundingHubBasesView.draw(this, Window);
-        }
-
-        private void LoadSpaceStations()
-        {
-            reloadBase();
-            StateFundingHubStationsView.draw(this, Window);
-        }
-
-        private void LoadRovers()
-        {
-            reloadBase();
-            StateFundingHubRoversView.draw(this, Window);
-        }
-
-        private void LoadScienceStations()
-        {
-            reloadBase();
-            StateFundingHubLabView.draw(this, Window);
-        }
-
-        private void LoadMiningRigs()
-        {
-            reloadBase();
-            StateFundingHubMiningView.draw(this, Window);
-        }
-
-        private void LoadKerbals()
-        {
-            reloadBase();
-            StateFundingHubKerbalsView.draw(this, Window);
+            return () =>
+            {
+                reloadBase();
+                factor.View.draw(this, Window, review);
+            };
         }
 
         private void LoadCurrentState()

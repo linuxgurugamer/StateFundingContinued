@@ -41,7 +41,7 @@ namespace StateFunding
         {
             if (data == null)
             {
-                data = new InstanceData();
+                data = InstanceData.getInstance();
             }
 
             if (ReviewMgr == null)
@@ -69,6 +69,7 @@ namespace StateFunding
                 Log.Info("StateFundingScenario loading from persistence");
                 ConfigNode loadNode = node.GetNode(CONFIG_NODENAME);
                 ConfigNode.LoadObjectFromConfig(data, loadNode);
+                InstanceData.instance = data;
                 isInit = true;
                 StateFundingGlobal.needsDataInit = false;
             }

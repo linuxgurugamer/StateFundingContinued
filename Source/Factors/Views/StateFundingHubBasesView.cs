@@ -2,12 +2,18 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using StateFunding.Factors.Views;
 
-namespace StateFunding
+namespace StateFunding.Factors.Views
 {
-    public static class StateFundingHubBasesView
+    public class StateFundingHubBasesView: IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
+        {
+            return "Bases";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
         {
             Window.title = "Bases";
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
@@ -16,9 +22,6 @@ namespace StateFunding
                 Log.Error("StateFundingHubBasesView.draw, Inst is null");
                 return;
             }
-
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
 
             string Description = "Below is a list of existing Bases. Vessels that are Bases should be labeled as " +
                                  "such, be landed on a body other than the home planet, and be able to generate power. Bases increase State Confidence " +
@@ -35,7 +38,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalBases = new ViewLabel("Total Bases: " + Rev.Bases.Length);
+            ViewLabel TotalBases = new ViewLabel("Total Bases: " + review.variables.Bases.Length);
             TotalBases.setRelativeTo(Window);
             TotalBases.setLeft(140);
             TotalBases.setTop(130);
@@ -54,7 +57,7 @@ namespace StateFunding
 
             Vw.addComponent(BasesScroll);
 
-            BaseReport[] Bases = Rev.Bases;
+            BaseReport[] Bases = review.variables.Bases;
 
             for (int i = 0; i < Bases.Length; i++)
             {
