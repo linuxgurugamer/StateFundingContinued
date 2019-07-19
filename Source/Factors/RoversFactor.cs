@@ -1,5 +1,6 @@
 ﻿
 using StateFunding.Factors.Views;
+using StateFunding.ViewComponents;
 using System.Collections.Generic;
 
 namespace StateFunding.Factors
@@ -22,9 +23,12 @@ namespace StateFunding.Factors
             variables.modPORovers = (int)(5 * variables.rovers * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            return "Rovers: " + variables.rovers + "\n";
+            return new List<ViewSummaryRow>()
+            {
+                new ViewSummaryRow("Rovers: " + variables.rovers, variables.modPORovers, 0)
+            };
         }
     }
 }

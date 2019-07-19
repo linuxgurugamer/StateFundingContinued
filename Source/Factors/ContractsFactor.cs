@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StateFunding.ViewComponents;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,13 @@ namespace StateFunding.Factors
             variables.modSCContracts -= (int)(5 * variables.contractsFailed * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            return "Govt. Contracts Completed: " + (int)variables.contractsCompleted + "\n" +
-                   "Govt. Contracts Failed: " + (int)variables.contractsFailed + "\n";
+            return new List<ViewSummaryRow>()
+            {
+                new ViewSummaryRow("Govt. Contracts Completed: " + (int)variables.contractsCompleted, 0, (int)(5 * variables.contractsCompleted * StateFundingGlobal.fetch.GameInstance.Gov.scModifier)),
+                new ViewSummaryRow("Govt. Contracts Failed: " + (int)variables.contractsFailed, 0, (int)(-5 * variables.contractsFailed * StateFundingGlobal.fetch.GameInstance.Gov.scModifier))
+            };
         }
     }
 }

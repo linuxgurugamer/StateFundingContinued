@@ -1,5 +1,6 @@
 ﻿
 using StateFunding.Factors.Views;
+using StateFunding.ViewComponents;
 using System.Collections.Generic;
 
 namespace StateFunding.Factors
@@ -17,6 +18,6 @@ namespace StateFunding.Factors
         public Factor(FactorVariables _variables) { variables = _variables; }
         public virtual void cleanup() { }
         public virtual void Update() { }
-        public virtual string GetSummaryText() { return ""; }
+        public virtual List<ViewSummaryRow> GetSummaryRow() { return null; }
     }
 }

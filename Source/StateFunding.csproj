@@ -67,6 +67,7 @@
       <DependentUpon>AssemblyVersion.tt</DependentUpon>
     </Compile>
     <Compile Include="Factors\BasesFactor.cs" />
+    <Compile Include="Factors\DestroyedVesselsFactor.cs" />
     <Compile Include="Factors\ContractsFactor.cs" />
     <Compile Include="Factors\Factor.cs" />
     <Compile Include="Factors\FactorVariables.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="ModuleStateFundingDisposable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="ViewComponents\ViewSummaryRow.cs" />
     <Compile Include="View\View.cs" />
     <Compile Include="View\ViewManager.cs" />
     <Compile Include="ViewComponents\ViewComponent.cs" />

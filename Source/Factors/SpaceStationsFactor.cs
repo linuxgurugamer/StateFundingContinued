@@ -1,4 +1,5 @@
 ﻿using StateFunding.Factors.Views;
+using StateFunding.ViewComponents;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -86,30 +87,12 @@ namespace StateFunding.Factors
             }
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            string returnText = "";
-            if ((variables.SpaceStations != null) && (variables.SpaceStations.Length > 0))
+            return new List<ViewSummaryRow>()
             {
-                returnText += "\n\n== Space Stations ==\n\n";
-                for (int i = 0; i < variables.SpaceStations.Length; i++)
-                {
-                    SpaceStationReport StationReport = variables.SpaceStations[i];
-                    returnText += "[" + StationReport.name + " Orbiting " + StationReport.entity + "]\n";
-                    returnText += "Fuel: " + StationReport.fuel + "\n";
-                    returnText += "Ore: " + StationReport.ore + "\n";
-                    returnText += "Crew: " + StationReport.crew + "\n";
-                    returnText += "Crew Capacity: " + StationReport.crewCapacity + "\n";
-                    returnText += "Docked Vessels: " + StationReport.dockedVessels + "\n";
-                    returnText += "Docking Ports: " + StationReport.dockingPorts + "\n";
-                    returnText += "Has Drill: " + StationReport.drill + "\n";
-                    returnText += "Science Lab: " + StationReport.scienceLab + "\n";
-                    returnText += "On Asteroid: " + StationReport.onAsteroid + "\n";
-                    returnText += "PO: " + StationReport.po + "\n";
-                    returnText += "SC: " + StationReport.sc + "\n\n";
-                }
-            }
-            return returnText;
+                new ViewSummaryRow("Space Stations: " + (int)variables.SpaceStations.Length, variables.SpaceStations.Sum(x => x.po), variables.SpaceStations.Sum(x => x.sc))
+            };
         }
     }
 }

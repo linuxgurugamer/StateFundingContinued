@@ -1,5 +1,6 @@
 ﻿
 using StateFunding.Factors.Views;
+using StateFunding.ViewComponents;
 using System.Collections.Generic;
 
 namespace StateFunding.Factors
@@ -22,9 +23,12 @@ namespace StateFunding.Factors
             variables.modSCMiningRig = (int)(5 * variables.miningRigs * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            return "Active Mining Rigs: " + (int)variables.miningRigs + "\n";
+            return new List<ViewSummaryRow>()
+            {
+                new ViewSummaryRow("Active Mining Rigs: " + (int)variables.miningRigs, 0, variables.modSCMiningRig)
+            };
         }
     }
 }

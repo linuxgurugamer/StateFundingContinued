@@ -1,5 +1,6 @@
 ﻿
 using StateFunding.Factors.Views;
+using StateFunding.ViewComponents;
 using System;
 using System.Collections.Generic;
 
@@ -30,12 +31,14 @@ namespace StateFunding.Factors
             _modPO -= (int)(5 * variables.kerbalDeaths * StateFundingGlobal.fetch.GameInstance.Gov.poModifier);
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            return 
-                "Active Kerbals: " + (int)variables.activeKerbals + "\n" +
-                "Kerbal \"Accidents\": " + (int)variables.kerbalDeaths + "\n" +
-                "Stranded Kerbals: " + (int)variables.strandedKerbals + "\n";
+            return new List<ViewSummaryRow>()
+            {
+                new ViewSummaryRow("Active Kerbals: " + (int)variables.activeKerbals, (int)(5 * variables.activeKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier), 0),
+                new ViewSummaryRow("Kerbal \"Accidents\": " + (int)variables.kerbalDeaths, 0, (int)(-5 * variables.strandedKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier)),
+                new ViewSummaryRow("Stranded Kerbals: " + (int)variables.strandedKerbals, 0, (int)(-5 * variables.kerbalDeaths * StateFundingGlobal.fetch.GameInstance.Gov.poModifier))
+            };
         }
     }
 }

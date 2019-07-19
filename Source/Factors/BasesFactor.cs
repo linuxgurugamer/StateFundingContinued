@@ -1,4 +1,5 @@
 ﻿using StateFunding.Factors.Views;
+using StateFunding.ViewComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,29 +76,12 @@ namespace StateFunding.Factors
             }
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            string returnText = "";
-            if ((variables.Bases != null) && (variables.Bases.Length > 0))
+            return new List<ViewSummaryRow>()
             {
-                returnText += "\n\n== Bases ==\n\n";
-                for (int i = 0; i < variables. Bases.Length; i++)
-                {
-                    BaseReport Base = variables.Bases[i];
-                    returnText += "[" + Base.name + " Landed At " + Base.entity + "]\n";
-                    returnText += "Fuel: " + Base.fuel + "\n";
-                    returnText += "Ore: " + Base.ore + "\n";
-                    returnText += "Crew: " + Base.crew + "\n";
-                    returnText += "Crew Capacity: " + Base.crewCapacity + "\n";
-                    returnText += "Docked Vessels: " + Base.dockedVessels + "\n";
-                    returnText += "Docking Ports: " + Base.dockingPorts + "\n";
-                    returnText += "Has Drill: " + Base.drill + "\n";
-                    returnText += "Science Lab: " + Base.scienceLab + "\n";
-                    returnText += "PO: " + Base.po + "\n";
-                    returnText += "SC: " + Base.sc + "\n\n";
-                }
-            }
-            return returnText;
+                new ViewSummaryRow("Bases: " + variables.Bases.Length, variables.Bases.Sum(x => x.po), variables.Bases.Sum(x => x.sc))
+            };
         }
     }
 }

@@ -230,7 +230,7 @@ namespace StateFunding
                 else
                 {
                     Log.Warning("VESSEL DESTROYED");
-                    GameInstance.ActiveReview.vesselsDestroyed++;
+                    GameInstance.ActiveReview.variables.vesselsDestroyed++;
                 }
                 //InstanceConf.saveInstance (GameInstance);
             }

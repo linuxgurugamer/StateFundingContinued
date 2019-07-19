@@ -1,4 +1,8 @@
 ﻿
+using StateFunding.ViewComponents;
+using System;
+using System.Collections.Generic;
+
 namespace StateFunding.Factors
 {
     public class ScienceStationsFactor : Factor
@@ -18,10 +22,13 @@ namespace StateFunding.Factors
             variables.modSCScienceStations += (int)(5 * variables.planetaryScienceStations * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            return "Obital Science Stations: " + (int)variables.orbitalScienceStations + "\n" +
-                "Planetary Science Stations: " + (int)variables.planetaryScienceStations + "\n";
+            return new List<ViewSummaryRow>()
+            {
+                new ViewSummaryRow("Obital Science Stations: " + (int)variables.orbitalScienceStations, 0, (int)(2 * variables.orbitalScienceStations * StateFundingGlobal.fetch.GameInstance.Gov.scModifier)),
+                new ViewSummaryRow("Planetary Science Stations: " + (int)variables.planetaryScienceStations, 0, (int)(5 * variables.planetaryScienceStations * StateFundingGlobal.fetch.GameInstance.Gov.scModifier))
+            };
         }
     }
 }

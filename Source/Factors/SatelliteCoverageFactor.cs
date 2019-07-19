@@ -1,4 +1,5 @@
 ﻿using StateFunding.Factors.Views;
+using StateFunding.ViewComponents;
 using System;
 using System.Collections.Generic;
 
@@ -93,9 +94,12 @@ namespace StateFunding.Factors
             return CReport;
         }
 
-        public override string GetSummaryText()
+        public override List<ViewSummaryRow> GetSummaryRow()
         {
-            return "Satellite Coverage: " + Math.Round(variables.satelliteCoverage * 100) + "%\n";
+            return new List<ViewSummaryRow>()
+            {
+                new ViewSummaryRow("Satellite Coverage: " + Math.Round(variables.satelliteCoverage * 100) + "%", 0, variables.modSCSatellite)
+            };
         }
     }
 }

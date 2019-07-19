@@ -57,6 +57,11 @@ namespace StateFunding.Factors
         [Persistent]
         public int modSCSatellite = 0;
 
+        //destroyed vessels
+        [Persistent]
+        public int vesselsDestroyed = 0;
+        [Persistent]
+        public int modSCDestroyedVessels = 0;
 
     }
 }

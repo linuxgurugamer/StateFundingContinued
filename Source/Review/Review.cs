@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections;
 using StateFunding.Factors;
 using System.Collections.Generic;
+using StateFunding.ViewComponents;
+using System.Linq;
 
 namespace StateFunding
 {
@@ -20,6 +22,7 @@ namespace StateFunding
                 new ContractsFactor(variables),
                 new SpaceStationsFactor(variables),
                 new BasesFactor(variables),
+                new DestroyedVesselsFactor(variables)
             };
         }
 
@@ -36,19 +39,16 @@ namespace StateFunding
 
         [Persistent]
         public int funds = 0;
-        
-        [Persistent]
-        public int vesselsDestroyed = 0;
 
         [Persistent]
         public int po = 0;
 
         [Persistent]
         public bool pastReview = false;
-        
+
         [Persistent]
         public int sc = 0;
-        
+
         [Persistent]
         public int year = 0;
 
@@ -156,7 +156,7 @@ namespace StateFunding
             funds = (int)(((float)(finalPO + finalSC) / 10000 / 4) * (float)Inst.Gov.gdp * (float)Inst.Gov.budget);
         }
 
-        public string GetText()
+        public string GetSummaryText()
         {
             //InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
             string returnText = "# Review for Quarter: " + year + "\n\n" +
@@ -164,13 +164,19 @@ namespace StateFunding
                                 "Public Opinion: " + po + "\n" +
                                 "State Confidence: " + sc + "\n" +
                                 "Public Opinion After Modifiers & Decay: " + finalPO + "\n" +
-                                "State Confidence After Modifiers & Decay: " + finalSC + "\n\n" +
-                                "Vessels Destroyed: " + vesselsDestroyed + "\n";
+                                "State Confidence After Modifiers & Decay: " + finalSC;
+            return returnText;
+        }
+
+        public List<ViewSummaryRow> GetText()
+        {
+            List<ViewSummaryRow> rows = new List<ViewSummaryRow>();
             foreach (Factor factor in factors)
             {
-                returnText += factor.GetSummaryText();
+                rows.AddRange(factor.GetSummaryRow());
             }
-            return returnText;
+            rows.Add(new ViewSummaryRow("Total: ", factors.Sum(x => x.modPO), factors.Sum(x => x.modSC)));
+            return rows;
         }
     }
 }
