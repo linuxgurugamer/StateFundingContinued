@@ -76,13 +76,18 @@ namespace StateFunding
             GameEvents.onCrewKilled.Add(OnCrewKilled);
             GameEvents.OnCrewmemberLeftForDead.Add(OnCrewLeftForDead);
             GameEvents.onCrash.Add(OnCrash);
+            GameEvents.Contract.onCompleted.Add(OnContractCompleted);
+            GameEvents.Contract.onFailed.Add(OnContractFailed);
             //GameEvents.onCrashSplashdown.Add(OnCrashSplashdown);
         }
         internal void OnDestroy()
         {
             Log.Info("OnDestroy");
+            GameEvents.onCrewKilled.Remove(OnCrewKilled);
+            GameEvents.OnCrewmemberLeftForDead.Remove(OnCrewLeftForDead);
             GameEvents.onCrash.Remove(OnCrash);
-
+            GameEvents.Contract.onCompleted.Remove(OnContractCompleted);
+            GameEvents.Contract.onFailed.Add(OnContractFailed);
             //GameEvents.onCrashSplashdown.Remove(OnCrashSplashdown);
         }
 
