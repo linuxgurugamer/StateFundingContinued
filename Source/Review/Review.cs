@@ -153,7 +153,7 @@ namespace StateFunding
                 Log.Error("Review.UpdateFunds, GameInstance is null");
                 return;
             }
-            funds = (int)(((float)(finalPO + finalSC) / 10000 / 4) * (float)Inst.Gov.gdp * (float)Inst.Gov.budget);
+            funds = (int)(((float)(finalPO + finalSC) / 10000) * (float)Inst.Gov.gdp * (float)Inst.Gov.budget);
         }
 
         public string GetSummaryText()
