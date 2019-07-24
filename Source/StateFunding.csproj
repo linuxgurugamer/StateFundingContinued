@@ -254,12 +254,10 @@
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>
-"E:\Games\Kerbal Space Program\tools\pdb2mdb\pdb2mdb.exe" $(TargetPath)
-
-start /E  E:\UnityProjects\StateFundingContinued /WAIT deploy.bat  $(TargetDir) $(TargetFileName)
+start /D  D:\Users\jbb\github\StateFundingContinued /WAIT deploy.bat  $(TargetDir) $(TargetFileName)
 
 if $(ConfigurationName) == Release (
-	start /E   E:\UnityProjects\StateFundingContinued /WAIT buildRelease.bat $(TargetDir) $(TargetFileName)
+	start /D  D:\Users\jbb\github\StateFundingContinued /WAIT buildRelease.bat $(TargetDir) $(TargetFileName)
 )</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
