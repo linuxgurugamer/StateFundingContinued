@@ -92,3 +92,25 @@ Adoption by Linuxgurugamer
 0.6.16.2
 	Added lines for KSPI-E parts
 	Removed max version from .version file
+
+0.6.17
+	Thanks to github user @Snucker:
+		The main bug fix is in InstanceData.addReview() where the new budgets Public Opinion(PO) and State Confidence(SC) is now set to the old budgets final PO and SC. This bug was why players always loose PO and SC each budgets since only the decay was affecting them.
+
+		Removed ApplyDecay() from ReviewManager.cs and moved the calculation to UpdateFinalSC() and UpdateFinalPO() in Review.cs because finalPO and finalSC is displayed in the summary and would not be accurate otherwise.
+
+		The formula for finalPO and finalSC is: finalPO = (PO + POEarnedThisBudget)(1 - convergenceRate)
+		convergenceRate used to be 0.2
+		This had what I thought was an unintended consequence that finalPO converges on 4 * POEarnedThisBudget so i changed it to 0.5 which would make finalPO converges on 1 * POEarnedThisBudget.
+		It turns out the mod author had intended for finalPO to be 4 times bigger and had compensated by dividing the funding reward by 4 so I'm not sure this change is necessary anymore but it does make the formula a bit more intuitive.
+
+		The abstract class Factor.cs and its implementation classes are code refactored out of Review.cs
+		I'm not too sold on the class name but basically a factor is anything that affects PO and SC gain.
+		FactorVariables.cs is a class containing all the variables to persist related factors.
+
+		Most of the changes in the view classes are to conform to the above refactor and have no visible change.
+		StateFundingHubCurrentView.cs and ReviewView.cs was changed to add PO and SC gain for each factor and cut down on the details for space stations.
+
+		Also I changed the SC multiplier for satellite coverage from 2 to 100 to make it a bit more balanced.
+
+	Made the decay rate configurable in the stock settings

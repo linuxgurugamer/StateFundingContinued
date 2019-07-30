@@ -121,7 +121,7 @@ namespace StateFunding
                 tmpPO += factor.modPO;
             }
 
-            finalPO = (int)Math.Ceiling(tmpPO * (1 - StateFundingGlobal.convergingRate));
+            finalPO = (int)Math.Ceiling(tmpPO * (1 - HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().convergingRate));
         }
 
         public void UpdateFinalSC()
@@ -141,7 +141,7 @@ namespace StateFunding
                 tmpSC += factor.modSC;
             }
 
-            finalSC = (int)Math.Ceiling(tmpSC * (1 - StateFundingGlobal.convergingRate));
+            finalSC = (int)Math.Ceiling(tmpSC * (1 - HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().convergingRate));
         }
 
         private void UpdateFunds()
