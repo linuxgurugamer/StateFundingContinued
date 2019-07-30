@@ -83,6 +83,7 @@
     <Compile Include="Government\Government.cs" />
     <Compile Include="Hooks\OnMainMenu.cs" />
     <Compile Include="Hooks\OnSpaceCentre.cs" />
+    <Compile Include="InstallChecker.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="ModuleStateFundingDisposable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
