@@ -1,24 +1,26 @@
-﻿using System;
+﻿using StateFunding.Factors;
+using StateFunding.Factors.Views;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace StateFunding
 {
-    public static class StateFundingHubStationsView
+    public class StateFundingHubStationsView : IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
+        {
+            return "Space Stations";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
         {
             Window.title = "Space Stations";
+
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
                 Log.Error("StateFundingHubStationsView.draw, Inst is null");
                 return;
             }
-
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
 
             string Description = "Below is a list of existing Space Stations. Vessels that are Space Stations should be labeled as " +
               "such, be in orbit, and must be able to generate their own power. Space Stations increase State Confidence as well as Public Opinion." +
@@ -36,7 +38,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalStations = new ViewLabel("Total Stations: " + Rev.SpaceStations.Length);
+            ViewLabel TotalStations = new ViewLabel("Total Stations: " + review.variables.SpaceStations.Length);
             TotalStations.setRelativeTo(Window);
             TotalStations.setLeft(140);
             TotalStations.setTop(130);
@@ -55,7 +57,7 @@ namespace StateFunding
 
             Vw.addComponent(StationsScroll);
 
-            SpaceStationReport[] Stations = Rev.SpaceStations;
+            SpaceStationReport[] Stations = review.variables.SpaceStations;
 
             for (int i = 0; i < Stations.Length; i++)
             {

@@ -22,8 +22,18 @@ namespace StateFunding
         [Persistent]
         public Review[] Reviews = new Review[0];
 
+        public static InstanceData instance;
 
-        public InstanceData()
+        public static InstanceData getInstance() {
+            if (instance == null)
+            {
+                instance = new InstanceData();
+            }
+            return instance;
+        }
+
+
+        private InstanceData()
         {
             Log.Info("InstanceData");
             ActiveReview = new Review();
@@ -37,7 +47,9 @@ namespace StateFunding
                 NewReviews[i] = Reviews[i];
             }
             NewReviews[NewReviews.Length - 1] = R;
-
+            InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
+            Inst.po = R.finalPO;
+            Inst.sc = R.finalSC;
             Reviews = NewReviews;
         }
 

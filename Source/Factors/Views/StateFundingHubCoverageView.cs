@@ -2,23 +2,28 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using StateFunding.Factors.Views;
+using StateFunding.Factors;
 
 namespace StateFunding
 {
-    public static class StateFundingHubCoverageView
+    public class StateFundingHubCoverageView : IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
+        {
+            return "Sat Coverage";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
         {
             Window.title = "Satellite Coverage";
+
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
                 Log.Error("StateFundingHubCoverageView.draw, Inst is null");
                 return;
             }
-
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
 
             string Description = "Below is your space programs satellite coverage. Satellite coverage increases State Confidence. " +
               "The number of satellites needed to provide full coverage veries depending on the size of the " +
@@ -39,7 +44,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Total Coverage: " + Math.Round((double)Rev.satelliteCoverage * 100) + "%");
+            ViewLabel TotalCoverage = new ViewLabel("Total Coverage: " + Math.Round((double)review.variables.satelliteCoverage * 100) + "%");
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);
@@ -58,7 +63,7 @@ namespace StateFunding
 
             Vw.addComponent(CoverageScroll);
 
-            CoverageReport[] Coverages = Rev.Coverages;
+            CoverageReport[] Coverages = review.variables.Coverages;
 
             int labelHeight = 20;
 

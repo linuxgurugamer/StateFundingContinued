@@ -1,23 +1,26 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
+using StateFunding.Factors.Views;
+using StateFunding.Factors;
 
 namespace StateFunding
 {
-    public static class StateFundingHubLabView
+    public class StateFundingHubLabView : IFactorView
     {
-        public static void draw(View Vw, ViewWindow Window)
+        public string getSideMenuText()
+        {
+            return "Science Stations";
+        }
+
+        public void draw(View Vw, ViewWindow Window, Review review)
         {
             Window.title = "Science Stations";
+
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
                 Log.Error("StateFundingHubLabView.draw, Inst is null");
                 return;
             }
-            Review Rev = GameInstance.ActiveReview;
-            Rev.touch();
 
             string Description = "Below is a list of existing Science Sations. Having more Science Stations increases State " +
               "Confidence. Landed stations on other Celestial Bodies counts higher than Orbiting Stations. " +
@@ -34,8 +37,8 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Orbiting Stations: " + Rev.orbitalScienceStations + ". " +
-              "Landed Stations: " + Rev.planetaryScienceStations + ".");
+            ViewLabel TotalCoverage = new ViewLabel("Orbiting Stations: " + (int)review.variables.orbitalScienceStations + ". " +
+              "Landed Stations: " + (int)review.variables.planetaryScienceStations + ".");
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);

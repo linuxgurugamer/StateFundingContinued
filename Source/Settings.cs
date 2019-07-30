@@ -38,43 +38,18 @@ namespace StateFunding
 
         [GameParameters.CustomParameterUI("Stop warp on new year")]
         public bool stopWarpOnNewYear = true;
-
-
-#if false
-        public override void SetDifficultyPreset(GameParameters.Preset preset)
+  
+        // Following strange code is to work around a bugin the CustomFloatParameterUI
+        public float convergingRate = 0.5f;
+        [GameParameters.CustomFloatParameterUI("Decay Rate (%)", asPercentage = false, displayFormat = "N0", minValue = 0, maxValue = 100, stepCount = 1,
+                    toolTip = "The higher this is, the faster the Public Opinion and State Confidence will erode")]
+        public float ConvergingRate
         {
-            switch (preset)
-            {
-                case GameParameters.Preset.Easy:
-                    toolbarEnabled = true;
-                    toolbarPopupsEnabled = true;
-                    editorMenuPopupEnabled = true;
-                    hoverTimeout = 0.5f;
-                    break;
-
-                case GameParameters.Preset.Normal:
-                    toolbarEnabled = true;
-                    toolbarPopupsEnabled = true;
-                    editorMenuPopupEnabled = true;
-                    hoverTimeout = 0.5f;
-                    break;
-
-                case GameParameters.Preset.Moderate:
-                    toolbarEnabled = true;
-                    toolbarPopupsEnabled = true;
-                    editorMenuPopupEnabled = true;
-                    hoverTimeout = 0.5f;
-                    break;
-
-                case GameParameters.Preset.Hard:
-                    toolbarEnabled = true;
-                    toolbarPopupsEnabled = true;
-                    editorMenuPopupEnabled = true;
-                    hoverTimeout = 0.5f;
-                    break;
-            }
+            get { return convergingRate * 100f; }
+            set { convergingRate = value / 100.0f; }
         }
-#endif
+
+
 
         public override bool Enabled(MemberInfo member, GameParameters parameters)
         {
