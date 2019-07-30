@@ -7,6 +7,8 @@ namespace StateFunding
         public static StateFunding fetch;
         public static bool isLoaded;
         public static bool needsDataInit;
+        public static double refRadius = 60000.0;
+        public static float convergingRate = 0.5f;
     }
 }
 

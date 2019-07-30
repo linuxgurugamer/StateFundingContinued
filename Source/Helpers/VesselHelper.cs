@@ -510,10 +510,10 @@ namespace StateFunding
             List<Vessel> ReturnVessels = new List<Vessel>();
 
             Vessel[] Satellites = VesselHelper.GetVesselsWithModuleAliases(new string[] {
-        "Energy",
-        "Communication",
-        "AutonomousCommand"
-      });
+                "Energy",
+                "Communication",
+                "AutonomousCommand"
+            });
 
             for (int i = 0; i < Satellites.Length; i++)
             {

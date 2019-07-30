@@ -153,7 +153,7 @@ namespace StateFunding
 
         private void OnConfirm()
         {
-            InstanceData Inst = new InstanceData();
+            InstanceData Inst = InstanceData.getInstance();
             Inst.Gov = SelectedGovernment;
             Inst.govName = SelectedGovernment.name;
             Inst.po = (int)SelectedGovernment.startingPO;

@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using StateFunding.ViewComponents;
+using System.Collections.Generic;
 
 namespace StateFunding
 {
@@ -50,7 +52,7 @@ namespace StateFunding
                 Rev.touch();
             }
 
-            ReviewText = new ViewTextArea(Rev.GetText());
+            ReviewText = new ViewTextArea(Rev.GetSummaryText());
             ReviewText.setRelativeTo(Image);
             ReviewText.setPercentWidth(100);
             ReviewText.setTop(Image.getHeight() + 10);
@@ -62,6 +64,19 @@ namespace StateFunding
             this.addComponent(Label);
             this.addComponent(Confirm);
             this.addComponent(ReviewText);
+
+            List<ViewSummaryRow> summaryRows = Rev.GetText();
+            for (int i=0; i < summaryRows.Count; i++)
+            {
+                ViewSummaryRow row = summaryRows[i];
+                row.setRelativeTo(ReviewText);
+                row.setHeight(30);
+                row.setPercentWidth(100);
+                row.setTop(15 * i + 10);
+                row.setLeft(300);
+                row.setColor(Color.white);
+                this.addComponent(row);
+            }
         }
 
         private void OnConfirm()
