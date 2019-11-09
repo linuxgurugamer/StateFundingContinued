@@ -1,3 +1,4 @@
+ChangeLog
 
 Adoption by Linuxgurugamer
 0.6.0
@@ -118,3 +119,6 @@ Adoption by Linuxgurugamer
 0.6.17.1
 	Added InstallChecker
 	Updated AssemblyVersion.tt
+
+0.6.18
+	Updated for KSP 1.8
