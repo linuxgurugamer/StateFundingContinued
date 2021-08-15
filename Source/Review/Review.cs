@@ -99,14 +99,12 @@ namespace StateFunding
 
         public void UpdateYear()
         {
-            Log.Info("Updating Year");
             //year = TimeHelper.Quarters(Planetarium.GetUniversalTime());
             year = TimeHelper.Periods(Planetarium.GetUniversalTime(), HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().budgetPeriodsPerYear);
         }
 
         public void UpdateFinalPO()
         {
-            Log.Info("Updating Final PO");
             int tmpPO = po;
 
             InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
@@ -126,7 +124,6 @@ namespace StateFunding
 
         public void UpdateFinalSC()
         {
-            Log.Info("Updating Final SC");
             int tmpSC = sc;
 
             InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
@@ -135,9 +132,9 @@ namespace StateFunding
                 Log.Error("Review.UpdateFinalSC, GameInstance is null");
                 return;
             }
-
             foreach (Factor factor in factors)
             {
+                Log.Info("factor: " + factor.FactorName() + ", modSC: " + factor.modSC);
                 tmpSC += factor.modSC;
             }
 
@@ -146,7 +143,6 @@ namespace StateFunding
 
         private void UpdateFunds()
         {
-            Log.Info("Updating Funds");
             InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
             if (Inst == null)
             {

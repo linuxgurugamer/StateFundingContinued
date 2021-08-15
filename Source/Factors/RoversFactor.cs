@@ -7,6 +7,7 @@ namespace StateFunding.Factors
 {
     public class RoversFactor : Factor
     {
+        public override string FactorName() { return "RoversFactor"; }
         public override int modPO => variables.modPORovers;
         public override IFactorView View => ((IFactorView)new StateFundingHubRoversView());
         

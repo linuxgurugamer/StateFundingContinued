@@ -11,6 +11,7 @@ namespace StateFunding.Factors
      **/
     public abstract class Factor
     {
+        public virtual string FactorName() { return "Factor"; }
         public virtual int modPO => 0;
         public virtual int modSC => 0;
         protected FactorVariables variables;

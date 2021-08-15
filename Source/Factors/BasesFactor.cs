@@ -9,6 +9,7 @@ namespace StateFunding.Factors
 {
     public class BasesFactor : Factor
     {
+        public override string FactorName() { return "BasesFactor"; }
         public override int modPO => variables.Bases.Sum(x => x.po);
         public override int modSC => variables.Bases.Sum(x => x.sc);
         public override IFactorView View => new StateFundingHubBasesView();

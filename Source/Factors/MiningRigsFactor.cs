@@ -7,6 +7,7 @@ namespace StateFunding.Factors
 {
     public class MiningRigsFactor : Factor
     {
+        public override string FactorName() { return "MiningRigsFactor"; }
         public override int modSC => variables.modSCMiningRig;
         public override IFactorView View => ((IFactorView)new StateFundingHubMiningView());
 

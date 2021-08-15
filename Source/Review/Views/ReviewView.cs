@@ -82,6 +82,7 @@ namespace StateFunding
         private void OnConfirm()
         {
             ViewManager.removeView(this);
+            StateFundingApplicationLauncher.toolbarControl.SetFalse();
         }
     }
 }

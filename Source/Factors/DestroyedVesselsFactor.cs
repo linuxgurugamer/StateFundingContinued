@@ -8,6 +8,7 @@ namespace StateFunding.Factors
 {
     class DestroyedVesselsFactor : Factor
     {
+        public override string FactorName() { return "DestroyedVesselsFactor"; }
         public override int modSC => variables.modSCDestroyedVessels;
 
         public DestroyedVesselsFactor(FactorVariables factorVariables) : base(factorVariables)
@@ -16,7 +17,7 @@ namespace StateFunding.Factors
 
         public override  void Update()
         {
-            variables.modSCDestroyedVessels -= (int)(1 * (variables.vesselsDestroyed) * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
+            variables.modSCDestroyedVessels = (int)(1 * (variables.vesselsDestroyed) * StateFundingGlobal.fetch.GameInstance.Gov.scModifier);
         }
 
         public override List<ViewSummaryRow> GetSummaryRow()

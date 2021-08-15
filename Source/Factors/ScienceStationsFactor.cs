@@ -7,6 +7,7 @@ namespace StateFunding.Factors
 {
     public class ScienceStationsFactor : Factor
     {
+        public override string FactorName() { return "ScienceStationsFactor"; }
         public override int modSC => variables.modSCScienceStations;
 
         public ScienceStationsFactor(FactorVariables factorVariables) : base(factorVariables)

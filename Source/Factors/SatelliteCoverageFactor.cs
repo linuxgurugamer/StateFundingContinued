@@ -7,6 +7,7 @@ namespace StateFunding.Factors
 {
     public class SatelliteCoverageFactor : Factor
     {
+        public override string FactorName() { return "SatelliteCoverageFactor"; }
         public override int modSC => variables.modSCSatellite;
         public override IFactorView View => ((IFactorView)new StateFundingHubCoverageView());
 

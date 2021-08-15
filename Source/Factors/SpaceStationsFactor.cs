@@ -7,6 +7,7 @@ namespace StateFunding.Factors
 {
     public class SpaceStationsFactor : Factor
     {
+        public override string FactorName() { return "SpaceStationsFactor"; }
         public override int modPO => variables.SpaceStations.Sum(x => x.po);
         public override int modSC => variables.SpaceStations.Sum(x => x.sc);
         public override IFactorView View => ((IFactorView)new StateFundingHubStationsView());
