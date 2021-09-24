@@ -52,6 +52,11 @@
 			{
 				name = Antenna
 			}
+			//Following needed for RealAntennas
+			Item
+			{
+				name = ModuleRealAntenna
+			}
 		}
 	}
 	Item 
