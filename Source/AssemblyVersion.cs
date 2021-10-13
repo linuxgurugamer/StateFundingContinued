@@ -7,3 +7,4 @@
 
  [assembly: AssemblyVersion("0.6.18.2")]
  [assembly: AssemblyFileVersion("0.6.18.2")]
+ [assembly: KSPAssembly("StateFunding", 0, 6, 18)]

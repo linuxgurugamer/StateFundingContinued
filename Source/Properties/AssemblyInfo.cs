@@ -15,7 +15,7 @@ using System.Runtime.CompilerServices;
 // [assembly: AssemblyVersion("0.5.0.0")]
 //[assembly: AssemblyFileVersion("0.5.0.0")]
 
-[assembly: KSPAssembly("StateFunding", 0, 5)]
+//[assembly: KSPAssembly("StateFunding", 0, 5)]
 //[assembly: KSPAssemblyDependency("Toolbar", 1, 0)]
 [assembly: KSPAssemblyDependency("ClickThroughBlocker", 1, 0)]
 [assembly: KSPAssemblyDependency("ToolbarController", 1, 0)]
