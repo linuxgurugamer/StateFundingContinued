@@ -132,3 +132,7 @@ Adoption by Linuxgurugamer
 	Fixed repeated updates when lost vessel causing multiple penalties
 	(internal) Added name identifier to Factors for easier identification
 	Fixed issue when closing a review, would need to click the toolbar button 2x to get it to open again
+
+0.6.18.3
+	Thanks to github user @Alohacajun for this:
+		Added RealAntennas alias
