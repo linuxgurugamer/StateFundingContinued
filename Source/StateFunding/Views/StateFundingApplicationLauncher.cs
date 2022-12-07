@@ -30,7 +30,7 @@ namespace StateFunding
         {
             View = new StateFundingHubView();
             //Texture2D Image = new Texture2D(2, 2);
-            //Image.LoadImage(File.ReadAllBytes("GameData/StateFunding/assets/cashmoney.png"));
+            //Image.LoadImage(File.ReadAllBytes(KSPUtil.ApplicationRootPath+"GameData/StateFunding/assets/cashmoney.png"));
             //Button = ApplicationLauncher.Instance.AddModApplication(onTrue, onFalse, onHover, onHoverOut, onEnable, onDisable, ApplicationLauncher.AppScenes.SPACECENTER, Image);
 
             toolbarControl = gameObject.AddComponent<ToolbarControl>();

@@ -14,7 +14,7 @@ namespace StateFunding
         {
             this.path = path;
             Image = new Texture2D(2, 2);
-            Image.LoadImage(File.ReadAllBytes("GameData/StateFunding/" + path));
+            Image.LoadImage(File.ReadAllBytes(KSPUtil.ApplicationRootPath + "GameData/StateFunding/" + path));
         }
 
         public override int getWidth()

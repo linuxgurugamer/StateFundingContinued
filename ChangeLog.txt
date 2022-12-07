@@ -136,3 +136,6 @@ Adoption by Linuxgurugamer
 0.6.18.3
 	Thanks to github user @Alohacajun for this:
 		Added RealAntennas alias
+
+0.6.18.4
+	Fixed path for loading files (broken by new launcher)

@@ -12,7 +12,7 @@ namespace StateFunding
 
         public static void LoadAliases()
         {
-            ConfigNode AliasConfig = ConfigNode.Load("GameData/StateFunding/data/modulealiases.settings");
+            ConfigNode AliasConfig = ConfigNode.Load(KSPUtil.ApplicationRootPath+"GameData/StateFunding/data/modulealiases.settings");
             ModuleAliases = AliasConfig.GetNode("AliasConfig").GetNodes();
         }
 

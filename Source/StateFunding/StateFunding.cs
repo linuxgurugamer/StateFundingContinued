@@ -40,7 +40,7 @@ namespace StateFunding
         {
             Governments = new List<Government>();
 
-            ConfigNode GovConfig = ConfigNode.Load("GameData/StateFunding/data/governments.settings");
+            ConfigNode GovConfig = ConfigNode.Load(KSPUtil.ApplicationRootPath + "GameData/StateFunding/data/governments.settings");
             ConfigNode[] GovItems = GovConfig.GetNode("Governments").GetNodes();
             for (var i = 0; i < GovItems.Length; i++)
             {
