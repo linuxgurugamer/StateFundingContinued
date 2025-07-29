@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace StateFunding
         }
         public override string GetInfo()
         {
-            return "ModuleStateFundingDisposable";
+            return "ModuleStateFundingDisposable"; // NO_LOCALIZATION
         }
         void Start()
         {
@@ -44,11 +45,11 @@ namespace StateFunding
             {
                 Events["ToggleExpendable"].active = false;
                 disposable = true;
-                Fields["disposable"].guiActive = false;
+                Fields[Localizer.Format("#LOC_StateFunding_disposable")].guiActive = false;
             } else
             if (HighLogic.LoadedSceneIsFlight)
             {
-                Fields["disposable"].guiActive = true;
+                Fields[Localizer.Format("#LOC_StateFunding_disposable")].guiActive = true;
             }
             UpdateExpendableGuiName();
         }

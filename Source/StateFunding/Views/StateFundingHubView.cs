@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 using StateFunding.Factors;
@@ -43,7 +44,7 @@ namespace StateFunding
             Window.setTop(100);
 
             this.addComponent(Window);
-            SideMenu.Add(new ViewButton("Current State", LoadCurrentState));
+            SideMenu.Add(new ViewButton(Localizer.Format("#LOC_StateFunding_Current_State"), LoadCurrentState));
             foreach (Factor factor in GameInstance.ActiveReview.factors)
             {
                 if (factor.View != null)
@@ -51,7 +52,7 @@ namespace StateFunding
                     SideMenu.Add(new ViewButton(factor.View.getSideMenuText(), LoadView(factor, GameInstance.ActiveReview)));
                 }
             }
-            SideMenu.Add(new ViewButton("Past Reviews", LoadPastReviews));
+            SideMenu.Add(new ViewButton(Localizer.Format("#LOC_StateFunding_Past_Reviews"), LoadPastReviews));
 
             for (var i = 0; i < SideMenu.ToArray().Length; i++)
             {

@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 
 namespace StateFunding
 {
@@ -24,35 +25,35 @@ namespace StateFunding
         {
             if (val <= 0.25)
             {
-                return "Very Low";
+                return Localizer.Format("#LOC_StateFunding_Very_Low");
             }
             else if (val <= 0.5)
             {
-                return "Low";
+                return Localizer.Format("#LOC_StateFunding_Low");
             }
             else if (val <= 1)
             {
-                return "Normal";
+                return Localizer.Format("#LOC_StateFunding_Normal");
             }
             else if (val <= 2)
             {
-                return "High";
+                return Localizer.Format("#LOC_StateFunding_High");
             }
 
-            return "Very High";
+            return Localizer.Format("#LOC_StateFunding_Very_High");
         }
 
         public string GetGameplayDescription()
         {
-            return "GDP: " + gdp.ToString("#,##0") + "\n" +
-              "Yearly Budget: " + (gdp * budget).ToString("#,##0") + "\n" +
-              "Budget Periods Per year: " + budgetPeriodsPerYear.ToString() + "\n" +
-              "Starting PO: " + startingPO + "\n" +
-              "Starting SC: " + startingSC + "\n" +
-              "State Reward: " + modifierLexicon(scModifier) + "\n" +
-              "State Penalty: " + modifierLexicon(scPenaltyModifier) + "\n" +
-              "Public Reward: " + modifierLexicon(poModifier) + " \n" +
-              "Public Penalty: " + modifierLexicon(poPenaltyModifier) + " \n";
+            return Localizer.Format("#LOC_StateFunding_GDP") + " " + gdp.ToString("#,##0") + "\n" +
+              Localizer.Format("#LOC_StateFunding_Yearly_Budget") + " " + (gdp * budget).ToString("#,##0") + "\n" +
+              Localizer.Format("#LOC_StateFunding_Budget_Periods_Per_year") + " " + budgetPeriodsPerYear.ToString() + "\n" +
+              Localizer.Format("#LOC_StateFunding_Starting_PO") + " " + startingPO + "\n" +
+              Localizer.Format("#LOC_StateFunding_Starting_SC") + " " + startingSC + "\n" +
+              Localizer.Format("#LOC_StateFunding_State_Reward") + " " + modifierLexicon(scModifier) + "\n" +
+              Localizer.Format("#LOC_StateFunding_State_Penalty") + " " + modifierLexicon(scPenaltyModifier) + "\n" +
+              Localizer.Format("#LOC_StateFunding_Public_Reward") + " " + modifierLexicon(poModifier) + " \n" +
+              Localizer.Format("#LOC_StateFunding_Public_Penalty") + " " + modifierLexicon(poPenaltyModifier) + " \n";
         }
 
     }

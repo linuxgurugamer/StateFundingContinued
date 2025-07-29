@@ -1,4 +1,5 @@
-﻿
+
+using KSP.Localization;
 using StateFunding.Factors.Views;
 using StateFunding.ViewComponents;
 using System.Collections.Generic;
@@ -7,11 +8,11 @@ namespace StateFunding.Factors
 {
     public class MiningRigsFactor : Factor
     {
-        public override string FactorName() { return "MiningRigsFactor"; }
+        public override string FactorName() { return "MiningRigsFactor"; } // NO_LOCALIZATION
         public override int modSC => variables.modSCMiningRig;
         public override IFactorView View => ((IFactorView)new StateFundingHubMiningView());
 
-        public static string miningRigs = "miningRigs";
+        public static string miningRigs = "miningRigs"; // NO_LOCALIZATION
 
         public MiningRigsFactor(FactorVariables factorVariables) : base(factorVariables)
         {
@@ -28,7 +29,7 @@ namespace StateFunding.Factors
         {
             return new List<ViewSummaryRow>()
             {
-                new ViewSummaryRow("Active Mining Rigs: " + (int)variables.miningRigs, 0, variables.modSCMiningRig)
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Active_Mining_Rigs") + " "+ (int)variables.miningRigs, 0, variables.modSCMiningRig)
             };
         }
     }

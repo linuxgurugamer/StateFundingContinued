@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 using StateFunding.Factors;
@@ -156,12 +157,12 @@ namespace StateFunding
         public string GetSummaryText()
         {
             //InstanceData Inst = StateFundingGlobal.fetch.GameInstance;
-            string returnText = "# Review for Quarter: " + year + "\n\n" +
-                                "Funding: " + funds + "\n\n" +
-                                "Public Opinion: " + po + "\n" +
-                                "State Confidence: " + sc + "\n" +
-                                "Public Opinion After Modifiers & Decay: " + finalPO + "\n" +
-                                "State Confidence After Modifiers & Decay: " + finalSC;
+            string returnText = Localizer.Format("#LOC_StateFunding_Review_for_Quarter") + " " + year + "\n\n" +
+                                Localizer.Format("#LOC_StateFunding_Funding") + " " + funds + "\n\n" +
+                                Localizer.Format("#LOC_StateFunding_Public_Opinion") + " " + po + "\n" +
+                                Localizer.Format("#LOC_StateFunding_State_Confidence") + " " + sc + "\n" +
+                                Localizer.Format("#LOC_StateFunding_Public_Opinion_After_Modi") + " " + finalPO + "\n" +
+                                Localizer.Format("#LOC_StateFunding_State_Confidence_After_Mo") + " " + finalSC;
             return returnText;
         }
 
@@ -172,7 +173,7 @@ namespace StateFunding
             {
                 rows.AddRange(factor.GetSummaryRow());
             }
-            rows.Add(new ViewSummaryRow("Total: ", factors.Sum(x => x.modPO), factors.Sum(x => x.modSC)));
+            rows.Add(new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Total"), factors.Sum(x => x.modPO), factors.Sum(x => x.modSC)));
             return rows;
         }
     }

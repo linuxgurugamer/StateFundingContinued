@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 using StateFunding.ViewComponents;
@@ -24,14 +25,14 @@ namespace StateFunding
 
         private void createWindow()
         {
-            Window = new ViewWindow("Review");
+            Window = new ViewWindow(Localizer.Format("#LOC_StateFunding_Review"));
             Window.setMargins(300, 100);
 
-            Image = new ViewImage("assets/kerbalfunding.jpg");
+            Image = new ViewImage("assets/kerbalfunding.jpg"); // NO_LOCALIZATION
             Image.setRelativeTo(Window);
             Image.setPercentWidth(100);
 
-            Label = new ViewLabel("Could be worse.");
+            Label = new ViewLabel(Localizer.Format("#LOC_StateFunding_Could_be_worse"));
             Label.setRelativeTo(Image);
             Label.setPercentWidth(80);
             Label.setPercentHeight(20);
@@ -40,7 +41,7 @@ namespace StateFunding
             Label.setFontSize(18);
             Label.setColor(Color.white);
 
-            Confirm = new ViewButton("Ok", OnConfirm);
+            Confirm = new ViewButton(Localizer.Format("#LOC_StateFunding_Ok_DUP1"), OnConfirm);
             Confirm.setRelativeTo(Window);
             Confirm.setWidth(100);
             Confirm.setHeight(30);

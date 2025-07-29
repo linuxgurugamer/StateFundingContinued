@@ -1,4 +1,5 @@
-﻿
+
+using KSP.Localization;
 using System;
 using System.IO;
 using System.Collections;
@@ -19,18 +20,18 @@ namespace StateFunding
     {
         public override string Title { get { return ""; } } // Column header
         public override GameParameters.GameMode GameMode { get { return GameParameters.GameMode.ANY; } }
-        public override string Section { get { return "State Funding"; } }
-        public override string DisplaySection { get { return "State Funding"; } }
+        public override string Section { get { return Localizer.Format("#LOC_StateFunding_State_Funding"); } }
+        public override string DisplaySection { get { return Localizer.Format("#LOC_StateFunding_State_Funding"); } }
         public override int SectionOrder { get { return 1; } }
         public override bool HasPresets { get { return false; } }
 
 
         [GameParameters.CustomParameterUI("Enabled", 
-            toolTip = "Use this to disable mod in existing game")]
+            toolTip = "#LOC_StateFunding_Use_this_to_disable_mod_i")]
         public bool enabled = true;
 
         [GameParameters.CustomIntParameterUI("Budget Periods Per Year", minValue = 1, maxValue = 66, stepSize = 1,
-            toolTip = "(a Kerbin year is approximately 66 months")]
+            toolTip = "#LOC_StateFunding_a_Kerbin_year_is_approxim")]
         public int budgetPeriodsPerYear = 4;
 
         [GameParameters.CustomParameterUI("Stop warp on new budget period")]
@@ -42,7 +43,7 @@ namespace StateFunding
         // Following strange code is to work around a bugin the CustomFloatParameterUI
         public float convergingRate = 0.5f;
         [GameParameters.CustomFloatParameterUI("Decay Rate (%)", asPercentage = false, displayFormat = "N0", minValue = 0, maxValue = 100, stepCount = 1,
-                    toolTip = "The higher this is, the faster the Public Opinion and State Confidence will erode")]
+                    toolTip = "#LOC_StateFunding_The_higher_this_is_the_fa")]
         public float ConvergingRate
         {
             get { return convergingRate * 100f; }
@@ -51,7 +52,7 @@ namespace StateFunding
 
         // Following strange code is to work around a bugin the CustomFloatParameterUI
         [GameParameters.CustomFloatParameterUI("Multiplier", asPercentage = false, displayFormat = "0.0", minValue = 0.1f, maxValue = 2f, stepCount = 21,
-                    toolTip = "Multiplier applied to the base value")]
+                    toolTip = "#LOC_StateFunding_Multiplier_applied_to_the")]
         public float multiplier = 1f;
 
 

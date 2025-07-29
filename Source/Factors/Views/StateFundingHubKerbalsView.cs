@@ -1,8 +1,6 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+using KSP.Localization;
 using StateFunding.Factors.Views;
+using UnityEngine;
 
 namespace StateFunding.Factors
 {
@@ -10,12 +8,12 @@ namespace StateFunding.Factors
     {
         public string getSideMenuText()
         {
-            return "Kerbals";
+            return Localizer.Format("#LOC_StateFunding_Kerbals");
         }
 
         public void draw(View Vw, ViewWindow Window, Review review)
         {
-            Window.title = "Kerbals";
+            Window.title = Localizer.Format("#LOC_StateFunding_Kerbals");
 
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
@@ -24,13 +22,13 @@ namespace StateFunding.Factors
                 return;
             }
 
-            string Description = "You Love Kerbals, I Love Kerbals, Kerbals Love Kerbals. Just one of those facts of life. " +
-              "So it goes without saying, having Kerbals actively on missions increases Public Opinion. " +
-              "The more Kerbals you have in flight the more Public Opinion you will garner, but be careful, " +
-              "a stranded Kerbal is as bad as a dead Kerbal and will hurt public opinion until they are " +
-              "rescued. A qualified \"Stranded Kerbal\" is one that is in a vessel without fuel/energy, a science lab, " +
-              "or a mining rig. They are floating without reason to be there. A kerbal will not be considered stranded unless it's " +
-              "been on the current mission for at least 2 years.";
+            string Description = Localizer.Format("#LOC_StateFunding_You_Love_Kerbals_I_Love_K") +
+              Localizer.Format("#LOC_StateFunding_So_it_goes_without_saying") +
+              Localizer.Format("#LOC_StateFunding_The_more_Kerbals_you_have") +
+              Localizer.Format("#LOC_StateFunding_a_stranded_Kerbal_is_as_b") +
+              Localizer.Format("#LOC_StateFunding_rescued_A_qualified_Stran") +
+              Localizer.Format("#LOC_StateFunding_or_a_mining_rig_They_are_") +
+              Localizer.Format("#LOC_StateFunding_been_on_the_current_missi");
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -42,7 +40,8 @@ namespace StateFunding.Factors
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel ActiveKerbals = new ViewLabel("Active Kerbals: " + review.variables.activeKerbals + ". Stranded Kerbals: " + review.variables.strandedKerbals + ".");
+            ViewLabel ActiveKerbals = new ViewLabel(Localizer.Format("#LOC_StateFunding_Active_Kerbals") + " " + review.variables.activeKerbals +
+                Localizer.Format("#LOC_StateFunding_Stranded_Kerbals_DUP1") + " " + review.variables.strandedKerbals + ".");
             ActiveKerbals.setRelativeTo(Window);
             ActiveKerbals.setLeft(140);
             ActiveKerbals.setTop(130);
@@ -69,16 +68,16 @@ namespace StateFunding.Factors
             {
                 ProtoCrewMember Kerb = Kerbals[i];
 
-                string state = "Active";
+                string state = Localizer.Format("#LOC_StateFunding_Active");
                 Color color = Color.green;
                 if (KerbalHelper.IsStranded(Kerb))
                 {
-                    state = "Stranded";
+                    state = Localizer.Format("#LOC_StateFunding_Stranded");
                     color = Color.white;
                 }
                 else if (KerbalHelper.QualifiedStranded(Kerb))
                 {
-                    state = "Active [Will be Stranded In " + KerbalHelper.TimeToStranded(Kerb) + " Days!]";
+                    state = Localizer.Format("#LOC_StateFunding_Active_Will_be_Stranded_I") + KerbalHelper.TimeToStranded(Kerb) + Localizer.Format("#LOC_StateFunding_Days");
                     color = Color.yellow;
                 }
 

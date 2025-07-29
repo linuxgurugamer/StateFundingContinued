@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using KSP.Localization;
+using UnityEngine;
 using StateFunding.Factors.Views;
 using StateFunding.Factors;
 
@@ -8,12 +9,12 @@ namespace StateFunding
     {
         public string getSideMenuText()
         {
-            return "Science Stations";
+            return Localizer.Format("#LOC_StateFunding_Science_Stations");
         }
 
         public void draw(View Vw, ViewWindow Window, Review review)
         {
-            Window.title = "Science Stations";
+            Window.title = Localizer.Format("#LOC_StateFunding_Science_Stations");
 
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
@@ -22,10 +23,10 @@ namespace StateFunding
                 return;
             }
 
-            string Description = "Below is a list of existing Science Sations. Having more Science Stations increases State " +
-              "Confidence. Landed stations on other Celestial Bodies counts higher than Orbiting Stations. " +
-              "To have a qualified Science Station you must have an antenna, a science lab, be able to generate " +
-              "power, and have at least one Kerbal on board.";
+            string Description = Localizer.Format("#LOC_StateFunding_Below_is_a_list_of_existi_DUP4") +
+              Localizer.Format("#LOC_StateFunding_Confidence_Landed_station") +
+              Localizer.Format("#LOC_StateFunding_To_have_a_qualified_Scien") +
+              Localizer.Format("#LOC_StateFunding_power_and_have_at_least_o");
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -37,8 +38,8 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Orbiting Stations: " + (int)review.variables.orbitalScienceStations + ". " +
-              "Landed Stations: " + (int)review.variables.planetaryScienceStations + ".");
+            ViewLabel TotalCoverage = new ViewLabel(Localizer.Format("#LOC_StateFunding_Orbiting_Stations") + " " + (int)review.variables.orbitalScienceStations + ". " +
+              Localizer.Format("#LOC_StateFunding_Landed_Stations") + " " + (int)review.variables.planetaryScienceStations + ".");
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);
@@ -69,16 +70,16 @@ namespace StateFunding
 
                 if (ScienceStation.Landed)
                 {
-                    action = "Landed At";
+                    action = Localizer.Format("#LOC_StateFunding_Landed_At");
                     target = ScienceStation.mainBody.GetName();
                 }
                 else
                 {
-                    action = "Orbiting";
+                    action = Localizer.Format("#LOC_StateFunding_Orbiting");
                     target = ScienceStation.GetOrbit().referenceBody.GetName();
                 }
 
-                string label = ScienceStation.GetName() + " is " + action + " " + target;
+                string label = ScienceStation.GetName() + Localizer.Format("#LOC_StateFunding_is") + " " + action + " " + target;
 
                 ViewLabel StationLabel = new ViewLabel(label);
                 StationLabel.setRelativeTo(StationsScroll);

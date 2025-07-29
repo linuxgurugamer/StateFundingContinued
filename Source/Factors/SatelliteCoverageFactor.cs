@@ -1,4 +1,5 @@
-﻿using StateFunding.Factors.Views;
+using KSP.Localization;
+using StateFunding.Factors.Views;
 using StateFunding.ViewComponents;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ namespace StateFunding.Factors
 {
     public class SatelliteCoverageFactor : Factor
     {
-        public override string FactorName() { return "SatelliteCoverageFactor"; }
+        public override string FactorName() { return "SatelliteCoverageFactor"; } // NO_LOCALIZATION
         public override int modSC => variables.modSCSatellite;
         public override IFactorView View => ((IFactorView)new StateFundingHubCoverageView());
 
@@ -99,7 +100,7 @@ namespace StateFunding.Factors
         {
             return new List<ViewSummaryRow>()
             {
-                new ViewSummaryRow("Satellite Coverage: " + Math.Round(variables.satelliteCoverage * 100) + "%", 0, variables.modSCSatellite)
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Satellite_Coverage") + " "+ Math.Round(variables.satelliteCoverage * 100) + "%", 0, variables.modSCSatellite)
             };
         }
     }

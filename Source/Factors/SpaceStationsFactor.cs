@@ -1,4 +1,5 @@
-﻿using StateFunding.Factors.Views;
+using KSP.Localization;
+using StateFunding.Factors.Views;
 using StateFunding.ViewComponents;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace StateFunding.Factors
 {
     public class SpaceStationsFactor : Factor
     {
-        public override string FactorName() { return "SpaceStationsFactor"; }
+        public override string FactorName() { return "SpaceStationsFactor"; } // NO_LOCALIZATION
         public override int modPO => variables.SpaceStations.Sum(x => x.po);
         public override int modSC => variables.SpaceStations.Sum(x => x.sc);
         public override IFactorView View => ((IFactorView)new StateFundingHubStationsView());
@@ -40,10 +41,10 @@ namespace StateFunding.Factors
                 SpcStationReport.crewCapacity = VesselHelper.GetCrewCapactiy(SpcStation);
                 SpcStationReport.dockedVessels = VesselHelper.GetDockedVesselsCount(SpcStation);
                 SpcStationReport.dockingPorts = VesselHelper.GetDockingPorts(SpcStation).Length;
-                SpcStationReport.drill = VesselHelper.VesselHasModuleAlias(SpcStation, "Drill");
-                SpcStationReport.scienceLab = VesselHelper.VesselHasModuleAlias(SpcStation, "ScienceLab");
-                SpcStationReport.fuel = VesselHelper.GetResourceCount(SpcStation, "LiquidFuel");
-                SpcStationReport.ore = VesselHelper.GetResourceCount(SpcStation, "Ore");
+                SpcStationReport.drill = VesselHelper.VesselHasModuleAlias(SpcStation, "Drill"); // NO_LOCALIZATION
+                SpcStationReport.scienceLab = VesselHelper.VesselHasModuleAlias(SpcStation, "ScienceLab"); // NO_LOCALIZATION
+                SpcStationReport.fuel = VesselHelper.GetResourceCount(SpcStation, "LiquidFuel"); // NO_LOCALIZATION
+                SpcStationReport.ore = VesselHelper.GetResourceCount(SpcStation, "Ore"); // NO_LOCALIZATION
                 SpcStationReport.onAsteroid = VesselHelper.OnAsteroid(SpcStation);
 
                 if (SpcStation.Landed)
@@ -92,7 +93,7 @@ namespace StateFunding.Factors
         {
             return new List<ViewSummaryRow>()
             {
-                new ViewSummaryRow("Space Stations: " + (int)variables.SpaceStations.Length, variables.SpaceStations.Sum(x => x.po), variables.SpaceStations.Sum(x => x.sc))
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Space_Stations") + " "+ (int)variables.SpaceStations.Length, variables.SpaceStations.Sum(x => x.po), variables.SpaceStations.Sum(x => x.sc))
             };
         }
     }

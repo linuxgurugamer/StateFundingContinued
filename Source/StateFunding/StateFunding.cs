@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KSP.Localization;
 
 namespace StateFunding
 {
@@ -47,8 +48,8 @@ namespace StateFunding
                 ConfigNode GovItem = GovItems[i];
                 Government Gov = new Government();
 
-                Gov.name = GovItem.GetValue("name");
-                Gov.longName = GovItem.GetValue("longName");
+                Gov.name = Localizer.Format(GovItem.GetValue("name"));
+                Gov.longName = Localizer.Format(GovItem.GetValue("longName"));
                 Gov.poModifier = float.Parse(GovItem.GetValue("poModifier"));
                 Gov.poPenaltyModifier = float.Parse(GovItem.GetValue("poPenaltyModifier"));
                 Gov.scModifier = float.Parse(GovItem.GetValue("scModifier"));
@@ -60,7 +61,7 @@ namespace StateFunding
                 Gov.gdp = int.Parse(GovItem.GetValue("gdp"));
                 if (Gov.budget > 1)
                     Gov.budget = Gov.budget / Gov.gdp;
-                Gov.description = GovItem.GetValue("description");
+                Gov.description = Localizer.Format(GovItem.GetValue("description"));
 
                 Governments.Add(Gov);
 
@@ -217,6 +218,7 @@ namespace StateFunding
             GameInstance.ActiveReview.variables.kerbalDeaths++;
         }
 
+        #region  NO_LOCALIZATION
         public void OnCrash(EventReport Evt)
         {
             Log.Info("OnCrash, part: " + Evt.origin.partInfo.title);
@@ -269,3 +271,4 @@ namespace StateFunding
     }
 }
 
+#endregion

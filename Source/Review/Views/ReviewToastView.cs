@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -27,7 +28,7 @@ namespace StateFunding
             Toast.setBottom(40);
             Toast.setRight(10);
 
-            ToastLabel = new ViewLabel("New Review Report Available");
+            ToastLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_New_Review_Report_Availab"));
             ToastLabel.setRelativeTo(Toast);
             ToastLabel.setWidth(290);
             ToastLabel.setHeight(90);
@@ -35,14 +36,14 @@ namespace StateFunding
             ToastLabel.setTop(10);
             ToastLabel.setColor(Color.white);
 
-            OpenReview = new ViewButton("View Review", OnOpenReview);
+            OpenReview = new ViewButton(Localizer.Format("#LOC_StateFunding_View_Review"), OnOpenReview);
             OpenReview.setRelativeTo(Toast);
             OpenReview.setWidth(90);
             OpenReview.setHeight(35);
             OpenReview.setRight(10);
             OpenReview.setTop(10);
 
-            Dismiss = new ViewButton("Dismiss", OnDismiss);
+            Dismiss = new ViewButton(Localizer.Format("#LOC_StateFunding_Dismiss"), OnDismiss);
             Dismiss.setRelativeTo(Toast);
             Dismiss.setWidth(90);
             Dismiss.setHeight(35);

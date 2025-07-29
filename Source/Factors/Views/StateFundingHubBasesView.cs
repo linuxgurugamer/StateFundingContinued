@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ namespace StateFunding.Factors.Views
     {
         public string getSideMenuText()
         {
-            return "Bases";
+            return Localizer.Format("#LOC_StateFunding_Bases_DUP1");
         }
 
         public void draw(View Vw, ViewWindow Window, Review review)
         {
-            Window.title = "Bases";
+            Window.title = Localizer.Format("#LOC_StateFunding_Bases_DUP1");
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {
@@ -23,10 +24,10 @@ namespace StateFunding.Factors.Views
                 return;
             }
 
-            string Description = "Below is a list of existing Bases. Vessels that are Bases should be labeled as " +
-                                 "such, be landed on a body other than the home planet, and be able to generate power. Bases increase State Confidence " +
-                                 "as well as Public Opinion. Bases are scored by the following criteria: Total Fuel (SC), Total Ore (SC), Crew (PO), Crew Capacity " +
-                                 "(SC), Docking Port Count (SC), Docked Vessels (PO), if it has a science lab (SC/PO), and if it has a drill (SC/PO).";
+            string Description = Localizer.Format("#LOC_StateFunding_Below_is_a_list_of_existi") +
+                                 Localizer.Format("#LOC_StateFunding_such_be_landed_on_a_body_") +
+                                 Localizer.Format("#LOC_StateFunding_as_well_as_Public_Opinion") +
+                                 Localizer.Format("#LOC_StateFunding_SC_Docking_Port_Count_SC_");
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -38,7 +39,7 @@ namespace StateFunding.Factors.Views
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalBases = new ViewLabel("Total Bases: " + review.variables.Bases.Length);
+            ViewLabel TotalBases = new ViewLabel(Localizer.Format("#LOC_StateFunding_Total_Bases") + " " + review.variables.Bases.Length);
             TotalBases.setRelativeTo(Window);
             TotalBases.setLeft(140);
             TotalBases.setTop(130);
@@ -79,7 +80,7 @@ namespace StateFunding.Factors.Views
             Box.setColor(Color.white);
             parent.Components.Add(Box);
 
-            string label = "[" + Base.name + " is Landed At " + Base.entity + "]";
+            string label = "[" + Base.name + Localizer.Format("#LOC_StateFunding_is_Landed_At") + " " + Base.entity + "]";
             ViewLabel BaseLabel = new ViewLabel(label);
             BaseLabel.setRelativeTo(Box);
             BaseLabel.setTop(5);
@@ -89,7 +90,7 @@ namespace StateFunding.Factors.Views
             BaseLabel.setColor(Color.green);
             parent.Components.Add(BaseLabel);
 
-            ViewLabel FuelLabel = new ViewLabel("Fuel: " + Base.fuel);
+            ViewLabel FuelLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Fuel") + " " + Base.fuel);
             FuelLabel.setRelativeTo(Box);
             FuelLabel.setTop(25);
             FuelLabel.setLeft(5);
@@ -98,7 +99,7 @@ namespace StateFunding.Factors.Views
             FuelLabel.setColor(Color.white);
             parent.Components.Add(FuelLabel);
 
-            ViewLabel OreLabel = new ViewLabel("Ore: " + Base.ore);
+            ViewLabel OreLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Ore") + " " + Base.ore);
             OreLabel.setRelativeTo(Box);
             OreLabel.setTop(45);
             OreLabel.setLeft(5);
@@ -107,7 +108,7 @@ namespace StateFunding.Factors.Views
             OreLabel.setColor(Color.white);
             parent.Components.Add(OreLabel);
 
-            ViewLabel CrewLabel = new ViewLabel("Crew: " + Base.crew);
+            ViewLabel CrewLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Crew") + " " + Base.crew);
             CrewLabel.setRelativeTo(Box);
             CrewLabel.setTop(65);
             CrewLabel.setLeft(5);
@@ -116,7 +117,7 @@ namespace StateFunding.Factors.Views
             CrewLabel.setColor(Color.white);
             parent.Components.Add(CrewLabel);
 
-            ViewLabel CrewCapacityLabel = new ViewLabel("Crew Capacity: " + Base.crewCapacity);
+            ViewLabel CrewCapacityLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Crew_Capacity") + " " + Base.crewCapacity);
             CrewCapacityLabel.setRelativeTo(Box);
             CrewCapacityLabel.setTop(85);
             CrewCapacityLabel.setLeft(5);
@@ -125,7 +126,7 @@ namespace StateFunding.Factors.Views
             CrewCapacityLabel.setColor(Color.white);
             parent.Components.Add(CrewCapacityLabel);
 
-            ViewLabel DockingPortsLabel = new ViewLabel("Docking Ports: " + Base.dockingPorts);
+            ViewLabel DockingPortsLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Docking_Ports") + " " + Base.dockingPorts);
             DockingPortsLabel.setRelativeTo(Box);
             DockingPortsLabel.setTop(25);
             DockingPortsLabel.setLeft(155);
@@ -134,7 +135,7 @@ namespace StateFunding.Factors.Views
             DockingPortsLabel.setColor(Color.white);
             parent.Components.Add(DockingPortsLabel);
 
-            ViewLabel DockedVesselsLabel = new ViewLabel("Docked Vessels: " + Base.dockedVessels);
+            ViewLabel DockedVesselsLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Docked_Vessels") + " " + Base.dockedVessels);
             DockedVesselsLabel.setRelativeTo(Box);
             DockedVesselsLabel.setTop(45);
             DockedVesselsLabel.setLeft(155);
@@ -143,7 +144,7 @@ namespace StateFunding.Factors.Views
             DockedVesselsLabel.setColor(Color.white);
             parent.Components.Add(DockedVesselsLabel);
 
-            ViewLabel ScienceLabLabel = new ViewLabel("Science Lab: " + Base.scienceLab);
+            ViewLabel ScienceLabLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Science_Lab") + " " + Base.scienceLab);
             ScienceLabLabel.setRelativeTo(Box);
             ScienceLabLabel.setTop(65);
             ScienceLabLabel.setLeft(155);
@@ -152,7 +153,7 @@ namespace StateFunding.Factors.Views
             ScienceLabLabel.setColor(Color.white);
             parent.Components.Add(ScienceLabLabel);
 
-            ViewLabel HasDrillLabel = new ViewLabel("Has Drill: " + Base.drill);
+            ViewLabel HasDrillLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Has_Drill") + " " + Base.drill);
             HasDrillLabel.setRelativeTo(Box);
             HasDrillLabel.setTop(85);
             HasDrillLabel.setLeft(155);
@@ -161,7 +162,7 @@ namespace StateFunding.Factors.Views
             HasDrillLabel.setColor(Color.white);
             parent.Components.Add(HasDrillLabel);
 
-            ViewLabel SCLabel = new ViewLabel("PO: " + Base.po);
+            ViewLabel SCLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_PO") + " " + Base.po);
             SCLabel.setRelativeTo(Box);
             SCLabel.setTop(25);
             SCLabel.setLeft(310);
@@ -170,7 +171,7 @@ namespace StateFunding.Factors.Views
             SCLabel.setColor(Color.white);
             parent.Components.Add(SCLabel);
 
-            ViewLabel POLabel = new ViewLabel("SC: " + Base.sc);
+            ViewLabel POLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_SC") + " " + Base.sc);
             POLabel.setRelativeTo(Box);
             POLabel.setTop(45);
             POLabel.setLeft(310);

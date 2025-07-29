@@ -1,4 +1,5 @@
-﻿
+
+using KSP.Localization;
 using UnityEngine;
 
 namespace StateFunding.ViewComponents
@@ -21,7 +22,7 @@ namespace StateFunding.ViewComponents
 
             if(modPO != 0)
             {
-                poLabel = new ViewLabel("PO: " + modPO);
+                poLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_PO") + modPO);
                 poLabel.setRelativeTo(this);
                 poLabel.setLeft(310);
                 poLabel.setTop(0);
@@ -32,7 +33,7 @@ namespace StateFunding.ViewComponents
 
             if (modSc != 0)
             {
-                scLabel = new ViewLabel("SC: " + modSc);
+                scLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_SC") + modSc);
                 scLabel.setRelativeTo(this);
                 scLabel.setLeft(410);
                 scLabel.setTop(0);

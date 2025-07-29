@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace StateFunding
 
         public static void draw(View Vw, ViewWindow Window)
         {
-            Window.title = "Past Reviews";
+            Window.title = Localizer.Format("#LOC_StateFunding_Past_Reviews");
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
             {

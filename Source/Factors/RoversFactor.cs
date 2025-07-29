@@ -1,4 +1,5 @@
-﻿
+
+using KSP.Localization;
 using StateFunding.Factors.Views;
 using StateFunding.ViewComponents;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ namespace StateFunding.Factors
 {
     public class RoversFactor : Factor
     {
-        public override string FactorName() { return "RoversFactor"; }
+        public override string FactorName() { return "RoversFactor"; } // NO_LOCALIZATION
         public override int modPO => variables.modPORovers;
         public override IFactorView View => ((IFactorView)new StateFundingHubRoversView());
         
@@ -28,7 +29,7 @@ namespace StateFunding.Factors
         {
             return new List<ViewSummaryRow>()
             {
-                new ViewSummaryRow("Rovers: " + variables.rovers, variables.modPORovers, 0)
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Rovers") + " " + variables.rovers, variables.modPORovers, 0)
             };
         }
     }

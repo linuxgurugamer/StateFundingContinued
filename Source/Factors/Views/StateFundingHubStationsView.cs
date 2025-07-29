@@ -1,4 +1,5 @@
-﻿using StateFunding.Factors;
+using KSP.Localization;
+using StateFunding.Factors;
 using StateFunding.Factors.Views;
 using UnityEngine;
 
@@ -8,12 +9,12 @@ namespace StateFunding
     {
         public string getSideMenuText()
         {
-            return "Space Stations";
+            return Localizer.Format("#LOC_StateFunding_Space_Stations_DUP1");
         }
 
         public void draw(View Vw, ViewWindow Window, Review review)
         {
-            Window.title = "Space Stations";
+            Window.title = Localizer.Format("#LOC_StateFunding_Space_Stations_DUP1");
 
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
@@ -22,11 +23,11 @@ namespace StateFunding
                 return;
             }
 
-            string Description = "Below is a list of existing Space Stations. Vessels that are Space Stations should be labeled as " +
-              "such, be in orbit, and must be able to generate their own power. Space Stations increase State Confidence as well as Public Opinion." +
-              "Space Stations are scored by the following criteria: Total Fuel (SC), Total Ore (SC), Crew (PO), Crew Capacity (SC), Docking " +
-              "Port Count (SC), Docked Vessels (PO) and if it has a science lab (SC/PO). If the Station is landed on an asteroid it will also " +
-              "get a bonus (PO). If you are on an asteroid you will also get a bonus for having a drill (SC/PO).";
+            string Description = Localizer.Format("#LOC_StateFunding_Below_is_a_list_of_existi_DUP3") +
+              Localizer.Format("#LOC_StateFunding_such_be_in_orbit_and_must") +
+              Localizer.Format("#LOC_StateFunding_Space_Stations_are_scored") +
+              Localizer.Format("#LOC_StateFunding_Port_Count_SC_Docked_Vess") +
+              Localizer.Format("#LOC_StateFunding_get_a_bonus_PO_If_you_are");
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -38,7 +39,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalStations = new ViewLabel("Total Stations: " + review.variables.SpaceStations.Length);
+            ViewLabel TotalStations = new ViewLabel(Localizer.Format("#LOC_StateFunding_Total_Stations") + " " + review.variables.SpaceStations.Length);
             TotalStations.setRelativeTo(Window);
             TotalStations.setLeft(140);
             TotalStations.setTop(130);
@@ -79,7 +80,7 @@ namespace StateFunding
             Box.setColor(Color.white);
             parent.Components.Add(Box);
 
-            string label = "[" + Station.name + " is Orbiting " + Station.entity + "]";
+            string label = "[" + Station.name + Localizer.Format("#LOC_StateFunding_is_Orbiting") + " " + Station.entity + "]";
             ViewLabel StationLabel = new ViewLabel(label);
             StationLabel.setRelativeTo(Box);
             StationLabel.setTop(5);
@@ -89,7 +90,7 @@ namespace StateFunding
             StationLabel.setColor(Color.green);
             parent.Components.Add(StationLabel);
 
-            ViewLabel FuelLabel = new ViewLabel("Fuel: " + Station.fuel);
+            ViewLabel FuelLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Fuel") + " " + Station.fuel);
             FuelLabel.setRelativeTo(Box);
             FuelLabel.setTop(25);
             FuelLabel.setLeft(5);
@@ -98,7 +99,7 @@ namespace StateFunding
             FuelLabel.setColor(Color.white);
             parent.Components.Add(FuelLabel);
 
-            ViewLabel OreLabel = new ViewLabel("Ore: " + Station.ore);
+            ViewLabel OreLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Ore") + " " + Station.ore);
             OreLabel.setRelativeTo(Box);
             OreLabel.setTop(45);
             OreLabel.setLeft(5);
@@ -107,7 +108,7 @@ namespace StateFunding
             OreLabel.setColor(Color.white);
             parent.Components.Add(OreLabel);
 
-            ViewLabel CrewLabel = new ViewLabel("Crew: " + Station.crew);
+            ViewLabel CrewLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Crew") + " " + Station.crew);
             CrewLabel.setRelativeTo(Box);
             CrewLabel.setTop(65);
             CrewLabel.setLeft(5);
@@ -116,7 +117,7 @@ namespace StateFunding
             CrewLabel.setColor(Color.white);
             parent.Components.Add(CrewLabel);
 
-            ViewLabel CrewCapacityLabel = new ViewLabel("Crew Capacity: " + Station.crewCapacity);
+            ViewLabel CrewCapacityLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Crew_Capacity") + " " + Station.crewCapacity);
             CrewCapacityLabel.setRelativeTo(Box);
             CrewCapacityLabel.setTop(85);
             CrewCapacityLabel.setLeft(5);
@@ -125,7 +126,7 @@ namespace StateFunding
             CrewCapacityLabel.setColor(Color.white);
             parent.Components.Add(CrewCapacityLabel);
 
-            ViewLabel DockingPortsLabel = new ViewLabel("Docking Ports: " + Station.dockingPorts);
+            ViewLabel DockingPortsLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Docking_Ports") + " " + Station.dockingPorts);
             DockingPortsLabel.setRelativeTo(Box);
             DockingPortsLabel.setTop(25);
             DockingPortsLabel.setLeft(155);
@@ -134,7 +135,7 @@ namespace StateFunding
             DockingPortsLabel.setColor(Color.white);
             parent.Components.Add(DockingPortsLabel);
 
-            ViewLabel DockedVesselsLabel = new ViewLabel("Docked Vessels: " + Station.dockedVessels);
+            ViewLabel DockedVesselsLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Docked_Vessels") + " " + Station.dockedVessels);
             DockedVesselsLabel.setRelativeTo(Box);
             DockedVesselsLabel.setTop(45);
             DockedVesselsLabel.setLeft(155);
@@ -143,7 +144,7 @@ namespace StateFunding
             DockedVesselsLabel.setColor(Color.white);
             parent.Components.Add(DockedVesselsLabel);
 
-            ViewLabel ScienceLabLabel = new ViewLabel("Science Lab: " + Station.scienceLab);
+            ViewLabel ScienceLabLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Science_Lab") + " " + Station.scienceLab);
             ScienceLabLabel.setRelativeTo(Box);
             ScienceLabLabel.setTop(65);
             ScienceLabLabel.setLeft(155);
@@ -152,7 +153,7 @@ namespace StateFunding
             ScienceLabLabel.setColor(Color.white);
             parent.Components.Add(ScienceLabLabel);
 
-            ViewLabel HasDrillLabel = new ViewLabel("Has Drill: " + Station.drill);
+            ViewLabel HasDrillLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_Has_Drill") + " " + Station.drill);
             HasDrillLabel.setRelativeTo(Box);
             HasDrillLabel.setTop(85);
             HasDrillLabel.setLeft(155);
@@ -161,7 +162,7 @@ namespace StateFunding
             HasDrillLabel.setColor(Color.white);
             parent.Components.Add(HasDrillLabel);
 
-            ViewLabel AsteroidLabel = new ViewLabel("On Asteroid: " + Station.onAsteroid);
+            ViewLabel AsteroidLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_On_Asteroid") + " " + Station.onAsteroid);
             AsteroidLabel.setRelativeTo(Box);
             AsteroidLabel.setTop(25);
             AsteroidLabel.setLeft(310);
@@ -170,7 +171,7 @@ namespace StateFunding
             AsteroidLabel.setColor(Color.white);
             parent.Components.Add(AsteroidLabel);
 
-            ViewLabel SCLabel = new ViewLabel("PO: " + Station.po);
+            ViewLabel SCLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_PO") + " " + Station.po);
             SCLabel.setRelativeTo(Box);
             SCLabel.setTop(45);
             SCLabel.setLeft(310);
@@ -179,7 +180,7 @@ namespace StateFunding
             SCLabel.setColor(Color.white);
             parent.Components.Add(SCLabel);
 
-            ViewLabel POLabel = new ViewLabel("SC: " + Station.sc);
+            ViewLabel POLabel = new ViewLabel(Localizer.Format("#LOC_StateFunding_SC") + " " + Station.sc);
             POLabel.setRelativeTo(Box);
             POLabel.setTop(65);
             POLabel.setLeft(310);

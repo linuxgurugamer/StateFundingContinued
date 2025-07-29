@@ -26,6 +26,7 @@ namespace StateFunding
         internal const string MODID = "StateFunding_NS";
         internal const string MODNAME = "State Funding";
 
+        #region NO_LOCALIZATION
         public void Start()
         {
             View = new StateFundingHubView();
@@ -64,7 +65,7 @@ namespace StateFunding
             ViewManager.removeView(View);
         }
 
-
+        #endregion
 
     }
 }

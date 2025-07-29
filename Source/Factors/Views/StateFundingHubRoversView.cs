@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using KSP.Localization;
+using UnityEngine;
 using StateFunding.Factors.Views;
 using StateFunding.Factors;
 
@@ -8,12 +9,12 @@ namespace StateFunding
     {
         public string getSideMenuText()
         {
-            return "Rovers";
+            return Localizer.Format("#LOC_StateFunding_Rovers_DUP1");
         }
 
         public void draw(View Vw, ViewWindow Window, Review review)
         {
-            Window.title = "Rovers";
+            Window.title = Localizer.Format("#LOC_StateFunding_Rovers_DUP1");
 
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
@@ -22,10 +23,10 @@ namespace StateFunding
                 return;
             }
 
-            string Description = "Below is a list of existing Rovers. Having more Rovers increases Public Opinion." +
-              "Vessels that are rovers should be labeled as a Rover. They should have at least 4 wheels but can have more." +
-              "If any wheels on the rover are broken they must be repaired. Rovers must has energy and be landed on a body other " +
-              "than the home planet (Kerbin in most cases) to count.";
+            string Description = Localizer.Format("#LOC_StateFunding_Below_is_a_list_of_existi_DUP2") +
+              Localizer.Format("#LOC_StateFunding_Vessels_that_are_rovers_s") +
+              Localizer.Format("#LOC_StateFunding_If_any_wheels_on_the_rove") +
+              Localizer.Format("#LOC_StateFunding_than_the_home_planet_Kerb");
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -37,7 +38,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalRovers = new ViewLabel("Total Rovers: " + review.variables.rovers);
+            ViewLabel TotalRovers = new ViewLabel(Localizer.Format("#LOC_StateFunding_Total_Rovers") + " " + review.variables.rovers);
             TotalRovers.setRelativeTo(Window);
             TotalRovers.setLeft(140);
             TotalRovers.setTop(130);
@@ -65,7 +66,7 @@ namespace StateFunding
                 Vessel Rover = Rovers[i];
                 //string target;
 
-                string label = Rover.GetName() + " is Landed at " + Rover.mainBody.GetName();
+                string label = Rover.GetName() + Localizer.Format("#LOC_StateFunding_is_Landed_at") + " " + Rover.mainBody.GetName();
 
                 ViewLabel RoverLabel = new ViewLabel(label);
                 RoverLabel.setRelativeTo(RoversScroll);

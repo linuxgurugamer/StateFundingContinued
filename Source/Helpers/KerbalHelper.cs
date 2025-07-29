@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace StateFunding
             while (Kerbals.MoveNext())
             {
                 ProtoCrewMember Kerbal = (ProtoCrewMember)Kerbals.Current;
-                if (Kerbal.rosterStatus.ToString() == "Assigned")
+                if (Kerbal.rosterStatus.ToString() == Localizer.Format("#LOC_StateFunding_Assigned"))
                 {
                     if (!KerbalHelper.IsStranded(Kerbal))
                     {
@@ -85,9 +86,9 @@ namespace StateFunding
             {
                 if (!VesselHelper.HasLiquidFuel(Vsl) || !VesselHelper.HasEnergy(Vsl))
                 {
-                    if (!VesselHelper.VesselHasModuleAlias(Vsl, "ScienceLab"))
+                    if (!VesselHelper.VesselHasModuleAlias(Vsl, "ScienceLab")) // NO_LOCALIZATION
                     {
-                        if (!VesselHelper.VesselHasModuleAlias(Vsl, "Drill"))
+                        if (!VesselHelper.VesselHasModuleAlias(Vsl, "Drill")) // NO_LOCALIZATION
                         {
                             return true;
                         }
@@ -125,7 +126,7 @@ namespace StateFunding
             while (Kerbals.MoveNext())
             {
                 ProtoCrewMember Kerbal = (ProtoCrewMember)Kerbals.Current;
-                if (Kerbal.rosterStatus.ToString() == "Assigned")
+                if (Kerbal.rosterStatus.ToString() == Localizer.Format("#LOC_StateFunding_Assigned"))
                 {
                     ReturnKerbals.Add(Kerbal);
                 }

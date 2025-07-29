@@ -1,4 +1,5 @@
-﻿using StateFunding.Factors.Views;
+using KSP.Localization;
+using StateFunding.Factors.Views;
 using StateFunding.ViewComponents;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace StateFunding.Factors
 {
     public class BasesFactor : Factor
     {
-        public override string FactorName() { return "BasesFactor"; }
+        public override string FactorName() { return "BasesFactor"; } // NO_LOCALIZATION
         public override int modPO => variables.Bases.Sum(x => x.po);
         public override int modSC => variables.Bases.Sum(x => x.sc);
         public override IFactorView View => new StateFundingHubBasesView();
@@ -42,10 +43,10 @@ namespace StateFunding.Factors
                 _BaseReport.crewCapacity = VesselHelper.GetCrewCapactiy(Base);
                 _BaseReport.dockedVessels = VesselHelper.GetDockedVesselsCount(Base);
                 _BaseReport.dockingPorts = VesselHelper.GetDockingPorts(Base).Length;
-                _BaseReport.drill = VesselHelper.VesselHasModuleAlias(Base, "Drill");
-                _BaseReport.scienceLab = VesselHelper.VesselHasModuleAlias(Base, "ScienceLab");
-                _BaseReport.fuel = VesselHelper.GetResourceCount(Base, "LiquidFuel");
-                _BaseReport.ore = VesselHelper.GetResourceCount(Base, "Ore");
+                _BaseReport.drill = VesselHelper.VesselHasModuleAlias(Base, "Drill"); // NO_LOCALIZATION
+                _BaseReport.scienceLab = VesselHelper.VesselHasModuleAlias(Base, "ScienceLab"); // NO_LOCALIZATION
+                _BaseReport.fuel = VesselHelper.GetResourceCount(Base, "LiquidFuel"); // NO_LOCALIZATION
+                _BaseReport.ore = VesselHelper.GetResourceCount(Base, "Ore"); // NO_LOCALIZATION
                 _BaseReport.entity = Base.mainBody.name;
 
                 _BaseReport.po = 0;
@@ -81,7 +82,7 @@ namespace StateFunding.Factors
         {
             return new List<ViewSummaryRow>()
             {
-                new ViewSummaryRow("Bases: " + variables.Bases.Length, variables.Bases.Sum(x => x.po), variables.Bases.Sum(x => x.sc))
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Bases") + variables.Bases.Length, variables.Bases.Sum(x => x.po), variables.Bases.Sum(x => x.sc))
             };
         }
     }

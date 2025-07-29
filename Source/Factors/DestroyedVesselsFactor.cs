@@ -1,4 +1,5 @@
-﻿using StateFunding.ViewComponents;
+using KSP.Localization;
+using StateFunding.ViewComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace StateFunding.Factors
 {
     class DestroyedVesselsFactor : Factor
     {
-        public override string FactorName() { return "DestroyedVesselsFactor"; }
+        public override string FactorName() { return "DestroyedVesselsFactor"; } // NO_LOCALIZATION
         public override int modSC => variables.modSCDestroyedVessels;
 
         public DestroyedVesselsFactor(FactorVariables factorVariables) : base(factorVariables)
@@ -24,7 +25,7 @@ namespace StateFunding.Factors
         {
             return new List<ViewSummaryRow>()
             {
-                new ViewSummaryRow("Vessels Destroyed: " + variables.vesselsDestroyed, 0, variables.modSCDestroyedVessels)
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Vessels_Destroyed") + variables.vesselsDestroyed, 0, variables.modSCDestroyedVessels)
             };
         }
     }

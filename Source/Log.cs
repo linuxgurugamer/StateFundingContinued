@@ -21,7 +21,7 @@ namespace StateFunding
 
         public static LEVEL level = LEVEL.INFO;
 
-        private static readonly String PREFIX = "StateFunding" + ": ";
+        private static readonly String PREFIX = "StateFunding" + ": "; // NO_LOCALIZATION
 
         public static LEVEL GetLevel()
         {

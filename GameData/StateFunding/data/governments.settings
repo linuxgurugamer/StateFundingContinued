@@ -2,8 +2,8 @@
 {
 	Item
 	{
-		name = USK
-		longName = United States of Kirba
+		name = #LOC_StateFunding_USK_name
+		longName = #LOC_StateFunding_USK_longName
 		poModifier = 2
 		poPenaltyModifier = 4
 		scModifier = 0.5
@@ -13,12 +13,12 @@
 		budget = 0.2
 		gdp = 80000000
 		budgetPeriodsPerYear = 8
-		description = For the people, by the people. At least that's what they say. With the USK the peoples opinions have a greater impact on your funding. Their hearts pour out for Kerbals, not robots and machines. Because of this, the more Kerbals on missions the more interested the people of USK will be in funding your space program. But there's an equal- well not really equal- reaction to every action. While having Kerbals on missions is crucial to funding, Kerbal death will be devastating in performance reviews. Every life is special and there isn't much room for failure
+		description = #LOC_StateFunding_USK_description
 	}
 	Item
 	{
-		name = USSK
-		longName = The Union of Soviet Socialist Kerbals
+		name = #LOC_StateFunding_USSK_name
+		longName = #LOC_StateFunding_USSK_longName
 		poModifier = 0.5
 		poPenaltyModifier = 0.5
 		scModifier = 2
@@ -28,14 +28,14 @@
 		budget = 0.2
 		gdp = 10000000
 		budgetPeriodsPerYear = 2
-		description = The needs of the many outweigh the needs of the few. The USSK are more interested in results and it's not as important how you get those results. While the citizens care greatly about their comrades in space, the governemnt isn't all too revealing about their operations and furthermore don't care too much about the peoples opinions anyway. Kerbal achievement and death will not reach the morning newspaper of many individuals in this country and as a result the impact of such achievements and failures will be muted. A greater reliance on unmaned vehicles and surveilance will be your best bet for continued funding.
+		description = #LOC_StateFunding_USSK_description
 	}
 
 	// Following posted by @Rokanov back in 8/20/2015 in the threads
 	Item
     {
-        name = UKSA
-        longName = Unified Kerbin Space Agency
+        name = #LOC_StateFunding_UKSA_name
+        longName = #LOC_StateFunding_UKSAK_longName
         poModifier = 1
         poPenaltyModifier = 2
         scModifier = 1
@@ -45,14 +45,14 @@
         budget = 0.2
         gdp = 100000000
 		budgetPeriodsPerYear = 66
-        description = In an alternate reality far, far away, an all-too-familiar storm was brewing. Two superpowers - the United States of Kirba (USK) and The Union of Soviet Socialist Kerbals (USSK)- were locked in an escalating political conflict (The Kold War) and began looking to the skies as the new stage for their displays of power and domination. Shortly before the launch of the first rocket, a little known Kerbal by the name of Jebediah Kerman, adrift with fledgling dreams of being the first Kerbal in space, happened to be passing by a meeting between government officials as he remarked 'how great it would be to be nice to Kerbals for a change'. Little was he aware of the gravity of his words, touching the leaders with his innocent Kerbality. A deal was made, resources were pooled, and a new site for launches was proposed at the equator, making life much easier for everyone. Thus the Unified Kerbin Space Agency was born.
+        description = #LOC_StateFunding_UKSA_description
     }
 
 	// Following added by @Maxzhao on 01/03/2017
 	Item
 	{
-		name = KRK
-		longName = Kerbal's Republic of Kerna
+		name = #LOC_StateFunding_KRK_name
+		longName = #LOC_StateFunding_KRK_longName
 		poModifier = 0.2
 		poPenaltyModifier = 0.5
 		scModifier = 5
@@ -62,14 +62,14 @@
 		budget = 0.2
 		gdp = 50000000
 		budgetPeriodsPerYear = 4
-		description = In a country far far away, the space program of Kerna silently develops. This is a magical land: not very modernized but an extremely high GDP is achieved by exporting mystery goo. Here the government has the ultimate authority and they say: "we are going to space". Due to the dominance of the government your state confidence is very high and you will get all the money you need from your motherland. However it also means that you will need to pay your price if you destroy any spacecrafts, after all they belong to the your government! If you want your space program to thrive you better listen to your state supervisors carefully and tailor a space exploration they are happy about.
+		description = #LOC_StateFunding_KRK_description
 	}
 	
 	// Following contributed by @Rock3tman_ on 3/6/2017
 	Item
 	{
-		name = SpaceK
-		longName = Space Eksploration Technologies, Inc. 
+		name = #LOC_StateFunding_SpaceK_name
+		longName = #LOC_StateFunding_SpaceK_longName
 		poModifier = 5
 		poPenaltyModifier = 10
 		scModifier = .1
@@ -79,12 +79,12 @@
 		budget = 0.2
 		gdp = 6000000
 		budgetPeriodsPerYear = 4
-		description = The bold dream of visionary Elon Kerman, SpaceK is a privately owned space agency with the goal of expanding out to the entire Kerbol system. Its bold goals have rekindled the hope of space exploration in many investors, leading to very high initial hype and dependence on public opinion. Your successes will gain glory and drive profits, but failures will scare away investors and drive your program into the ground. As Elon is wholly confident in his program, state confidence is hardly a factor. You need to dream big and perform when it's important, or else you will fail.
+		description = #LOC_StateFunding_SpaceK_description
 	}
 	Item
 	{
-		name = KSKFP
-		longName = Kikkstarter Krowd Funding Platform
+		name = #LOC_StateFunding_KSKFP_name
+		longName = #LOC_StateFunding_KSKFP_longName
 		poModifier = 10
 		poPenaltyModifier = 5
 		scModifier = 15
@@ -94,13 +94,13 @@
 		budget = 0.2
 		gdp = 80000000
 		budgetPeriodsPerYear = 42
-		description = Need money? Don't want controversy from choosing the "wrong" government? If so, choose Kikkstarter Crowd Funding Platform! You will earn money by donations. You will need them to have confidence in your space program, but you can't have a bad image either!
+		description = #LOC_StateFunding_KSKFP_description
 	}
 
 	Item
 	{
-		name = KLA
-		longName = Kerbal Launch Alliance
+		name = #LOC_StateFunding_KLA_name
+		longName = #LOC_StateFunding_KLA_longName
 		poModifier = 1
 		poPenaltyModifier =  3
 		scModifier = 2
@@ -110,13 +110,13 @@
 		budget = 0.1
 		gdp = 16000000 
 		budgetPeriodsPerYear = 12
-		description = KLA is a joint venture between Klockheed-Martin and Bloeting Aerospace.  It was formed to provide (mostly)reliable service for various state agencies primarily in the USK as well as provide cost-efficient access to space for commercial ventures.  KLA's primary competition comes from Elon Kerman and his SpaceK organization who have recently won several government contracts previously held by KLA.  In an effort to spur public interest in space exploration CEO Bruno "Kory" Kerman recently announced plans to expand KLA's civilian commercial offerings including plans for a "Space Hotel".  Only time will tell if KLA can retain a large enough share of the government contracts while trying to impress a seemingly oblivious public more than SpaceK.
+		description = #LOC_StateFunding_KLA_description
 	}
 
 	Item
 	{
-		name = KKU
-		longName = Kerbal Kooperative Union
+		name = #LOC_StateFunding_KKU_name
+		longName = #LOC_StateFunding_KKU_longName
 		poModifier = 0.9
 		poPenaltyModifier = 4.95
 		scModifier = 0.2
@@ -126,12 +126,12 @@
 		budget = 0.85
 		gdp = 90000000
 		budgetPeriodsPerYear = 12
-		description = These people want to see wages raised and tax dollars spent well. They don't have a high opinion of space exploration, and would rather you added some infrastructure, because Kerbin has no roads outside your complex. They also have very little tolerance for a failed mission. On the bright side, the KKU has an enormous budget, and will highly reward a perfectionist space program.
+		description = #LOC_StateFunding_KKU_description
 	}
 	Item
 	{
-		name = North Va'ar
-		longName = Va'ar Federal Union
+		name = #LOC_StateFunding_NV_name
+		longName = #LOC_StateFunding_NV_longName
 		poModifier = 25
 		poPenaltyModifier = 40
 		scModifier = 220
@@ -141,6 +141,6 @@
 		budget = 10000000
 		gdp =   282690000
 		budgetPeriodsPerYear = 1
-		description = The Va'ar Union is one of the few democracies remaining on the continent of Kiesia after the Maeiani Obliteration. A close ally of the FSSK, it's government wishes to prove itself and rise to equals with Klaatu or Ciniotia. The Gi'yiria (Parliament) recently passed a law establishing a space program. They hope that by showing up Klaatu above Kerbin they can rise to be equals on it.
+		description = #LOC_StateFunding_NV_description
 	}
 }

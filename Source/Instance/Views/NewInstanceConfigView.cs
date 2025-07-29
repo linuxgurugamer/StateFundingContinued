@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -17,7 +18,7 @@ namespace StateFunding
 
         public NewInstanceConfigView()
         {
-            Log.Info("StateFunding: NewInstanceConfigView: creating");
+            Log.Info("StateFunding: NewInstanceConfigView: creating"); // NO_LOCALIZATION
             ViewManager.addView(this);
             createWindow();
             createGovernmentMenu();
@@ -27,19 +28,19 @@ namespace StateFunding
 
         private void createWindow()
         {
-            Log.Info("StateFunding: NewInstanceConfigView: creating window");
-            Window = new ViewWindow("State Funding");
+            Log.Info("StateFunding: NewInstanceConfigView: creating window"); // NO_LOCALIZATION
+            Window = new ViewWindow(Localizer.Format("#LOC_StateFunding_State_Funding"));
             Window.setMargins(300, 100);
 
-            Image = new ViewImage("assets/kerbalgovernment.jpg");
+            Image = new ViewImage("assets/kerbalgovernment.jpg"); // NO_LOCALIZATION
             Image.setRelativeTo(Window);
             Image.setPercentWidth(100);
 
 
             Label = new ViewLabel(
-              "We've been told it was in the best interest of our government to have a space program for some reason. " +
-              "We're not rocket scientists, but you are. We will provide funding, make our wildest dreams come true.... " +
-              "Or at least just help us keep our jobs."
+              Localizer.Format("#LOC_StateFunding_We_ve_been_told_it_was_in") +
+              Localizer.Format("#LOC_StateFunding_We_re_not_rocket_scientis") +
+              Localizer.Format("#LOC_StateFunding_Or_at_least_just_help_us_")
             );
             Label.setRelativeTo(Image);
             Label.setPercentWidth(80);
@@ -49,7 +50,7 @@ namespace StateFunding
             Label.setFontSize(18);
             Label.setColor(Color.white);
 
-            Confirm = new ViewButton("Ok!", OnConfirm);
+            Confirm = new ViewButton(Localizer.Format("#LOC_StateFunding_Ok"), OnConfirm);
             Confirm.setRelativeTo(Window);
             Confirm.setWidth(150);
             Confirm.setHeight(30);
@@ -74,12 +75,13 @@ namespace StateFunding
             GvtDescrLeft += GvtMenuAdjust;
             GvtGameplayLeft += GvtMenuAdjust;
 
+            #region  NO_LOCALIZATION
             Log.Info("GvtMenuAdjust: " + GvtMenuAdjust);
             Log.Info("GvtDescrLeft: " + GvtDescrLeft);
             Log.Info("GvtGameplayWidth: " + GvtGameplayWidth);
             Log.Info("GvtDescrWidth: " + GvtDescrWidth);
             Log.Info("GvtGameplayLeft: " + GvtGameplayLeft);
-
+            #endregion
 
             GovernmentDescription = new ViewLabel("");
             GovernmentDescription.setRelativeTo(Image);
@@ -110,7 +112,7 @@ namespace StateFunding
         
         private void createGovernmentMenu()
         {
-            Log.Info("StateFunding: NewInstanceConfigView: creating government menu");
+            Log.Info("StateFunding: NewInstanceConfigView: creating government menu"); // NO_LOCALIZATION
             int buttonHeight = 30; // Includes space between buttons
             int top = Image.getHeight() + 10;
             int bottom = Window.getHeight() - 2 * buttonHeight;
@@ -147,8 +149,8 @@ namespace StateFunding
             SelectedGovernment = Gov;
             GovernmentDescription.label = Gov.description;
             GovernmentGameplayDescription.label = Gov.GetGameplayDescription();
-            Confirm.text = "Select " + Gov.name;
-            Log.Info("StateFunding: NewInstanceConfigView: selected government");
+            Confirm.text = Localizer.Format("#LOC_StateFunding_Select")+" " + Gov.name;
+            Log.Info("StateFunding: NewInstanceConfigView: selected government"); // NO_LOCALIZATION
         }
 
         private void OnConfirm()

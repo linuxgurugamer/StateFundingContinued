@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,7 +53,7 @@ namespace StateFunding
 
         public string toString()
         {
-            return "View";
+            return Localizer.Format("#LOC_StateFunding_View");
         }
 
         public void show()

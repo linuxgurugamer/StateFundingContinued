@@ -1,4 +1,5 @@
-﻿
+
+using KSP.Localization;
 using StateFunding.Factors.Views;
 using StateFunding.ViewComponents;
 using System;
@@ -13,9 +14,9 @@ namespace StateFunding.Factors
 
         private int _modPO;
 
-        public static string activeKerbals = "activeKerbals";
-        public static string strandedKerbals = "strandedKerbals";
-        public static string kerbalDeaths = "kerbalDeaths";
+        public static string activeKerbals = "activeKerbals"; // NO_LOCALIZATION
+        public static string strandedKerbals = "strandedKerbals"; // NO_LOCALIZATION
+        public static string kerbalDeaths = "kerbalDeaths"; // NO_LOCALIZATION
 
         public KerbalsFactor(FactorVariables factorVariables) : base (factorVariables)
         {
@@ -35,9 +36,9 @@ namespace StateFunding.Factors
         {
             return new List<ViewSummaryRow>()
             {
-                new ViewSummaryRow("Active Kerbals: " + (int)variables.activeKerbals, (int)(5 * variables.activeKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier), 0),
-                new ViewSummaryRow("Kerbal \"Accidents\": " + (int)variables.kerbalDeaths, 0, (int)(-5 * variables.strandedKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier)),
-                new ViewSummaryRow("Stranded Kerbals: " + (int)variables.strandedKerbals, 0, (int)(-5 * variables.kerbalDeaths * StateFundingGlobal.fetch.GameInstance.Gov.poModifier))
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Active_Kerbals")+ " " + (int)variables.activeKerbals, (int)(5 * variables.activeKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier), 0),
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Kerbal_Accidents") + " "+ (int)variables.kerbalDeaths, 0, (int)(-5 * variables.strandedKerbals * StateFundingGlobal.fetch.GameInstance.Gov.poModifier)),
+                new ViewSummaryRow(Localizer.Format("#LOC_StateFunding_Stranded_Kerbals") + " "+ (int)variables.strandedKerbals, 0, (int)(-5 * variables.kerbalDeaths * StateFundingGlobal.fetch.GameInstance.Gov.poModifier))
             };
         }
     }

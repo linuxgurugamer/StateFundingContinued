@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using KSP.Localization;
+using UnityEngine;
 using StateFunding.Factors.Views;
 using StateFunding.Factors;
 
@@ -8,12 +9,12 @@ namespace StateFunding
     {
         public string getSideMenuText()
         {
-            return "Mining Rigs";
+            return Localizer.Format("#LOC_StateFunding_Mining_Rigs");
         }
 
         public void draw(View Vw, ViewWindow Window, Review review)
         {
-            Window.title = "Mining Rigs";
+            Window.title = Localizer.Format("#LOC_StateFunding_Mining_Rigs");
 
             InstanceData GameInstance = StateFundingGlobal.fetch.GameInstance;
             if (GameInstance == null)
@@ -22,9 +23,9 @@ namespace StateFunding
                 return;
             }
 
-            string Description = "Below is a list of existing Mining Rigs. Having more Mining Rigs increases State " +
-              "Confidence. To have a qualified Mining Rig is must have an antenna, drill, be able to generate power, " +
-              "and be Landed on a body other than Kerbin.";
+            string Description = Localizer.Format("#LOC_StateFunding_Below_is_a_list_of_existi_DUP1") +
+              Localizer.Format("#LOC_StateFunding_Confidence_To_have_a_qual") +
+              Localizer.Format("#LOC_StateFunding_and_be_Landed_on_a_body_o");
 
             ViewLabel DescriptionLabel = new ViewLabel(Description);
             DescriptionLabel.setRelativeTo(Window);
@@ -36,7 +37,7 @@ namespace StateFunding
 
             Vw.addComponent(DescriptionLabel);
 
-            ViewLabel TotalCoverage = new ViewLabel("Mining Rigs: " + review.variables.miningRigs);
+            ViewLabel TotalCoverage = new ViewLabel(Localizer.Format("#LOC_StateFunding_Mining_Rigs_DUP1") + " " + review.variables.miningRigs);
             TotalCoverage.setRelativeTo(Window);
             TotalCoverage.setLeft(140);
             TotalCoverage.setTop(130);
@@ -63,7 +64,7 @@ namespace StateFunding
             {
                 Vessel MiningRig = MiningRigs[i];
 
-                string label = MiningRig.GetName() + " is Landed At " + MiningRig.mainBody.GetName(); ;
+                string label = MiningRig.GetName() + Localizer.Format("#LOC_StateFunding_is_Landed_At") + " " + MiningRig.mainBody.GetName(); ;
 
                 ViewLabel MiningLabel = new ViewLabel(label);
                 MiningLabel.setRelativeTo(RigsScroll);

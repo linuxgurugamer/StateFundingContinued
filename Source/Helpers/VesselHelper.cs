@@ -1,4 +1,5 @@
-﻿using System;
+using KSP.Localization;
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,27 +19,27 @@ namespace StateFunding
 
         public static bool HasEnergy(Vessel Vsl)
         {
-            return VesselHelper.HasResource(Vsl, "ElectricCharge");
+            return VesselHelper.HasResource(Vsl, Localizer.Format("#LOC_StateFunding_ElectricCharge"));
         }
 
         public static bool HasLiquidFuel(Vessel Vsl)
         {
-            return VesselHelper.HasResource(Vsl, "LiquidFuel");
+            return VesselHelper.HasResource(Vsl, Localizer.Format("#LOC_StateFunding_LiquidFuel"));
         }
 
         public static bool GeneratesEnergy(Vessel Vsl)
         {
-            return VesselHelper.VesselHasModuleAlias(Vsl, "Energy");
+            return VesselHelper.VesselHasModuleAlias(Vsl, Localizer.Format("#LOC_StateFunding_Energy"));
         }
 
         public static bool HasCommunication(Vessel Vsl)
         {
-            return VesselHelper.VesselHasModuleAlias(Vsl, "Communication");
+            return VesselHelper.VesselHasModuleAlias(Vsl, Localizer.Format("#LOC_StateFunding_Communication"));
         }
 
         public static bool WorkingWheels(Vessel Vsl)
         {
-            ProtoPartModuleSnapshot[] Wheels = VesselHelper.GetModulesWithAlias(Vsl, "Wheel");
+            ProtoPartModuleSnapshot[] Wheels = VesselHelper.GetModulesWithAlias(Vsl, Localizer.Format("#LOC_StateFunding_Wheel"));
             if (Wheels.Length >= 4)
             {
                 return true;
@@ -74,7 +75,7 @@ namespace StateFunding
 
         public static ProtoPartSnapshot[] GetDockingPorts(Vessel Vsl)
         {
-            return VesselHelper.GetPartsWithAlias(Vsl, "DockingPort");
+            return VesselHelper.GetPartsWithAlias(Vsl, Localizer.Format("#LOC_StateFunding_DockingPort"));
         }
 
         public static int GetDockedVesselsCount(Vessel Vsl)
@@ -408,9 +409,10 @@ namespace StateFunding
         {
             List<Vessel> ReturnVessels = new List<Vessel>();
 
-            Vessel[] ScienceLabs = VesselHelper.GetVesselsWithModuleAliases(new string[] {
-        "ScienceLab"
-      });
+            Vessel[] ScienceLabs = VesselHelper.GetVesselsWithModuleAliases(new string[] 
+            {
+                Localizer.Format("#LOC_StateFunding_ScienceLab")
+            });
 
             for (var i = 0; i < ScienceLabs.Length; i++)
             {
@@ -436,7 +438,7 @@ namespace StateFunding
             List<Vessel> ReturnVessels = new List<Vessel>();
 
             Vessel[] ScienceLabs = VesselHelper.GetVesselsWithModuleAliases(new string[] {
-        "ScienceLab"
+        Localizer.Format("#LOC_StateFunding_ScienceLab")
       });
 
             for (var i = 0; i < ScienceLabs.Length; i++)
@@ -483,7 +485,7 @@ namespace StateFunding
             List<Vessel> ReturnVessels = new List<Vessel>();
 
             Vessel[] MiningRigs = VesselHelper.GetVesselsWithModuleAliases(new string[] {
-        "Drill"
+        Localizer.Format("#LOC_StateFunding_Drill")
       });
 
             for (var i = 0; i < MiningRigs.Length; i++)
@@ -509,11 +511,13 @@ namespace StateFunding
         {
             List<Vessel> ReturnVessels = new List<Vessel>();
 
+            #region  NO_LOCALIZATION
             Vessel[] Satellites = VesselHelper.GetVesselsWithModuleAliases(new string[] {
                 "Energy",
                 "Communication",
                 "AutonomousCommand"
             });
+            #endregion
 
             for (int i = 0; i < Satellites.Length; i++)
             {
@@ -534,7 +538,7 @@ namespace StateFunding
 
         public static bool OnAsteroid(Vessel Vsl)
         {
-            return VesselHasModuleAlias(Vsl, "Asteroid");
+            return VesselHasModuleAlias(Vsl, Localizer.Format("#LOC_StateFunding_Asteroid"));
         }
 
     }
