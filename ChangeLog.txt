@@ -139,3 +139,7 @@ Adoption by Linuxgurugamer
 
 0.6.18.4
 	Fixed path for loading files (broken by new launcher)
+
+0.6.19 (unreleased)
+	Added multiplier to settings for budget
+	Updated version file to use github for new version info

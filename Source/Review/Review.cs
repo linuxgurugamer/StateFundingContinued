@@ -149,7 +149,8 @@ namespace StateFunding
                 Log.Error("Review.UpdateFunds, GameInstance is null");
                 return;
             }
-            funds = (int)(((float)(finalPO + finalSC) / 10000) * (float)Inst.Gov.gdp * (float)Inst.Gov.budget);
+            funds = (int)((float)(finalPO + finalSC) / 10000f * Inst.Gov.gdp * Inst.Gov.budget * 
+                HighLogic.CurrentGame.Parameters.CustomParams<StateFundingSettings>().multiplier);
         }
 
         public string GetSummaryText()

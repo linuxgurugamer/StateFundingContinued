@@ -38,7 +38,7 @@ namespace StateFunding
 
         [GameParameters.CustomParameterUI("Stop warp on new year")]
         public bool stopWarpOnNewYear = true;
-  
+
         // Following strange code is to work around a bugin the CustomFloatParameterUI
         public float convergingRate = 0.5f;
         [GameParameters.CustomFloatParameterUI("Decay Rate (%)", asPercentage = false, displayFormat = "N0", minValue = 0, maxValue = 100, stepCount = 1,
@@ -48,6 +48,12 @@ namespace StateFunding
             get { return convergingRate * 100f; }
             set { convergingRate = value / 100.0f; }
         }
+
+        // Following strange code is to work around a bugin the CustomFloatParameterUI
+        [GameParameters.CustomFloatParameterUI("Multiplier", asPercentage = false, displayFormat = "0.0", minValue = 0.1f, maxValue = 2f, stepCount = 21,
+                    toolTip = "Multiplier applied to the base value")]
+        public float multiplier = 1f;
+
 
 
 

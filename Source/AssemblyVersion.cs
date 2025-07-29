@@ -5,6 +5,6 @@
   
  using System.Reflection;
 
- [assembly: AssemblyVersion("0.6.18.3")]
- [assembly: AssemblyFileVersion("0.6.18.3")]
- [assembly: KSPAssembly("StateFunding", 0, 6, 18)]
+ [assembly: AssemblyVersion("0.6.19.0")]
+ [assembly: AssemblyFileVersion("0.6.19.0")]
+ [assembly: KSPAssembly("StateFunding", 0, 6, 19)]
